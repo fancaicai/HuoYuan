@@ -15,6 +15,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeResult;
+import com.huotongtianxia.huoyuan.R;
 
 
 import java.util.concurrent.ExecutorService;
@@ -41,11 +42,11 @@ MapView mMapView;
 
 //        初始化地图相关
         initMapView();
-//        地图定位相关
-        locationMapView();
+//        地图导航相关
+        naviMapView();
     }
 
-    private void locationMapView() {
+    private void naviMapView() {
         // TODO: 2017/4/22 0022 定位相关 
     }
 

@@ -26,11 +26,9 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.huotongtianxia.huoyuan.config.UrlConfig;
 import com.huotongtianxia.huoyuan.ui.WDCD.GRZX.GRZXFragment;
-import com.huotongtianxia.huoyuan.ui.WDCD.HYFB.HYFBFragment;
 import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.MainFragment;
 import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDFragment;
 import com.huotongtianxia.huoyuan.ui.WDCD.bx.BXFragment;
-import com.huotongtianxia.huoyuan.ui.WDCD.zxcc.ZXCCActivity;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 

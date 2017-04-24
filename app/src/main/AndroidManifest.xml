@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huotongtianxia.huoyuan">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+    <!--允许程序打开网络套接字-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于访问网络，网络定位需要上网-->
+
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+    //地图包、搜索包需要的基础权限
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cge"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 配置Api Key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="4411b780b354a98b31cd771acc235c2f" />
+
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <!-- <activity android:name=".ui.WDCD.clrz.CLRZActivity"> -->
+        <activity android:name=".ui.WDCD.login.DLActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.WDCD.gszl.GSZLActivity" />
+        <activity android:name=".ui.WDCD.wdzh.WDZHActivity" />
+        <activity android:name=".ui.WDCD.zxcc.ZXCCActivity" />
+        <activity android:name=".ui.WDCD.wdhy.WDHYActivity" />
+        <activity android:name=".ui.WDCD.gyszl.GYSZLActivity" />
+        <activity android:name=".ui.WDCD.clrz.CLRZActivity" />
+        <activity android:name=".ui.WDCD.khzl.KHZLActivity" />
+        <activity android:name=".ui.WDCD.fctj.FCTJActivity" />
+        <activity android:name=".ui.WDCD.WDCD.WDCDActivity" />
+        <activity android:name=".ui.WDCD.grzl.GRZLActivity" />
+        <activity android:name=".ui.WDCD.sscl.SSCLActivity" />
+        <activity android:name=".ui.WDCD.tjcl.TJCLActivity" />
+        <activity android:name=".ui.WDCD.login.LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.WDCD.login.ZHMMActivity" />
+        <activity android:name=".ui.WDCD.gszl.BJGSZLActivity" />
+        <activity android:name=".ui.WDCD.khzl.TJKHZLActivity" />
+        <activity android:name=".ui.WDCD.gyszl.TJGYSActivity" />
+        <activity android:name=".ui.WDCD.ddxq.DDXQActivity" />
+        <activity android:name=".ui.WDCD.ddxq.PJActivity" />
+        <activity android:name=".ui.WDCD.WDCD.WZActivity" />
+        <activity android:name=".ui.WDCD.HYFB.HYFBActivity" />
+        <activity android:name=".ui.WDCD.clrz.RZActivity" />
+        <activity android:name=".ui.WDCD.GenActivity" />
+        <activity android:name=".ui.WDCD.ddgz.DdgzActivity"></activity>
+        <!--定位的服务-->
+        <service android:name="com.amap.api.location.APSService"></service>
+    </application>
+
+</manifest>

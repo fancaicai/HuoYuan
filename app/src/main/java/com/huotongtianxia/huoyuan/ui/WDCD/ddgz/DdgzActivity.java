@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps2d.AMap;
 
 import com.amap.api.maps2d.MapView;
@@ -24,6 +27,15 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClickListener, GeocodeSearch.OnGeocodeSearchListener {
+    //声明AMapLocationClient类对象
+    public AMapLocationClient mLocationClient = null;
+    //声明定位回调监听器
+    public AMapLocationListener mLocationListener = new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation aMapLocation) {
+
+        }
+    };
     private Marker regeoMarker;
     private GeocodeSearch geocoderSearch;
     private ExecutorService mExecutorService;
@@ -47,7 +59,12 @@ MapView mMapView;
     }
 
     private void naviMapView() {
-        // TODO: 2017/4/22 0022 定位相关 
+        // TODO: 2017/4/22 0022 定位相关
+//初始化定位
+        mLocationClient = new AMapLocationClient(getApplicationContext());
+//设置定位回调监听
+        mLocationClient.setLocationListener(mLocationListener);
+
     }
 
     private void initMapView() {

@@ -2,6 +2,7 @@ package com.huotongtianxia.huoyuan.http;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.huotongtianxia.huoyuan.bean.BJGSZLBean;
 import com.huotongtianxia.huoyuan.bean.BXBean;
 import com.huotongtianxia.huoyuan.bean.CLRZBean;
@@ -55,13 +56,52 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 网络请求封装类
  */
 public class HttpUtils {
-    private HttpUtils(){};
-    private static HttpUtils utile= new HttpUtils();
-    public static HttpUtils newInstance(){
+    public static final String BASE_URL = "";
+    private static HttpUtils utile;
+    private final OkHttpClient mOkHttpClient;
+    private final Gson mGson;
+    private final Retrofit mRetrofit;
+    private InterRetrofit mTreasureApi;
+    private HttpUtils(){
+
+        // 设置GSON的非严格模式setLenient()
+        mGson = new GsonBuilder().setLenient().create();
+
+        // 日志拦截器
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        // 需要设置打印级别
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        // OkHttpClient的单例化
+        mOkHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
+
+        // Retrofit的创建
+        // 必须要加的BASEURL
+        // 添加OkHttpClient
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)// 必须要加的BASEURL
+                .client(mOkHttpClient)// 添加OkHttpClient
+                // 添加转换器
+                .addConverterFactory(GsonConverterFactory.create(mGson))
+                .build();
+    };
+    public static synchronized HttpUtils newInstance(){
+        if (utile==null) {
+            utile=new HttpUtils();
+        }
         return utile;
     }
+    // 将TreasureApi怎么对外提供处理：提供一个方法getTreasureApi()
+    public InterRetrofit getTreasureApi(){
 
-
+        if (mTreasureApi==null){
+            // 对请求接口的具体实现
+            mTreasureApi = mRetrofit.create(InterRetrofit.class);
+        }
+        return mTreasureApi;
+    }
     public void loadZXCCBBean(Callback<ZXCCBBean> callback, String locality){
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -69,7 +109,6 @@ public class HttpUtils {
         Retrofit retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(UrlConfig.HOME).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
         InterRetrofit retrofitInter = retrofit.create(InterRetrofit.class);
         Call<ZXCCBBean> leftBeanCall = retrofitInter.loadZXCCBBean(locality);
-
         leftBeanCall.enqueue(callback);
     }
 

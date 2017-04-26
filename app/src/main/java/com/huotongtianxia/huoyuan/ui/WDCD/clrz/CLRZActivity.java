@@ -40,7 +40,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+//车辆认证
 public class CLRZActivity extends AppCompatActivity implements CLRZContract.View{
     @Bind(R.id.clrz_img1)
     ImageView clrzImg1;

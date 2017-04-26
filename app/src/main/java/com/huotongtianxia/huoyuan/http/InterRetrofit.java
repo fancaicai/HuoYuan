@@ -20,6 +20,8 @@ import com.huotongtianxia.huoyuan.bean.PJBean;
 import com.huotongtianxia.huoyuan.bean.QRSHBean;
 import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
+import com.huotongtianxia.huoyuan.bean.SJID;
+import com.huotongtianxia.huoyuan.bean.SJLIDWBean;
 import com.huotongtianxia.huoyuan.bean.SJRZ1Bean;
 import com.huotongtianxia.huoyuan.bean.SSCLBean;
 import com.huotongtianxia.huoyuan.bean.TJCLBean;
@@ -39,8 +41,11 @@ import com.huotongtianxia.huoyuan.bean.WZBean;
 import com.huotongtianxia.huoyuan.bean.ZXCCBBean;
 import com.huotongtianxia.huoyuan.bean.ZXCCWBean;
 
+import java.util.List;
+
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Multipart;
@@ -213,4 +218,7 @@ public interface InterRetrofit {
     @FormUrlEncoded
     @POST("api/Version/appVersion")
     Call<GenBean> loadGenBean(@Field("app_id") String app_id,@Field("version_id") String version_id,@Field("version_mini") String version_mini);
+    // 宝藏详情的数据获取
+    @POST("/Handler/TreasureHandler.ashx?action=tdetails")
+    Call<List<SJLIDWBean>> getTreasureDetail(@Body SJID sjid);
 }

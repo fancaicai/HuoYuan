@@ -60,12 +60,26 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             fresco:placeholderImage="@drawable/cge"
+            fresco:progressBarImage="@mipmap/loading"
             fresco:placeholderImageScaleType="fitCenter"
-            fresco:roundAsCircle="true"
+            fresco:progressBarAutoRotateInterval="5000"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:failureImage="@mipmap/faliure"
+            fresco:failureImageScaleType="centerInside"
             fresco:roundingBorderWidth="2dp"
             android:layout_marginTop="75dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            fresco:roundTopRight="true"
+            fresco:roundTopLeft="true"
+            fresco:roundBottomLeft="true"
+            fresco:roundBottomRight="true"
+            fresco:roundedCornerRadius="10dp"
+            fresco:retryImage="@mipmap/retryic"
+            fresco:retryImageScaleType="centerCrop"
+            fresco:backgroundImage="@android:color/holo_orange_light"
+            fresco:fadeDuration="5000"
+            />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"

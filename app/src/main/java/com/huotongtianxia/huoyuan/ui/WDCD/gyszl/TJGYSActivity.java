@@ -20,22 +20,9 @@ import com.huotongtianxia.huoyuan.bean.TJGYSBean;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+//常用地址页面
 public class TJGYSActivity extends AppCompatActivity implements TJGYSContract.View{
 
-    @Bind(R.id.tjgrs_img01)
-    ImageView tjgrsImg01;
-    @Bind(R.id.tjgrs_text01)
-    TextView tjgrsText01;
-    @Bind(R.id.tjgys_et1)
-    EditText tjgysEt1;
-    @Bind(R.id.tjgys_et2)
-    EditText tjgysEt2;
-    @Bind(R.id.tjgys_et3)
-    EditText tjgysEt3;
-    @Bind(R.id.tjgys_et4)
-    EditText tjgysEt4;
-    @Bind(R.id.jtgys_btn)
     Button jtgysBtn;
     private String tjgyszl1,tjgyszl2,tjgyszl3,tjgyszl4;
 
@@ -54,52 +41,52 @@ public class TJGYSActivity extends AppCompatActivity implements TJGYSContract.Vi
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.tjgrs_img01, R.id.tjgrs_text01, R.id.jtgys_btn})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.tjgrs_img01:
-                TJGYSActivity.this.finish();
-                break;
-            case R.id.tjgrs_text01:
-                TJGYSActivity.this.finish();
-                break;
-            case R.id.jtgys_btn:
-                login();
-                TJGYSPresreter presreter = new TJGYSPresreter(this,tjgyszl1,tjgyszl2,tjgyszl3,tjgyszl4);
-                presreter.getData();
-                break;
-        }
-    }
-
-    public void login() {                                              //登录按钮监听事件
-        if (isUserNameAndPwdValid()) {
-            tjgyszl1 = tjgysEt1.getText().toString().trim();    //获取当前输入的用户名和密码信息
-            tjgyszl2 = tjgysEt2.getText().toString().trim();
-            tjgyszl3 = tjgysEt3.getText().toString().trim();
-            tjgyszl4 = tjgysEt4.getText().toString().trim();
-        }
-    }
-
-    public boolean isUserNameAndPwdValid() {
-        if (tjgysEt1.getText().toString().trim().equals("")) {
-            Toast.makeText(this, getString(R.string.tjgys1),
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (tjgysEt2.getText().toString().trim().equals("")) {
-            Toast.makeText(this, getString(R.string.tjgys2),
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        }else if (tjgysEt3.getText().toString().trim().equals("")) {
-            Toast.makeText(this, getString(R.string.tjgys3),
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        }else if (tjgysEt4.getText().toString().trim().equals("")) {
-            Toast.makeText(this, getString(R.string.tjgys4),
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
+//    @OnClick({R.id.tjgrs_img01, R.id.tjgrs_text01, R.id.jtgys_btn})
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.tjgrs_img01:
+//                TJGYSActivity.this.finish();
+//                break;
+//            case R.id.tjgrs_text01:
+//                TJGYSActivity.this.finish();
+//                break;
+//            case R.id.jtgys_btn:
+//                login();
+//                TJGYSPresreter presreter = new TJGYSPresreter(this,tjgyszl1,tjgyszl2,tjgyszl3,tjgyszl4);
+//                presreter.getData();
+//                break;
+//        }
+//    }
+//
+//    public void login() {                                              //登录按钮监听事件
+//        if (isUserNameAndPwdValid()) {
+//            tjgyszl1 = tjgysEt1.getText().toString().trim();    //获取当前输入的用户名和密码信息
+//            tjgyszl2 = tjgysEt2.getText().toString().trim();
+//            tjgyszl3 = tjgysEt3.getText().toString().trim();
+//            tjgyszl4 = tjgysEt4.getText().toString().trim();
+//        }
+//    }
+//
+//    public boolean isUserNameAndPwdValid() {
+//        if (tjgysEt1.getText().toString().trim().equals("")) {
+//            Toast.makeText(this, getString(R.string.tjgys1),
+//                    Toast.LENGTH_SHORT).show();
+//            return false;
+//        } else if (tjgysEt2.getText().toString().trim().equals("")) {
+//            Toast.makeText(this, getString(R.string.tjgys2),
+//                    Toast.LENGTH_SHORT).show();
+//            return false;
+//        }else if (tjgysEt3.getText().toString().trim().equals("")) {
+//            Toast.makeText(this, getString(R.string.tjgys3),
+//                    Toast.LENGTH_SHORT).show();
+//            return false;
+//        }else if (tjgysEt4.getText().toString().trim().equals("")) {
+//            Toast.makeText(this, getString(R.string.tjgys4),
+//                    Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        return true;
+//    }
 
     @Override
     public void onResponse(TJGYSBean tjgysBean) {

@@ -416,14 +416,18 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
     @Override
     public void onResponse(GRZXBean grzxBean) {
         textView.setText(grzxBean.getData().getCompany());
+        Uri imageUri=Uri.parse("http://www.cnhttx.com//uploads/logo/" + grzxBean.getData().getLogo());
+        wdcdImg1.setImageURI(imageUri);
         DraweeController failureImageDraweeController = Fresco.newDraweeControllerBuilder()
-                .setUri("http://www.cnhttx.com//uploads/logo/" + grzxBean.getData().getLogo())
-                .setTapToRetryEnabled(false)  //同时设置不可重试.
+                .setUri(imageUri)
+                .setTapToRetryEnabled(true)  //同时设置不可重试.
                 .setOldController(wdcdImg1.getController())
                 .build();
         wdcdImg1.setController(failureImageDraweeController);
-     //   Glide.with(this).load("http://www.cnhttx.com//uploads/logo/" + grzxBean.getData().getLogo()).into(wdcdImg1);
+
+//   Glide.with(this).load("http://www.cnhttx.com//uploads/logo/" + grzxBean.getData().getLogo()).into(wdcdImg1);
         Glide.with(this).load("http://www.cnhttx.com//uploads/door/" + grzxBean.getData().getDoor()).into(grzximg01);
+
     }
 
     @Override

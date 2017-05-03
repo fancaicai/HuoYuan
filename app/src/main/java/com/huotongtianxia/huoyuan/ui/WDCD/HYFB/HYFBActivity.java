@@ -1,11 +1,15 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.HYFB;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -61,6 +65,8 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     LinearLayout hyfbShdzLin;
     @Bind(R.id.hyfb_btn)
     Button hyfbBtn;
+    @Bind(R.id.hyfb_txt)
+    TextView hyfbText;
     private String name,we,send,truck_type,truck_length,provinc,cit,rmb;
     private LoadingDialog loadingDialog;
     private int fhrid, shrid;
@@ -69,6 +75,14 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
         setContentView(R.layout.activity_hyfb);
         ButterKnife.bind(this);
         loadingDialog = new LoadingDialog(this);
@@ -107,8 +121,9 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     public void onClick() {
         login();
     }
-
+//发货页面的点击事件
     public void initView1() {
+//        点击发货常用地址，跳转到了发货常用地址页面
         hyfbFhdzLin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +136,12 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
             public void onClick(View view) {
                 Intent intent = new Intent(HYFBActivity.this, KHZLActivity.class);
                 startActivity(intent);
+            }
+        });
+        hyfbText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

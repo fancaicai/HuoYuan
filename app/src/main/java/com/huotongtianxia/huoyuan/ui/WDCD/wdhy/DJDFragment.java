@@ -1,13 +1,15 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.wdhy;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +21,7 @@ import com.huotongtianxia.huoyuan.bean.WDHYBBean;
 import com.huotongtianxia.huoyuan.bean.WDHYBean;
 import com.huotongtianxia.huoyuan.bean.WDHYQXBean;
 import com.huotongtianxia.huoyuan.bean.WDHYSCBean;
-import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDActivity;
-import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDPresreter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,6 @@ public class DJDFragment extends Fragment implements WDHYContract.View {
     private WDHYBAdapter adapter;
     private String id;
     private String order_num;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +96,9 @@ public class DJDFragment extends Fragment implements WDHYContract.View {
 
     @Override
     public void onResponse1(WDHYBBean wdhyBBean) {
+
         adapter.reload(wdhyBBean.getData());
+        Log.e("11111111111111",wdhyBBean.getData()+"");
     }
 
     @Override

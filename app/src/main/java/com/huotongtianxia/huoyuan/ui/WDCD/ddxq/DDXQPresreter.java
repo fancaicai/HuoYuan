@@ -31,6 +31,7 @@ public class DDXQPresreter implements DDXQContract.Presreter{
         mode.loadDDXQ(new Callback<DDXQBean>() {
             @Override
             public void onResponse(Call<DDXQBean> call, Response<DDXQBean> response) {
+
                 if (response.isSuccessful()){
                     final DDXQBean body = response.body();
                     Handler handler = new Handler();

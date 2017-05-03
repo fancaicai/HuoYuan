@@ -56,7 +56,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 网络请求封装类
  */
 public class HttpUtils {
-    public static final String BASE_URL = "";
+    public static final String BASE_URL = "http://192.168.0.6/httx/public/index.php/";
     private static HttpUtils utile;
     private final OkHttpClient mOkHttpClient;
     private final Gson mGson;
@@ -250,7 +250,6 @@ public class HttpUtils {
         Retrofit retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(UrlConfig.HOME).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
         InterRetrofit retrofitInter = retrofit.create(InterRetrofit.class);
         Call<WDCDBean> leftBeanCall = retrofitInter.loadWDCDBean(factory_id);
-
         leftBeanCall.enqueue(callback);
     }
 
@@ -510,7 +509,6 @@ public class HttpUtils {
         Retrofit retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(UrlConfig.HOME).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
         InterRetrofit retrofitInter = retrofit.create(InterRetrofit.class);
         Call<GenBean> leftBeanCall = retrofitInter.loadGenBean(app_id,version_id,version_mini);
-
         leftBeanCall.enqueue(callback);
     }
 }

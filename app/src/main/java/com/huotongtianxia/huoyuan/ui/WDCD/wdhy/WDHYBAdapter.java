@@ -69,7 +69,6 @@ public class WDHYBAdapter extends BaseAdapter {
     }
 
     public void reload(List _list) {
-
         list.addAll(_list);
         notifyDataSetChanged();
     }

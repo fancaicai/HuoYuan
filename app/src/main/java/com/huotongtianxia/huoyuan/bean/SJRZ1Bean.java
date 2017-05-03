@@ -6,6 +6,7 @@ package com.huotongtianxia.huoyuan.bean;
 
 public class SJRZ1Bean {
 
+
     /**
      * data : {"id":"519"}
      * code : 100

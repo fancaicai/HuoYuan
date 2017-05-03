@@ -19,7 +19,7 @@
     <ImageView
         android:layout_width="10dp"
         android:layout_height="15dp"
-        android:background="@mipmap/qi"
+        android:background="@mipmap/start"
         android:layout_toRightOf="@+id/zh_text2"
         android:layout_toEndOf="@+id/zh_text2" />
     <View

@@ -44,9 +44,9 @@
                 android:id="@+id/main_home_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="找货"
+                android:text="发货"
                 android:textSize="12dp"
-                android:textColor="#50bbfc"
+                android:textColor="#8B79E0"
                 />
         </LinearLayout>
         <LinearLayout

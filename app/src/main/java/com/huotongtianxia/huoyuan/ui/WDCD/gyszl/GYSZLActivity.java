@@ -15,10 +15,8 @@ import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.FHRBean;
-import com.huotongtianxia.huoyuan.bean.GYSBean;
 import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
-import com.huotongtianxia.huoyuan.ui.WDCD.HYFB.HYFBActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLContract;
 import com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLPresreter;
 
@@ -27,7 +25,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
+//供应商资料也就是我们现在的发货地址页面
 public class GYSZLActivity extends AppCompatActivity implements KHZLContract.View {
     @Bind(R.id.gyszl_list)
     ListView gyszlList;
@@ -54,13 +52,13 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
         setContentView(R.layout.activity_gyszl);
         ButterKnife.bind(this);
         gyszltext01 = (TextView) findViewById(R.id.grszl_text01);
-        gyszlimg01 = (ImageView) findViewById(R.id.grszl_img01);
+//        点击事件的监听
         initView();
-
         KHZLPresreter presreter = new KHZLPresreter(this);
         presreter.getData();
         apadter = new GYSListApadter(this, list);
         gyszlList.setAdapter(apadter);
+//        点击intem的监听
         gyszlList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -71,8 +69,11 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
             }
         });
     }
-
+/**
+ * 控件的点击事件的监听
+ * */
     public void initView() {
+//        点击增加的监听事件，点击增加跳转到了添加供应商的页面
         wlgsTjgys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,26 +82,24 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
                 startActivity(intent);
             }
         });
-
+//点击左上角的返回的时候的监听
         gyszltext01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GYSZLActivity.this.finish();
             }
         });
-        gyszlimg01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GYSZLActivity.this.finish();
-            }
-        });
     }
-
+    /**
+     * 网络请求的发货人数据处理
+     * */
     @Override
     public void onResponse(FHRBean khzlBean) {
         apadter.reload(khzlBean.getData());
     }
-
+    /**
+     * 网络请求的收货人
+     * */
     @Override
     public void onResponse1(SHRBean khzlBean) {
 

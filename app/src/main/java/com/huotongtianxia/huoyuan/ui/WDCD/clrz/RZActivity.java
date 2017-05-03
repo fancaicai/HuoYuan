@@ -23,10 +23,8 @@ import java.io.File;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+//认证页面
 public class RZActivity extends AppCompatActivity implements CLRZContract.View {
-    @Bind(R.id.sfrz_img01)
-    ImageView sfrzImg01;
     @Bind(R.id.sfrz_text01)
     TextView sfrzText01;
     @Bind(R.id.clrz_edit)
@@ -69,12 +67,6 @@ public class RZActivity extends AppCompatActivity implements CLRZContract.View {
 
     public void initView() {
         sfrzText01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RZActivity.this.finish();
-            }
-        });
-        sfrzImg01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RZActivity.this.finish();

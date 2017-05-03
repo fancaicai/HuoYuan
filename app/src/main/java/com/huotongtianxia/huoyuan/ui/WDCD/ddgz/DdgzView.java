@@ -11,5 +11,5 @@ import java.util.List;
 public interface DdgzView {
     // 请求数据的展示
     public void showMessage(String msg);
-    public void setData(List<SJLIDWBean> list);
+    public void setData(SJLIDWBean sjlidwBean);
 }

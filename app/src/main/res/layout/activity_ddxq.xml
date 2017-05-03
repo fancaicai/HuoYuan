@@ -4,9 +4,32 @@
     android:id="@+id/activity_ddxq"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3E6EB"
+    android:background="@color/fahuo"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.ddxq.DDXQActivity">
-
+    <RelativeLayout
+        android:id="@+id/ddxq_meiyong_lin1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleheight"
+        android:background="@color/ffffff">
+        <TextView
+            android:id="@+id/ddxq_text01"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:text="返回"
+            android:textSize="@dimen/backtxtsize"
+            android:textColor="@color/hei"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单详情"
+            android:textColor="@color/hei"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/titlesize"
+            />
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="330dp"
@@ -246,41 +269,5 @@ android:gravity="center"
         android:background="@mipmap/ddxqimg1"
         android:layout_marginRight="9dp"
         android:id="@+id/imageView" />
-    <RelativeLayout
-        android:id="@+id/ddxq_meiyong_lin1"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="#50bbfc"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <ImageView
-            android:id="@+id/ddxq_img01"
-            android:layout_width="18dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="29dp"
-            android:background="@drawable/grzximgfh"
-            />
-        <TextView
-            android:id="@+id/ddxq_text01"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="返回"
-            android:layout_toRightOf="@+id/ddxq_img01"
-            android:layout_marginTop="22dp"
-            android:textSize="18dp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="订单详情"
-            android:textColor="#ffffff"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:textSize="20dp"
-            />
-    </RelativeLayout>
+
 </RelativeLayout>

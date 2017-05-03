@@ -7,7 +7,12 @@
     android:orientation="vertical"
     android:background="@drawable/logindl"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.login.DLActivity">
-    <LinearLayout
+    <ImageView android:id="@+id/loginin_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/logining"
+        android:visibility="gone"/>
+    <LinearLayout android:id="@+id/linearlayout_above"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
@@ -30,7 +35,7 @@
             android:layout_marginTop="10dp"
             />
     </LinearLayout>
-    <RelativeLayout
+    <RelativeLayout android:id="@+id/RelativeLayout_center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
@@ -93,7 +98,7 @@
             android:layout_marginTop="50dp"
             />
     </RelativeLayout>
-    <RelativeLayout
+    <RelativeLayout android:id="@+id/RelativeLayout_below"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5"

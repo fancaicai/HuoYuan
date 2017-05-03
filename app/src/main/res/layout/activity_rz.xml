@@ -3,42 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fahuo"
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.clrz.RZActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/titleheight"
         android:background="#ffffff"
         >
-        <ImageView
-            android:id="@+id/sfrz_img01"
-            android:layout_width="18dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="29dp"
-            android:background="@drawable/grzximgfh"
-            />
         <TextView
             android:id="@+id/sfrz_text01"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="返回"
-            android:layout_toRightOf="@+id/sfrz_img01"
-            android:layout_marginTop="22dp"
-            android:textSize="18dp"
-            android:textColor="#222222"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textSize="@dimen/backtxtsize"
+            android:textColor="@color/hei"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="认证"
             android:textColor="#222222"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/titlesize"
             />
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/yidp"
+        android:background="@color/shenhui"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -254,7 +250,7 @@
         android:layout_gravity="center"
         android:text="上传保存"
         android:background="@drawable/shape12"
-        android:textColor="#ffffff"
+        android:textColor="@color/hei"
         android:textSize="18dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"

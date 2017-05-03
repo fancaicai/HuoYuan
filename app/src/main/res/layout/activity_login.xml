@@ -41,7 +41,7 @@
             android:text="我是物流"
             android:layout_marginLeft="25dp"
             android:background="@drawable/shape6"
-            android:textColor="#ffffff"
+            android:textColor="#39D8B0"
             />
     </LinearLayout>
 </RelativeLayout>

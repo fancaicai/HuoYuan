@@ -11,23 +11,15 @@
         android:layout_height="58dp"
         android:background="#ffffff"
         >
-        <ImageView
-            android:id="@+id/grszl_img01"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/grzximgfh"
-            />
         <TextView
             android:id="@+id/grszl_text01"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="返回"
-            android:layout_toRightOf="@+id/grszl_img01"
+            android:layout_marginLeft="@dimen/marginlefa"
             android:layout_marginTop="18dp"
-            android:textSize="18dp"
+            android:textSize="@dimen/backtxtsize"
             android:textColor="#222222"
             />
         <TextView
@@ -37,7 +29,7 @@
             android:textColor="#222222"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:textSize="20dp"
+            android:textSize="@dimen/titlesize"
             />
         <TextView
             android:id="@+id/wlgs_tjgys"
@@ -46,10 +38,15 @@
             android:text="增加"
             android:layout_alignParentRight="true"
             android:layout_marginTop="25dp"
-            android:textSize="18dp"
+            android:textSize="@dimen/backtxtsize"
+            android:layout_alignBaseline="@+id/grszl_text01"
             android:textColor="#222222"
             />
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/shenhui"/>
     <ListView
         android:id="@+id/gyszl_list"
         android:layout_width="match_parent"

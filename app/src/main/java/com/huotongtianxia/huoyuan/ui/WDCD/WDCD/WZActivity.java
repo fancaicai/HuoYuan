@@ -250,7 +250,6 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
             examplePoint = new DPoint(w, j);
             convert();
             latLonPoint = new LatLonPoint(destPoint.getLatitude(), destPoint.getLongitude());
-
 //          第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
             RegeocodeQuery query = new RegeocodeQuery(latLonPoint, 200, GeocodeSearch.AMAP);
             geocoderSearch.getFromLocationAsyn(query);

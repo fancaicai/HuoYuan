@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +30,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DLActivity extends AppCompatActivity implements DLContract.View ,GenContract.View{
-
+public class DLActivity extends AppCompatActivity implements DLContract.View ,GenContract.View,LoginView{
+   @Bind(R.id.linearlayout_above)
+    LinearLayout linearlayout_above;
+    @Bind(R.id.RelativeLayout_center)
+    RelativeLayout RelativeLayout_center;
+    @Bind(R.id.RelativeLayout_below)
+    RelativeLayout RelativeLayout_below;
     @Bind(R.id.login_et1)
     EditText loginEt1;
     @Bind(R.id.login_et2)
@@ -39,14 +47,18 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
     TextView loginTv2;
     @Bind(R.id.Login_Remember)
     CheckBox LoginRemember;
+    @Bind(R.id.loginin_iv)
+    ImageView logininIv;
     private String userName;
     private String userPwd;
     private int count;
+    private DLBean dlBean;
+    private Context view;
     public static String id;
     private Context context;
     public static String membertype;
     private SharedPreferences login_sp;
-
+    private static final String KEY_DLActivity = "Factory_id";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +73,14 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
         setContentView(R.layout.activity_dl);
         context = getApplicationContext();
         ButterKnife.bind(this);
-
+//        如果已经进过一次登录界面，下次直接跳转到主界面
+        if (!isFirst()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         GenPresreter presreter = new GenPresreter(this);
         presreter.getData();
-
         login_sp = getSharedPreferences("userInfo", 0);
         String name = login_sp.getString("USER_NAME", "");
         String pwd = login_sp.getString("PASSWORD", "");
@@ -76,27 +92,24 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
             loginEt2.setText(pwd);
             LoginRemember.setChecked(true);
         }
-
         Intent intent = getIntent();
         membertype = intent.getStringExtra("membertype");
     }
-
     @OnClick({R.id.login_btn, R.id.login_tv2})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_btn:
                 login();
-                DLPresreter presreter = new DLPresreter(this, userName, userPwd, context);
+                DLPresreter presreter = new DLPresreter(this, userName, userPwd, context,this);
                 presreter.getData();
                 break;
             case R.id.login_tv2:
-                Intent intent = new Intent(DLActivity.this, ZHMMActivity.class);
+                Intent intent1 = new Intent(DLActivity.this, ZHMMActivity.class);
                 DLActivity.this.finish();
-                startActivity(intent);
+                startActivity(intent1);
                 break;
         }
     }
-
     public void login() {                                              //登录按钮监听事件
         if (isUserNameAndPwdValid()) {
             userName = loginEt1.getText().toString().trim();    //获取当前输入的用户名和密码信息
@@ -117,8 +130,14 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
         return true;
     }
 
+    private boolean isFirst() {
+        SharedPreferences login_sp =getSharedPreferences("userInfo",0);
+        boolean isfirst=login_sp.getBoolean("isFirst", true);
+        return isfirst;
+    }
     @Override
     public void onResponse(DLBean dlBean) {
+        this.dlBean=dlBean;
         id = String.valueOf(dlBean.getData().get(0).getFactory_id());
         count = dlBean.getCode();
         SharedPreferences.Editor editor =login_sp.edit();
@@ -132,6 +151,7 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
             }else{
                 editor.putBoolean("mRememberCheck", false);
             }
+            editor.putBoolean("isFirst",false);
             editor.commit();
             Intent intent = new Intent(this, MainActivity.class);
             DLActivity.this.finish();
@@ -149,5 +169,26 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
     @Override
     public void onFailure(String s) {
 
+    }
+//显示图片
+    @Override
+    public void showImageView() {
+        logininIv.setVisibility(View.VISIBLE);
+    }
+//隐藏图片
+    @Override
+    public void hideImageView() {
+        logininIv.setVisibility(View.GONE);
+        linearlayout_above.setVisibility(View.GONE);
+        RelativeLayout_center.setVisibility(View.GONE);
+        RelativeLayout_below.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showOther() {
+
+        linearlayout_above.setVisibility(View.VISIBLE);
+        RelativeLayout_center.setVisibility(View.VISIBLE);
+        RelativeLayout_below.setVisibility(View.VISIBLE);
     }
 }

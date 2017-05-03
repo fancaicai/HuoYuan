@@ -6,25 +6,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.ddxq.PJActivity">
-    <TextView
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleheight">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textColor="@color/hei"
+            android:textSize="@dimen/backtxtsize"
+            android:layout_marginLeft="@dimen/marginlefa"/>
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:text="司机评价"
-        android:textColor="#222222"
-        android:textSize="20dp"
+        android:textColor="@color/hei"
+        android:textSize="@dimen/backtxtsize"
         android:gravity="center_horizontal"
         android:paddingTop="25dp"
         />
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#F1F1F1"
+        android:background="@color/fahuo"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp"
         >
         <ImageView
             android:id="@+id/pj_hao"
@@ -40,7 +52,6 @@
             android:layout_weight="1"
             android:src="@mipmap/ca1"
             />
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,15 +80,15 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#F1F1F1"
-        android:layout_marginTop="15dp"
+        android:background="@color/fahuo"
         />
     <Button
         android:id="@+id/pj_tj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="提  交"
-        android:textColor="#ffffff"
+        android:textColor="@color/hei"
+        android:background="@drawable/shape12"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="120dp"
         />

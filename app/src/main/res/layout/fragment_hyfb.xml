@@ -427,7 +427,7 @@
             android:layout_gravity="center"
             android:text="发布货源"
             android:textSize="15dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/hei"
             android:background="@drawable/shape6"
             android:layout_marginLeft="130dp"
             android:layout_marginRight="130dp"

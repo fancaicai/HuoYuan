@@ -4,21 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.HYFB.HYFBFragment">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="#ffffff"
+        android:layout_height="@dimen/titleheight"
+        android:background="@color/ffffff"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="发 货"
+            android:layout_alignBaseline="@+id/hyfb_txt"
             android:textColor="#222222"
-            android:textSize="20dp"
+            android:textSize="@dimen/titlesize"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             />
+        <TextView
+            android:id="@+id/hyfb_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:text="@string/back"
+            android:textSize="@dimen/backtxtsize"
+            android:textColor="@color/hei"
+            />
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -57,12 +70,15 @@
             android:layout_marginRight="20dp"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/fahuo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
         android:background="@color/ffffff"
-        android:layout_marginTop="10dp"
         >
         <LinearLayout
             android:layout_width="0dp"
@@ -79,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@mipmap/fhq_1"
+                    android:background="@mipmap/start"
                     android:layout_gravity="center"
                     />
                 <TextView
@@ -93,10 +109,11 @@
                     android:layout_gravity="center"
                     />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/hui1"
+                android:background="@color/fahuo"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,7 +135,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/hui1"
+            android:background="@color/fahuo"
             />
         <LinearLayout
             android:id="@+id/hyfb_fhdz_lin"
@@ -143,12 +160,15 @@
                 />
         </LinearLayout>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/fahuo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
         android:background="@color/ffffff"
-        android:layout_marginTop="10dp"
         >
         <LinearLayout
             android:layout_width="0dp"
@@ -165,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@mipmap/fhq_1"
+                    android:background="@mipmap/stop"
                     android:layout_gravity="center"
                     />
                 <TextView
@@ -182,7 +202,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/hui1"
+                android:background="@color/fahuo"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -204,7 +224,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/hui1"
+            android:background="@color/fahuo"
             />
         <LinearLayout
             android:id="@+id/hyfb_shdz_lin"
@@ -229,12 +249,14 @@
                 />
         </LinearLayout>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ebebeb"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="135dp"
         android:orientation="vertical"
-        android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
         android:background="#ffffff"
         >
         <LinearLayout
@@ -276,9 +298,14 @@
                 android:hint="吨位"
                 android:textSize="13dp"
                 android:gravity="center"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/shape15"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/fahuo"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -313,16 +340,22 @@
                 android:layout_weight="1"
                 android:layout_height="25dp"
                 android:textColor="#ffffff"
+                android:layout_marginRight="15dp"
                 android:layout_gravity="center"
                 android:background="@mipmap/spinner"
                 android:id="@+id/spinner2" />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/fahuo"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal"
             android:background="#ffffff"
             >
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -332,6 +365,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 />
+
             <EditText
                 android:id="@+id/hyfb_et3"
                 android:layout_width="wrap_content"
@@ -349,6 +383,7 @@
                 android:text="吨/元"
                 android:layout_marginLeft="5dp"
                 android:textSize="13dp"
+                android:layout_marginRight="15dp"
                 android:gravity="center_vertical"
                 />
             <ImageView
@@ -366,7 +401,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.2"
-        android:background="#F7F7F7"
+        android:background="#ebebeb"
         >
         <Button
             android:id="@+id/hyfb_btn"
@@ -376,7 +411,7 @@
             android:layout_gravity="center"
             android:text="发布货源"
             android:textSize="15dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/hei"
             android:background="@drawable/shape6"
             android:layout_marginLeft="130dp"
             android:layout_marginRight="130dp"

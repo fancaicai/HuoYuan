@@ -57,14 +57,14 @@ public class DLPresreter implements DLContract.Presreter{
                             }
                         });
 //                    登录成功后吐司一个登录成功的提示
-                        ToastUtil.show(context,"登录成功！");
+                        ToastUtil.showShortToast(context,"登录成功！");
                 }
             }
             @Override
             public void onFailure(Call<DLBean> call, Throwable t) {
 //                登录失败，隐藏图片，显示一段错误的信息
                 mLoginView.hideImageView();
-                Toast.makeText(context, "用户名或密码错误"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "网络连接错误"+t.getMessage(), Toast.LENGTH_SHORT).show();
                 mLoginView.showOther();
             }
         },tel,password);

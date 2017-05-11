@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.huotongtianxia.huoyuan.R;
@@ -38,13 +39,15 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLContract.View{
+public class WDCDQFragment extends Fragment implements WDCDContract.View, SSCLContract.View, WDCDView {
     @Bind(R.id.wdcdq_list)
     ListView wdcdqList;
-    @Bind(R.id.wdcdq_edit)
+    @Bind(R.id.wdcdbq_edit)
     EditText wdcdqEdit;
     @Bind(R.id.wdcdq_ss)
     ImageView wdcdqSs;
+    @Bind(R.id.edcd_prb)
+    ProgressBar edcdPrb;
     private List<WDCDBean.DataBean> list = new ArrayList<>();
     private WDCDAdapter adapter;
     private List<SSCLBean.DataBean> list1 = new ArrayList<>();
@@ -66,7 +69,7 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
         View view = inflater.inflate(R.layout.fragment_wdcdq, container, false);
         ButterKnife.bind(this, view);
         list1.clear();
-        WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this,idd);
+        WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this, idd, WDCDQFragment.this, context);
         presreter.getData1();
         adapter = new WDCDAdapter(context, list);
         wdcdqList.setAdapter(adapter);
@@ -76,9 +79,9 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
                 iddid = 1;
                 login();
                 list.clear();
-                SSCLPresreter presreter = new SSCLPresreter(WDCDQFragment.this,tel,context);
+                SSCLPresreter presreter = new SSCLPresreter(WDCDQFragment.this, tel, context);
                 presreter.getData();
-                adapter1 = new SSCLAdapter(context,list1);
+                adapter1 = new SSCLAdapter(context, list1);
                 wdcdqList.setAdapter(adapter1);
             }
         });
@@ -86,14 +89,14 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(context, GRZLActivity.class);
-                Log.i("asd", "onItemClick: ========"+iddid);
-                if (iddid == 0){
+                Log.i("asd", "onItemClick: ========" + iddid);
+                if (iddid == 0) {
                     idd = list.get(i).getDriver_id();
-                }else if (iddid == 1){
+                } else if (iddid == 1) {
                     idd = list1.get(i).getDriver_id();
                 }
                 Bundle bundle1 = new Bundle();
-                bundle1.putInt("idd",idd);
+                bundle1.putInt("idd", idd);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }
@@ -101,9 +104,9 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
         wdcdqList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (iddid == 0){
+                if (iddid == 0) {
                     idd = list.get(i).getDriver_id();
-                }else if (iddid == 1){
+                } else if (iddid == 1) {
                     idd = list1.get(i).getDriver_id();
                 }
                 dialog();
@@ -120,7 +123,7 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this,idd);
+                WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this, idd, WDCDQFragment.this, context);
                 presreter.getData2();
             }
         });
@@ -159,13 +162,13 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
 
     @Override
     public void onResponse2(WDCDSCSJBean wdcdBean) {
-        if (iddid == 0){
+        if (iddid == 0) {
             list.clear();
-            WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this,idd);
+            WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this, idd, WDCDQFragment.this, context);
             presreter.getData();
-        }else if (iddid == 1){
+        } else if (iddid == 1) {
             list1.clear();
-            WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this,idd);
+            WDCDPresreter presreter = new WDCDPresreter(WDCDQFragment.this, idd, WDCDQFragment.this, context);
             presreter.getData1();
         }
 
@@ -196,5 +199,19 @@ public class WDCDQFragment extends Fragment implements WDCDContract.View ,SSCLCo
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void showProgressBa() {
+        if (edcdPrb!=null) {
+            edcdPrb.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void hideProgressBa() {
+        if (edcdPrb!=null) {
+            edcdPrb.setVisibility(View.GONE);
+        }
     }
 }

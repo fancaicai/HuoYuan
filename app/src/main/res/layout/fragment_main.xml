@@ -61,7 +61,7 @@
             android:id="@+id/wdcd_lin5"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@mipmap/fh_1"
+            android:background="@drawable/fhpress"
             android:orientation="vertical"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true">
@@ -103,16 +103,17 @@
                 android:layout_width="53dp"
                 android:layout_height="54dp"
                 android:layout_marginTop="50dp"
-                android:background="@mipmap/fhfcd_1"
+                android:background="@drawable/fhdpress"
                 android:layout_gravity="center"
                 />
+
             <TextView
                 android:id="@+id/wdcd_text6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="发货单"
                 android:textSize="18dp"
-                android:textColor="@color/zi"
+                android:textColor="@color/text_color_selector"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 />
@@ -129,7 +130,7 @@
                 android:id="@+id/wdcd_img77"
                 android:layout_width="53dp"
                 android:layout_height="54dp"
-                android:background="@mipmap/fhddzx_1"
+                android:background="@drawable/ddgzpress"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 />
@@ -139,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:text="订单跟踪"
                 android:textSize="18dp"
-                android:textColor="@color/zi"
+                android:textColor="@color/text_color_selector"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 />

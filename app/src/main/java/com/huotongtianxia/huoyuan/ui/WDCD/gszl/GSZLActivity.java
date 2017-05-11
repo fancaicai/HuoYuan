@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
@@ -32,8 +33,15 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
     TextView gszlText5;
     @Bind(R.id.gszl_text6)
     TextView gszlText6;
-    private TextView gszltext01;
-    private ImageView gszlimg;
+    @Bind(R.id.back_tv)
+    TextView backTv;
+    @Bind(R.id.gszl_text7)
+    TextView gszlText7;
+    @Bind(R.id.gszl_text8)
+    TextView gszlText8;
+    @Bind(R.id.activity_gszl)
+    LinearLayout activityGszl;
+
     public static String fac;
     public static String b1, b2, b3, b4, b5, b6, b7, b8;
     private int count = 0;
@@ -42,17 +50,15 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_gszl);
         ButterKnife.bind(this);
-        gszltext01 = (TextView) findViewById(R.id.gszl_text01);
-        gszlimg = (ImageView) findViewById(R.id.gszl_img);
         GSZLPresreter presreter = new GSZLPresreter(this);
         presreter.getData();
         initView();
@@ -66,13 +72,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
     }
 
     public void initView() {
-        gszltext01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GSZLActivity.this.finish();
-            }
-        });
-        gszlimg.setOnClickListener(new View.OnClickListener() {
+        backTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GSZLActivity.this.finish();
@@ -109,7 +109,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 count = 1;
                 Intent intent = new Intent(GSZLActivity.this, BJGSZLActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("count",count);
+                bundle.putInt("count", count);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -117,7 +117,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 count = 2;
                 intent = new Intent(GSZLActivity.this, BJGSZLActivity.class);
                 bundle = new Bundle();
-                bundle.putInt("count",count);
+                bundle.putInt("count", count);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -125,7 +125,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 count = 3;
                 intent = new Intent(GSZLActivity.this, BJGSZLActivity.class);
                 bundle = new Bundle();
-                bundle.putInt("count",count);
+                bundle.putInt("count", count);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -133,7 +133,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 count = 4;
                 intent = new Intent(GSZLActivity.this, BJGSZLActivity.class);
                 bundle = new Bundle();
-                bundle.putInt("count",count);
+                bundle.putInt("count", count);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -141,7 +141,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 count = 5;
                 intent = new Intent(GSZLActivity.this, BJGSZLActivity.class);
                 bundle = new Bundle();
-                bundle.putInt("count",count);
+                bundle.putInt("count", count);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -149,7 +149,7 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 count = 6;
                 intent = new Intent(GSZLActivity.this, BJGSZLActivity.class);
                 bundle = new Bundle();
-                bundle.putInt("count",count);
+                bundle.putInt("count", count);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;

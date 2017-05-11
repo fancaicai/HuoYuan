@@ -13,6 +13,7 @@ import android.os.SystemClock;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ import com.amap.api.location.DPoint;
 import com.amap.api.maps2d.AMap;
 
 import com.amap.api.maps2d.AMapOptions;
+import com.amap.api.maps2d.AMapUtils;
 import com.amap.api.maps2d.CameraUpdate;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
@@ -55,6 +57,7 @@ import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.DDXQBean;
 import com.huotongtianxia.huoyuan.bean.SJLIDWBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WZActivity;
+import com.huotongtianxia.huoyuan.util.LogUtils;
 import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 
@@ -106,25 +109,26 @@ public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_ddgz);
         mDdgzPresreter=new DdgzPresreter(this);
         ButterKnife.bind(this);
         extra = getIntent().getStringExtra(KEY_TREASURE );
         //设置希望展示的地图缩放级别
-        mCameraUpdate = CameraUpdateFactory.zoomTo(17);
+        //mCameraUpdate = CameraUpdateFactory.zoomTo(17);
+        mCameraUpdate = CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(37.802357,112.551579),12,30,0));
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mMapView.onCreate(savedInstanceState);//此方法必须重写
 //      初始化AMap对象
         initMapView();
         //初始化定位
-       initlocation();
+        initlocation();
 
     }
 
@@ -305,6 +309,8 @@ public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClic
         strlat1=spStr[1];
         lat1= Double.parseDouble(strlat1);
         lng1= Double.parseDouble(strlng1);
+//        lat1=37.802357;
+//        lng1=113.551579;
         latLng1=new LatLng(lat1,lng1);
         // 定义了一个配置 AMap 对象的参数类
         AMapOptions aMapOptions=new AMapOptions();
@@ -313,13 +319,26 @@ public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClic
 // CameraPosition 第二个参数： 目标可视区域的缩放级别
 // CameraPosition 第三个参数： 目标可视区域的倾斜度，以角度为单位。
 // CameraPosition 第四个参数： 可视区域指向的方向，以角度为单位，从正北向顺时针方向计算，从0度到360度
-        aMapOptions.camera(new CameraPosition(latLng1,10f,0, 0));
-        mMapView=new MapView(DdgzActivity.this,aMapOptions);
+
+        //两点间中点坐标
+        double midLat=(lat+lat1)/2;
+        double midLng=(lng+lng1)/2;
+
+        //屏幕像素
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int widthPixels= dm.widthPixels;
+
+
+        //mMapView=new MapView(DdgzActivity.this,aMapOptions);
+
         if (latLng!=null) {
+
             aMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory
                     .fromResource(R.mipmap.driver_icn)).anchor(0.5f, 0.5f)
                     .position(latLng).title("太原市")
                     .snippet( lat+","+lng+"").draggable(true));
+
         }else {
             handler.postDelayed(new Runnable() {
                 @Override
@@ -342,6 +361,37 @@ public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClic
 
         }
 
+        //修正经度,纬度
+//        if(lng<lng1){
+//            lng-=0.01;
+//            lng1+=0.01;
+//        }else {
+//            lng1-=0.01;
+//            lng+=0.01;
+//        }
+//
+//        if(lat<lat1){
+//            lat-=0.01;
+//            lat1+=0.01;
+//        }else{
+//            lat+=0.01;
+//            lat1-=0.01;
+//        }
+
+        //起点和终点的距离
+        LatLng start = new LatLng(lat, lng);
+        LatLng end = new LatLng(lat1,lng1);
+        float distance=  AMapUtils.calculateLineDistance(start, end);
+        float scalePerPixel = aMap.getScalePerPixel();
+        float scalePerPixel1=distance/widthPixels;
+
+//        int scale= (int) (scalePerPixel1*12/scalePerPixel);
+//        LogUtils.i("比例"," "+(scalePerPixel1/scalePerPixel)+";;;;;;"+scale+";;;;"+scalePerPixel);
+        //mCameraUpdate = CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(midLat,midLng),scale,30,0));
+        mCameraUpdate = CameraUpdateFactory.newLatLngBounds(LatLngBounds.builder().include(start).include(end).build(), 60);
+        //aMapOptions.camera(new CameraPosition(latLng1,10f,0, 0));
+        if (latLng1!=null)
+        aMap.moveCamera(mCameraUpdate);
 }
     /**
      * 监听amap地图加载成功事件回调

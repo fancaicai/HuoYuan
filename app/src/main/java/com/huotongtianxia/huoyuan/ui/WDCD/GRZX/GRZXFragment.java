@@ -2,6 +2,7 @@ package com.huotongtianxia.huoyuan.ui.WDCD.GRZX;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -85,11 +86,15 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
     SimpleDraweeView wdcdImg1;
     private Activity activity;
     private ImageView grzximg01;
-
+    private String INTENTNAME="intentName";
+    private Bundle bundle;
+    private Context context;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = getActivity();
+        bundle=new Bundle();
+        context=getContext();
         Fresco.initialize(activity);
     }
 
@@ -98,6 +103,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grzx, container, false);
         ButterKnife.bind(this, view);
+
         grzximg01 = (ImageView) view.findViewById(R.id.grzx_img01);
         GRZXPresreter presreter = new GRZXPresreter(this);
         presreter.getData();
@@ -122,6 +128,10 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, WDZHActivity.class);
                 startActivity(intent);
                 break;
+
+
+//            点击的时候的一些效果
+//                点击在线车场图标的时候，跳转到在线车场页面
             case R.id.grzx_img11:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_2);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -138,6 +148,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, ZXCCActivity.class);
                 startActivity(intent);
                 break;
+ //                点击在线车场文字的时候，跳转到在线车场页面
             case R.id.grzx_text11:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_2);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -154,6 +165,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, ZXCCActivity.class);
                 startActivity(intent);
                 break;
+ //                点击在线车场父布局的时候，跳转到在线车场页面
             case R.id.grzx_lin11:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_2);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -170,6 +182,9 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, ZXCCActivity.class);
                 startActivity(intent);
                 break;
+
+
+ //                点击发货单图标的时候，跳转到在线车场页面
             case R.id.grzx_img55:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -183,9 +198,14 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 grzxText55.setTextColor(activity.getResources().getColor(R.color.zi));
                 grzxText66.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText77.setTextColor(activity.getResources().getColor(R.color.home1));
-                intent = new Intent(activity, WDHYActivity.class);
+                String num1 = "0";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num1);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
                 startActivity(intent);
                 break;
+//                点击发货单文字的时候，跳转到在线车场页面
             case R.id.grzx_text55:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -199,9 +219,14 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 grzxText55.setTextColor(activity.getResources().getColor(R.color.zi));
                 grzxText66.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText77.setTextColor(activity.getResources().getColor(R.color.home1));
-                intent = new Intent(activity, WDHYActivity.class);
+                String num2 = "0";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num2);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
                 startActivity(intent);
                 break;
+ //                点击发货单父布局的时候，跳转到在线车场页面
             case R.id.grzx_lin55:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -215,9 +240,16 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 grzxText55.setTextColor(activity.getResources().getColor(R.color.zi));
                 grzxText66.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText77.setTextColor(activity.getResources().getColor(R.color.home1));
-                intent = new Intent(activity, WDHYActivity.class);
+                String num3 = "0";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num3);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
                 startActivity(intent);
                 break;
+
+
+ //            点击发货地址的图标的时候，跳转到发货地址界面
             case R.id.grzx_img66:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -234,6 +266,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, GYSZLActivity.class);
                 startActivity(intent);
                 break;
+//            点击发货地址的文字的时候，跳转到发货地址界面
             case R.id.grzx_text66:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -250,6 +283,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, GYSZLActivity.class);
                 startActivity(intent);
                 break;
+//            点击发货地址的父布局的时候，跳转到发货地址界面
             case R.id.grzx_lin66:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -266,6 +300,9 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, GYSZLActivity.class);
                 startActivity(intent);
                 break;
+
+
+//            点击服务专项的图片，跳转到车辆认证界面
             case R.id.grzx_img33:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_1);
@@ -282,6 +319,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, CLRZActivity.class);
                 startActivity(intent);
                 break;
+ //            点击服务专项的文字，跳转到车辆认证界面
             case R.id.grzx_text33:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_1);
@@ -298,6 +336,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, CLRZActivity.class);
                 startActivity(intent);
                 break;
+//            点击服务专项的父布局，跳转到车辆认证界面
             case R.id.grzx_lin33:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_1);
@@ -314,6 +353,8 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, CLRZActivity.class);
                 startActivity(intent);
                 break;
+
+ //            点击发车统计的图标的时候，跳转到发车统计页面
             case R.id.grzx_img77:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -330,6 +371,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, FCTJActivity.class);
                 startActivity(intent);
                 break;
+//            点击发车统计的文字的时候，跳转到发车统计页面
             case R.id.grzx_text77:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -346,6 +388,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, FCTJActivity.class);
                 startActivity(intent);
                 break;
+//            点击发车统计的父布局的时候，跳转到发车统计页面
             case R.id.grzx_lin77:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -362,6 +405,8 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, FCTJActivity.class);
                 startActivity(intent);
                 break;
+
+//            点击的收货地址的图标的时候，跳转到收货地址页面
             case R.id.grzx_img44:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -378,6 +423,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, KHZLActivity.class);
                 startActivity(intent);
                 break;
+ //            点击的收货地址的文字的时候，跳转到收货地址页面
             case R.id.grzx_text44:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);
@@ -394,6 +440,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 intent = new Intent(activity, KHZLActivity.class);
                 startActivity(intent);
                 break;
+//            点击的收货地址的父布局的时候，跳转到收货地址页面
             case R.id.grzx_lin44:
                 grzxImg11.setImageResource(R.mipmap.grzxzxcc_1);
                 grzxImg33.setImageResource(R.mipmap.grzxkf_2);

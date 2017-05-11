@@ -6,7 +6,7 @@
     <color name="home">#50bbfc</color>
     <color name="home2">#F7E900</color>
     <color name="home1">#555555</color>
-    <color name="hei">#222222</color>
+    <color name="hei">#222</color>
 
     <color name="dark">#803cbcb7</color>
     <color name="light">#800de6e8</color>
@@ -17,7 +17,9 @@
     <color name="fahuo">#ebebeb</color>
     <color name="zi">#8B79E0</color>
     <color name="hui1">#f1f1f1</color>
-
+    <color name="press_zi">#B9ACF6</color>
+    <color name="backtvpresscolor">#999999</color>
+    <color name="nobacktvpresscolor">#333333</color>
     <color name="half_transparent_black">#BB000000</color>
     <color name="line_and_outline_grey">#d9d9d9</color>
     <color name="touming">#30000000</color>

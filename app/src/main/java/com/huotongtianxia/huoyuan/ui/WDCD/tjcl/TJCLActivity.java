@@ -13,7 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,7 +27,6 @@ import com.huotongtianxia.huoyuan.bean.TJCLBean;
 import com.huotongtianxia.huoyuan.bean.WDCDSCBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.clrz.CLRZActivity;
-import com.huotongtianxia.huoyuan.ui.WDCD.sscl.SSCLAdapter;
 import com.huotongtianxia.huoyuan.ui.WDCD.sscl.SSCLContract;
 import com.huotongtianxia.huoyuan.ui.WDCD.sscl.SSCLPresreter;
 import com.huotongtianxia.huoyuan.ui.WDCD.sscl.WDCDSSAdapter;
@@ -36,20 +37,25 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-//添加车辆
-public class TJCLActivity extends AppCompatActivity implements SSCLContract.View{
 
-    @Bind(R.id.tjcl_edt)
+//添加车辆
+public class TJCLActivity extends AppCompatActivity implements SSCLContract.View {
+
+    @Bind(R.id.tjcl_edit)
     EditText tjclEdt;
-    @Bind(R.id.tjcl_img)
-    ImageView tjclImg;
+    @Bind(R.id.tjcl_imbt)
+    ImageButton tjclImg;
     @Bind(R.id.zjcl_list)
     ListView zjclList;
     @Bind(R.id.tjcl_btn)
     Button tjclBtn;
+    @Bind(R.id.back_tv)
+    TextView backTv;
+    @Bind(R.id.activity_tjcl)
+    LinearLayout activityTjcl;
     private TextView tjcltext01;
     private ImageView tjclimg01;
-    private String tel,tell;
+    private String tel, tell;
     private List<WDCDSCBean.DataBean> list = new ArrayList<>();
     private WDCDSSAdapter adapter;
     private Spinner tjclSpinner;
@@ -60,33 +66,26 @@ public class TJCLActivity extends AppCompatActivity implements SSCLContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_tjcl);
         ButterKnife.bind(this);
         context = getApplicationContext();
-        adapter = new WDCDSSAdapter(this,list);
+        adapter = new WDCDSSAdapter(this, list);
         tjclSpinner = (Spinner) findViewById(R.id.tjcl_spinner);
-        tjcltext01 = (TextView) findViewById(R.id.tjcl_text01);
-        tjclimg01 = (ImageView) findViewById(R.id.tjcl_img01);
         initView();
     }
-    public void initView(){
-        tjcltext01.setOnClickListener(new View.OnClickListener() {
+
+    public void initView() {
+        backTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TJCLActivity.this.finish();
-            }
-        });
-        tjclimg01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TJCLActivity.this.finish();
+                finish();
             }
         });
         String[] spinercp = getResources().getStringArray(R.array.cp);
@@ -106,21 +105,22 @@ public class TJCLActivity extends AppCompatActivity implements SSCLContract.View
             }
         });
     }
-    @OnClick({R.id.tjcl_img, R.id.tjcl_btn})
+
+    @OnClick({R.id.tjcl_imbt, R.id.tjcl_btn})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tjcl_img:
+            case R.id.tjcl_imbt:
                 login();
                 list.clear();
-                tel = cpo+tell;
-                SSCLPresreter presreter = new SSCLPresreter(this,tel,context);
+                tel = cpo + tell;
+                SSCLPresreter presreter = new SSCLPresreter(this, tel, context);
                 presreter.getData2();
                 zjclList.setAdapter(adapter);
                 break;
             case R.id.tjcl_btn:
                 login();
-                tel = cpo+tell;
-                SSCLPresreter presreter1 = new SSCLPresreter(this,tel,context);
+                tel = cpo + tell;
+                SSCLPresreter presreter1 = new SSCLPresreter(this, tel, context);
                 presreter1.getData1();
                 break;
         }
@@ -144,7 +144,7 @@ public class TJCLActivity extends AppCompatActivity implements SSCLContract.View
     @Override
     public void onResponse(SSCLBean ssclBean) {
         int count = ssclBean.getCode();
-        if (count == 200){
+        if (count == 200) {
         }
         adapter.reload(ssclBean.getData());
     }
@@ -152,7 +152,7 @@ public class TJCLActivity extends AppCompatActivity implements SSCLContract.View
     @Override
     public void onResponse1(WDCDSCBean ssclBean) {
         int count = ssclBean.getCode();
-        if (count == 200){
+        if (count == 200) {
         }
         adapter.reload(ssclBean.getData());
     }
@@ -160,23 +160,23 @@ public class TJCLActivity extends AppCompatActivity implements SSCLContract.View
     @Override
     public void onResponse(TJCLBean tjclBean) {
         int cointt = tjclBean.getCode();
-        if (cointt == 100){
+        if (cointt == 100) {
             Toast.makeText(this, "添加成功", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(TJCLActivity.this, WDCDActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putInt("name",1);
+            bundle.putInt("name", 1);
             intent.putExtras(bundle);
             TJCLActivity.this.finish();
             startActivity(intent);
-        }else if (cointt == 201){
+        } else if (cointt == 201) {
             Toast.makeText(this, "司机已存在", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(TJCLActivity.this, WDCDActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putInt("name",1);
+            bundle.putInt("name", 1);
             intent.putExtras(bundle);
             TJCLActivity.this.finish();
             startActivity(intent);
-        }else if (cointt == 202){
+        } else if (cointt == 202) {
             Intent intent = new Intent(TJCLActivity.this, CLRZActivity.class);
             Toast.makeText(this, "没有找到车辆，请先认证", Toast.LENGTH_SHORT).show();
             TJCLActivity.this.finish();

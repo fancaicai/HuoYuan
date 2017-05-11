@@ -133,36 +133,23 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         //根据id对碎片进行切换 ,如果碎片开始为空 进行创建
         switch (index) {
             case 0:
-                if (hyfbFragment == null) {
-                    hyfbFragment = new MainFragment();
-                    transaction.add(R.id.main_framelayout, hyfbFragment);
-                } else {
-                    transaction.show(hyfbFragment);
-                }
+                hyfbFragment = new MainFragment();
+                transaction.replace(R.id.main_framelayout, hyfbFragment);
                 break;
             case 1:
-            if (wdcdFragment == null) {
+
                 wdcdFragment = new WDCDFragment();
-                transaction.add(R.id.main_framelayout, wdcdFragment);
-            } else {
-                transaction.show(wdcdFragment);
-            }
+                transaction.replace(R.id.main_framelayout, wdcdFragment);
             break;
             case 2:
-                if (grzxFragment == null) {
-                    grzxFragment = new GRZXFragment();
-                    transaction.add(R.id.main_framelayout, grzxFragment);
-                } else {
-                    transaction.show(grzxFragment);
-                }
+
+                grzxFragment = new GRZXFragment();
+                transaction.replace(R.id.main_framelayout, grzxFragment);
                 break;
             case 3:
-                if (bxFragment == null) {
-                    bxFragment = new BXFragment();
-                    transaction.add(R.id.main_framelayout, bxFragment);
-                } else {
-                    transaction.show(bxFragment);
-                }
+
+                bxFragment = new BXFragment();
+                transaction.replace(R.id.main_framelayout, bxFragment);
                 break;
         }
         transaction.commit();

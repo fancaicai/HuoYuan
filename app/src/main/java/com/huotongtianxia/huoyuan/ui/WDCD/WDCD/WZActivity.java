@@ -5,11 +5,10 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,12 +41,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class WZActivity extends AppCompatActivity implements WZContract.View
-        , GeocodeSearch.OnGeocodeSearchListener, View.OnClickListener, AMap.OnMarkerClickListener {
+        , GeocodeSearch.OnGeocodeSearchListener,  AMap.OnMarkerClickListener {
 
-    @Bind(R.id.wz_img01)
-    ImageView wzImg01;
-    @Bind(R.id.wz_text01)
-    TextView wzText01;
+
     @Bind(R.id.wz_text1)
     TextView wzText1;
     @Bind(R.id.wz_mapview)
@@ -55,6 +51,10 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
     DPoint examplePoint = null;
     @Bind(R.id.wz_list)
     ListView wzList;
+    @Bind(R.id.back_tv)
+    TextView backTv;
+    @Bind(R.id.activity_wz)
+    LinearLayout activityWz;
     private WZAdapter adapter;
     private GeocodeSearch geocoderSearch;
     private DPoint destPoint;
@@ -77,15 +77,15 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-        setContentView(R.layout.activity_wz
-                );
+//        对状态栏的操作，改变状态栏的颜色等等
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
+        setContentView(R.layout.activity_wz);
         ButterKnife.bind(this);
         Bundle bundle = this.getIntent().getExtras();
         driver_id = bundle.getInt("driver_id");
@@ -93,21 +93,17 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
         presreter.getData();
         wzMapview.onCreate(savedInstanceState);// 此方法必须重写
         init();
-        adapter = new WZAdapter(WZActivity.this,list1);
+        adapter = new WZAdapter(WZActivity.this, list1);
         wzList.setAdapter(adapter);
+        backTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
-    @OnClick({R.id.wz_img01, R.id.wz_text01})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.wz_img01:
-                WZActivity.this.finish();
-                break;
-            case R.id.wz_text01:
-                WZActivity.this.finish();
-                break;
-        }
-    }
+
 
     /**
      * 初始化AMap对象
@@ -208,15 +204,15 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
                 aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                         AMapUtil.convertToLatLng(latLonPoint), 15));
                 regeoMarker.setPosition(AMapUtil.convertToLatLng(latLonPoint));
-                dz=list2.get(b)+"\n"+result.getRegeocodeAddress().getFormatAddress();
+                dz = list2.get(b) + "\n" + result.getRegeocodeAddress().getFormatAddress();
                 b++;
                 list1.add(dz);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adapter.notifyDataSetChanged();
-                        }
-                    });
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             } else {
                 ToastUtil.show(WZActivity.this, R.string.no_result);
             }
@@ -260,4 +256,5 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
     public void onFailure(String s) {
 
     }
+
 }

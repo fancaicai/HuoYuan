@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
@@ -28,13 +30,17 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class WDCDActivity extends AppCompatActivity implements WDCDContract.View {
+public class WDCDActivity extends AppCompatActivity implements WDCDContract.View, WDCDView {
     @Bind(R.id.wdcd2_bendi)
     TextView wdcd2Bendi;
     @Bind(R.id.wdcd2_quanbu)
     TextView wdcd2Quanbu;
     @Bind(R.id.wdcd2_frame)
     FrameLayout wdcd2Frame;
+    @Bind(R.id.cl_prb)
+    ProgressBar clPrb;
+    @Bind(R.id.wdcd_text01)
+    TextView wdcdText01;
     private List<WDCDBean.DataBean> list = new ArrayList<>();
     private List<WDCD1Bean.DataBean> list1 = new ArrayList<>();
     private List<WDCD2Bean.DataBean> list2 = new ArrayList<>();
@@ -48,26 +54,30 @@ public class WDCDActivity extends AppCompatActivity implements WDCDContract.View
     private FragmentManager manager;
     private WDCDBFragment wdcdbFragment;
     private WDCDQFragment wdcdqFragment;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_wdcd2);
         ButterKnife.bind(this);
-        wdcdtext01 = (TextView) findViewById(R.id.wdcd_text01);
-        wdcdimg01 = (ImageView) findViewById(R.id.wdcd_img01);
+
+//        返回的处理
         initView();
+        context = getApplicationContext();
         Bundle bundle = this.getIntent().getExtras();
         name = bundle.getInt("name");
+//        网络数据的请求
         initView2();
+//        第一次进去显示的默认页面
         InitView();
 //        wdcdList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -152,7 +162,7 @@ public class WDCDActivity extends AppCompatActivity implements WDCDContract.View
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this,idd);
+                WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this, idd, WDCDActivity.this, context);
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -167,37 +177,32 @@ public class WDCDActivity extends AppCompatActivity implements WDCDContract.View
     public void initView2() {
         if (name == 0) {
             list1.clear();
-            WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this,idd);
+            WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this, idd, WDCDActivity.this, context);
             presreter.getData1();
             adapter1 = new WDCD1Adapter(WDCDActivity.this, list1);
             //wdcdList.setAdapter(adapter1);
         } else if (name == 1) {
             list.clear();
-            WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this,idd);
+            WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this, idd, WDCDActivity.this, context);
             presreter.getData();
             adapter = new WDCDAdapter(WDCDActivity.this, list);
             // wdcdList.setAdapter(adapter);
         } else if (name == 2) {
             list2.clear();
-            WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this,idd);
+            WDCDPresreter presreter = new WDCDPresreter(WDCDActivity.this, idd, WDCDActivity.this, context);
             adapter2 = new WDCD2Adapter(WDCDActivity.this, list2);
             //wdcdList.setAdapter(adapter2);
         }
     }
 
     public void initView() {
-        wdcdtext01.setOnClickListener(new View.OnClickListener() {
+        wdcdText01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WDCDActivity.this.finish();
+                finish();
             }
         });
-        wdcdimg01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                WDCDActivity.this.finish();
-            }
-        });
+
     }
 
     @Override
@@ -242,5 +247,18 @@ public class WDCDActivity extends AppCompatActivity implements WDCDContract.View
                 Switchfragment(1);
                 break;
         }
+    }
+
+    //ui的操作
+//    1、显示进度条
+    @Override
+    public void showProgressBa() {
+
+    }
+
+    //2、隐藏进度条
+    @Override
+    public void hideProgressBa() {
+
     }
 }

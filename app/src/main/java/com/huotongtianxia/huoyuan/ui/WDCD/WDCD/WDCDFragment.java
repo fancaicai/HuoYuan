@@ -2,6 +2,7 @@ package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WDCDFragment extends Fragment implements WDCDContract.View {
+public class WDCDFragment extends Fragment implements WDCDContract.View, WDCDView {
     @Bind(R.id.qiehuan)
     TextView qiehuan;
     @Bind(R.id.wdcd_img5)
@@ -57,7 +58,7 @@ public class WDCDFragment extends Fragment implements WDCDContract.View {
     private TextView wdcd_kefudh;
     private ImageView wdcd_kefu;
     private int idd;
-
+    private Context context;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +84,7 @@ public class WDCDFragment extends Fragment implements WDCDContract.View {
                 call("03512340094");
             }
         });
-        WDCDPresreter presreter = new WDCDPresreter(this,idd);
+        WDCDPresreter presreter = new WDCDPresreter(this,idd,this,context);
         presreter.getData();
         qiehuan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,5 +179,15 @@ public class WDCDFragment extends Fragment implements WDCDContract.View {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void showProgressBa() {
+
+    }
+
+    @Override
+    public void hideProgressBa() {
+
     }
 }

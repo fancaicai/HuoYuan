@@ -2,12 +2,10 @@ package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.huotongtianxia.huoyuan.R;
@@ -37,13 +36,15 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WDCDBFragment extends Fragment implements WDCDContract.View ,SSCLContract.View{
+public class WDCDBFragment extends Fragment implements WDCDContract.View, SSCLContract.View, WDCDView {
     @Bind(R.id.wdcdb_list)
     ListView wdcdbList;
     @Bind(R.id.wdcdb_edit)
     EditText wdcdbEdit;
     @Bind(R.id.wdcdb_ss)
     ImageView wdcdbSs;
+    @Bind(R.id.wdcdb_pb)
+    ProgressBar wdcdbPb;
     private List<WDCDBean.DataBean> list = new ArrayList<>();
     private WDCDAdapter adapter;
     private List<SSCLBean.DataBean> list1 = new ArrayList<>();
@@ -64,7 +65,7 @@ public class WDCDBFragment extends Fragment implements WDCDContract.View ,SSCLCo
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wdcdb, container, false);
         ButterKnife.bind(this, view);
-        WDCDPresreter presreter = new WDCDPresreter(this,idd);
+        WDCDPresreter presreter = new WDCDPresreter(this, idd, this, context);
         presreter.getData();
         adapter = new WDCDAdapter(context, list);
         wdcdbList.setAdapter(adapter);
@@ -74,9 +75,9 @@ public class WDCDBFragment extends Fragment implements WDCDContract.View ,SSCLCo
                 login();
                 iddid = 1;
                 list.clear();
-                SSCLPresreter presreter = new SSCLPresreter(WDCDBFragment.this,tel,context);
+                SSCLPresreter presreter = new SSCLPresreter(WDCDBFragment.this, tel, context);
                 presreter.getData();
-                adapter1 = new SSCLAdapter(context,list1);
+                adapter1 = new SSCLAdapter(context, list1);
                 wdcdbList.setAdapter(adapter1);
             }
         });
@@ -84,13 +85,13 @@ public class WDCDBFragment extends Fragment implements WDCDContract.View ,SSCLCo
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(context, GRZLActivity.class);
-                if (iddid == 0){
+                if (iddid == 0) {
                     idd = list.get(i).getDriver_id();
-                }else if (iddid == 1){
+                } else if (iddid == 1) {
                     idd = list1.get(i).getDriver_id();
                 }
                 Bundle bundle1 = new Bundle();
-                bundle1.putInt("idd",idd);
+                bundle1.putInt("idd", idd);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }
@@ -104,6 +105,7 @@ public class WDCDBFragment extends Fragment implements WDCDContract.View ,SSCLCo
             tel = wdcdbEdit.getText().toString().trim();    //获取当前输入的用户名和密码信息
         }
     }
+
     public boolean isUserNameAndPwdValid() {
         if (wdcdbEdit.getText().toString().trim().equals("")) {
             Toast.makeText(context, getString(R.string.sscl), Toast.LENGTH_SHORT).show();
@@ -150,5 +152,19 @@ public class WDCDBFragment extends Fragment implements WDCDContract.View ,SSCLCo
     @Override
     public void onFailure(String s) {
 
+    }
+
+    @Override
+    public void showProgressBa() {
+        if (wdcdbPb != null) {
+            wdcdbPb.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void hideProgressBa() {
+        if (wdcdbPb != null) {
+            wdcdbPb.setVisibility(View.GONE);
+        }
     }
 }

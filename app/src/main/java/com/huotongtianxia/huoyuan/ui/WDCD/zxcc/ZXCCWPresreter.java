@@ -1,9 +1,11 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.zxcc;
 
+import android.content.Context;
 import android.os.Handler;
 
 import com.huotongtianxia.huoyuan.bean.ZXCCWBean;
 import com.huotongtianxia.huoyuan.config.UrlConfig;
+import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,8 +18,11 @@ import retrofit2.Response;
 public class ZXCCWPresreter implements ZXCCWContract.Presreter{
     private ZXCCWContract.View view;
     private ZXCCWContract.Mode mode;
-
-    public ZXCCWPresreter(ZXCCWContract.View view){
+    private ZXCCView zxccView;
+    private Context context;
+    public ZXCCWPresreter(ZXCCWContract.View view, ZXCCView zxccView, Context context){
+        this.zxccView=zxccView;
+        this.context=context;
         this.view = view;
         this.mode = new ZXCCWMode();
     }
@@ -25,6 +30,7 @@ public class ZXCCWPresreter implements ZXCCWContract.Presreter{
     @Override
     public void getData() {
         String locality = UrlConfig.city;
+        zxccView.showProgressBar();
         mode.loadZXCCW(new Callback<ZXCCWBean>() {
             @Override
             public void onResponse(Call<ZXCCWBean> call, Response<ZXCCWBean> response) {
@@ -37,12 +43,15 @@ public class ZXCCWPresreter implements ZXCCWContract.Presreter{
                             view.onResponse(body);
                         }
                     });
+                    zxccView.hideProgressBa();
+                    ToastUtil.showShortToast(context,"数据加载成功");
                 }
             }
 
             @Override
             public void onFailure(Call<ZXCCWBean> call, Throwable t) {
-
+                zxccView.hideProgressBa();
+                ToastUtil.showShortToast(context,"数据加载失败");
             }
         },locality);
     }

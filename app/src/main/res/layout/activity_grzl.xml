@@ -9,46 +9,35 @@
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.grzl.GRZLActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="#50bbfc"
+        android:layout_height="@dimen/dp_48"
+        android:background="@color/ffffff"
         >
-        <ImageView
-            android:id="@+id/grzl_img01"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/grzximgfh"
-            />
         <TextView
-            android:id="@+id/grzl_text01"
+            android:id="@+id/back_tv"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="@dimen/backtxtsize"
             android:text="返回"
-            android:layout_toRightOf="@+id/grzl_img01"
-            android:layout_marginTop="18dp"
-            android:textSize="18dp"
-            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
             />
-        <TextView
+        <TextView android:id="@+id/wdcd_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="司机资料"
-            android:textColor="#ffffff"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_alignBaseline="@+id/back_tv"
             android:layout_centerHorizontal="true"
-            android:textSize="20dp"
+            android:textColor="@color/hei"
+            android:textSize="@dimen/titlesize"
             />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@drawable/aa"
-            />
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/grzl_tx"
             android:layout_width="60dp"
@@ -60,6 +49,13 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/aa"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -188,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:text="吨"
                 android:textSize="15dp"
-                android:textColor="#ffffff"
+                android:textColor="@color/ffffff"
                 />
         </LinearLayout>
         <TextView
@@ -371,9 +367,9 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:text="电话联系"
-            android:textSize="20dp"
+            android:textSize="@dimen/backtxtsize"
             android:layout_marginTop="25dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/hei"
             android:background="@drawable/shape12"
             />
     </LinearLayout>

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ import com.huotongtianxia.huoyuan.bean.DLBean;
 import com.huotongtianxia.huoyuan.bean.GenBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.gen.GenContract;
 import com.huotongtianxia.huoyuan.ui.WDCD.gen.GenPresreter;
+import com.huotongtianxia.huoyuan.util.LogUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,12 +54,12 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
     private String userName;
     private String userPwd;
     private int count;
-    private DLBean dlBean;
     private Context view;
     public static String id;
     private Context context;
     public static String membertype;
     private SharedPreferences login_sp;
+    private DLPresreter dlpresreter;
     private static final String KEY_DLActivity = "Factory_id";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +75,7 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
         setContentView(R.layout.activity_dl);
         context = getApplicationContext();
         ButterKnife.bind(this);
-//        如果已经进过一次登录界面，下次直接跳转到主界面
-        if (!isFirst()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//
         GenPresreter presreter = new GenPresreter(this);
         presreter.getData();
         login_sp = getSharedPreferences("userInfo", 0);
@@ -94,14 +91,23 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
         }
         Intent intent = getIntent();
         membertype = intent.getStringExtra("membertype");
+        //如果已经进过一次登录界面，下次直接跳转到主界面
+
+        if (!isFirst()) {
+
+           intent = new Intent(this, MainActivity.class);
+//            Log.e("厂家id是：",id);
+            startActivity(intent);
+            finish();
+        }
     }
     @OnClick({R.id.login_btn, R.id.login_tv2})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_btn:
                 login();
-                DLPresreter presreter = new DLPresreter(this, userName, userPwd, context,this);
-                presreter.getData();
+                dlpresreter = new DLPresreter(this, userName, userPwd, context,this);
+                dlpresreter.getData();
                 break;
             case R.id.login_tv2:
                 Intent intent1 = new Intent(DLActivity.this, ZHMMActivity.class);
@@ -133,11 +139,12 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
     private boolean isFirst() {
         SharedPreferences login_sp =getSharedPreferences("userInfo",0);
         boolean isfirst=login_sp.getBoolean("isFirst", true);
+        id=login_sp.getString("id","id");
+        LogUtils.i("id***",id);
         return isfirst;
     }
     @Override
     public void onResponse(DLBean dlBean) {
-        this.dlBean=dlBean;
         id = String.valueOf(dlBean.getData().get(0).getFactory_id());
         count = dlBean.getCode();
         SharedPreferences.Editor editor =login_sp.edit();
@@ -152,9 +159,11 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
                 editor.putBoolean("mRememberCheck", false);
             }
             editor.putBoolean("isFirst",false);
+            editor.putString("id",id);
+            LogUtils.i("id***",id);
             editor.commit();
             Intent intent = new Intent(this, MainActivity.class);
-            DLActivity.this.finish();
+            finish();
             startActivity(intent);
         } else if (count == 200) {
             Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
@@ -186,7 +195,6 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
 
     @Override
     public void showOther() {
-
         linearlayout_above.setVisibility(View.VISIBLE);
         RelativeLayout_center.setVisibility(View.VISIBLE);
         RelativeLayout_below.setVisibility(View.VISIBLE);

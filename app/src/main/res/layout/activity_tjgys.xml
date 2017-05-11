@@ -10,31 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titleheight"
+        android:layout_height="@dimen/dp_48"
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView android:id="@+id/back_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_gravity="center"
-            android:text="返回"
+            android:text="返 回"
             android:gravity="center"
-            android:textColor="@color/hei"
+            android:layout_centerVertical="true"
+            android:textColor="@color/back_tv_selector_show"
             android:layout_marginLeft="@dimen/marginlefa"
             android:textSize="@dimen/backtxtsize"
+            android:layout_marginTop="@dimen/dp_24"
              />
         <TextView
-            android:layout_width="@dimen/nothing"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
             android:textSize="@dimen/titlesize"
+            android:layout_alignBaseline="@+id/back_text"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/hei"
             android:text="常用地址"/>
-    </LinearLayout>
+    </RelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
@@ -62,13 +64,19 @@
                     android:text="名  字："
                     />
                 <EditText
+                    android:id="@+id/tjgys_edt_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:textSize="@dimen/backtxtsize"
                     android:layout_gravity="center"
                     android:hint="请输入名字"
                     />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/fahuo"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/nothing"
@@ -82,16 +90,23 @@
                     android:layout_marginLeft="@dimen/paddingtop"
                     android:text="电  话："/>
                 <EditText
+                    android:id="@+id/tjgys_edt_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:textSize="@dimen/backtxtsize"
                     android:layout_gravity="center"
                     android:hint="请输入电话"
                     />
-            </LinearLayout>
+            </LinearLayout>>
         </LinearLayout>
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/fahuo"/>
         <TextView
-            android:layout_width="@dimen/nothing"
+            android:id="@+id/tjgys_txt_contacts"
+            android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@mipmap/txlxzdz_2"
@@ -103,10 +118,6 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/shenhui"/>
-    <View
-        android:layout_width="match_parent"
         android:layout_height="@dimen/marginlefa"
         android:background="@color/fahuo"/>
     <LinearLayout
@@ -114,37 +125,47 @@
         android:orientation="vertical"
         android:layout_height="@dimen/jiushidp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/nothing"
-            android:layout_weight="1">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView android:id="@+id/choose_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/paddingtop"
-                    android:layout_centerVertical="true"
-                    android:background="@mipmap/dw_2"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="请选择省市区"
-                    android:layout_toRightOf="@+id/choose_iv"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@mipmap/ckj_2"
-                    android:layout_marginRight="@dimen/paddingtop"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
-        </LinearLayout>
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/nothing"
+             android:layout_weight="1">
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+                 <ImageView
+                     android:id="@+id/choose_iv"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="@dimen/paddingtop"
+                     android:layout_centerVertical="true"
+                     android:background="@mipmap/dw_2"
+                     />
 
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                     android:background="@mipmap/ckj_2"
+                     android:layout_marginRight="@dimen/paddingtop"
+                     android:layout_centerVertical="true"/>
+            </RelativeLayout>
+        </LinearLayout>-->
+        <TextView
+            android:id="@+id/tjgys_txt_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:text="请选择省市区"
+            android:layout_toRightOf="@+id/choose_iv"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/paddingtop"
+            android:drawableLeft="@mipmap/dw_2"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/fahuo"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/nothing"
@@ -153,6 +174,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/paddingtop"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/backtxtsize"
                 android:hint="请输入详细地址"
                 android:background="@null"/>
         </LinearLayout>

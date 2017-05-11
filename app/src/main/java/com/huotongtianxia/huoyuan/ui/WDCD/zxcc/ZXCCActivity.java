@@ -1,32 +1,20 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.zxcc;
 
 import android.Manifest;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.huotongtianxia.huoyuan.R;
 import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.PermissionListener;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -50,51 +38,57 @@ public class ZXCCActivity extends AppCompatActivity {
     View zxccView1;
     @Bind(R.id.zxcc_view2)
     View zxccView2;
+    @Bind(R.id.back_tv)
+    TextView backTv;
+    @Bind(R.id.main_linear)
+    LinearLayout mainLinear;
+    @Bind(R.id.main_framelayout)
+    FrameLayout mainFramelayout;
+    @Bind(R.id.activity_zxcc)
+    ScrollView activityZxcc;
+    @Bind(R.id.back_iv)
+    ImageView backIv;
     private BDCFragment bdcFragment;
     private FragmentManager manager;
     private HCCFragment hccFragment;
-    private TextView zxcctext01,zxcctext1;
-    private ImageView zxccimg01;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_zxcc);
         ButterKnife.bind(this);
-        zxcctext01 = (TextView) findViewById(R.id.zxcc_text01);
-        zxccimg01 = (ImageView) findViewById(R.id.zxcc_img01);
-        zxcctext1 = (TextView) findViewById(R.id.zxcc_text1);
         InitView();
         initView();
-        if (AndPermission.hasPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CHANGE_WIFI_STATE,Manifest.permission.CHANGE_CONFIGURATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.INTERNET)){
+        if (AndPermission.hasPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CHANGE_WIFI_STATE, Manifest.permission.CHANGE_CONFIGURATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.INTERNET)) {
 
-        }else {
+        } else {
             AndPermission.with(this)
                     .requestCode(101)
-                    .permission(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CHANGE_WIFI_STATE,Manifest.permission.CHANGE_CONFIGURATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.INTERNET)
+                    .permission(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CHANGE_WIFI_STATE, Manifest.permission.CHANGE_CONFIGURATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.INTERNET)
                     .send();
         }
     }
 
-    public void initView(){
-        zxcctext01.setOnClickListener(new View.OnClickListener() {
+    public void initView() {
+        backTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ZXCCActivity.this.finish();
+               finish();
             }
         });
-        zxccimg01.setOnClickListener(new View.OnClickListener() {
+        backIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ZXCCActivity.this.finish();
+                finish();
             }
         });
     }
@@ -148,20 +142,20 @@ public class ZXCCActivity extends AppCompatActivity {
         //根据id对碎片进行切换 ,如果碎片开始为空 进行创建
         switch (index) {
             case 0:
-            if (bdcFragment == null) {
-                bdcFragment = new BDCFragment();
-                transaction.add(R.id.main_framelayout, bdcFragment);
-            } else {
-                transaction.show(bdcFragment);
-            }
-            break;
+                if (bdcFragment == null) {
+                    bdcFragment = new BDCFragment();
+                    transaction.add(R.id.main_framelayout, bdcFragment);
+                } else {
+                    transaction.show(bdcFragment);
+                }
+                break;
             case 1:
                 if (hccFragment == null) {
-                hccFragment = new HCCFragment();
-                transaction.add(R.id.main_framelayout, hccFragment);
-            } else {
-                transaction.show(hccFragment);
-            }
+                    hccFragment = new HCCFragment();
+                    transaction.add(R.id.main_framelayout, hccFragment);
+                } else {
+                    transaction.show(hccFragment);
+                }
                 break;
 
         }

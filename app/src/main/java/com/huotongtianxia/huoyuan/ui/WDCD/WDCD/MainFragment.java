@@ -48,11 +48,12 @@ public class MainFragment extends Fragment {
     @Bind(R.id.wdcd_img77)
     ImageView wdcdImg77;
     @Bind(R.id.wdcd_text7)
-    TextView wdcdText7;
+    TextView mDdgzTv;
     @Bind(R.id.wdcd_lin7)
     LinearLayout wdcdLin7;
     private View view;
     private Context context;
+    private String INTENTNAME="intentName";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +65,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
-
         ButterKnife.bind(this, view);
         return view;
     }
@@ -77,7 +77,9 @@ public class MainFragment extends Fragment {
 
     @OnClick({R.id.qiehuan1, R.id.wdcd_kefu1, R.id.wdcd_kefudh1, R.id.wdcd_img5, R.id.wdcd_text5, R.id.wdcd_lin5, R.id.wdcd_img66, R.id.wdcd_text6, R.id.wdcd_lin6, R.id.wdcd_img77, R.id.wdcd_text7, R.id.wdcd_lin7})
     public void onClick(View view) {
+        Bundle  bundle=new Bundle();
         switch (view.getId()) {
+//            点击车队切换到车队页面
             case R.id.qiehuan1:
                 MainActivity.Switchfragment(1);
                 break;
@@ -100,20 +102,40 @@ public class MainFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.wdcd_img66:
-                intent = new Intent(context, WDHYActivity.class);
+                String num0="0";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num0);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
                 startActivity(intent);
                 break;
             case R.id.wdcd_text6:
-                intent = new Intent(context, WDHYActivity.class);
+                String num1="0";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num1);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.wdcd_lin6:
-                intent = new Intent(context, WDHYActivity.class);
-                startActivity(intent);
-                break;
+//            case R.id.wdcd_lin6:
+//                intent = new Intent(context, WDHYActivity.class);
+//                startActivity(intent);
+//                break;
             case R.id.wdcd_img77:
+                String num2 = "1";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num2);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
+                startActivity(intent);
                 break;
             case R.id.wdcd_text7:
+                String num3 = "1";
+                intent = new Intent();
+                bundle.putString(INTENTNAME,num3);
+                intent.putExtras(bundle);
+                intent.setClass(context, WDHYActivity.class);
+                startActivity(intent);
                 break;
             case R.id.wdcd_lin7:
                 break;

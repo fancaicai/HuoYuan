@@ -34,7 +34,7 @@ public class WDHYAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int  getCount() {
         return list.size();
     }
 

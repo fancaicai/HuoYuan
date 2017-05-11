@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +7,11 @@
     <com.huotongtianxia.huoyuan.widget.MyListView
         android:id="@+id/HCC_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.huotongtianxia.huoyuan.widget.MyListView>
-
-</LinearLayout>
+        android:layout_height="wrap_content"></com.huotongtianxia.huoyuan.widget.MyListView>
+    <ProgressBar android:id="@+id/hcc_preb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+</RelativeLayout>

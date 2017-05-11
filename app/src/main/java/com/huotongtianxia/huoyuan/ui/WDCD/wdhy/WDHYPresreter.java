@@ -1,6 +1,8 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.wdhy;
 
+import android.content.Context;
 import android.os.Handler;
+import android.text.style.TtsSpan;
 import android.util.Log;
 
 import com.huotongtianxia.huoyuan.bean.WDHYBBean;
@@ -8,6 +10,7 @@ import com.huotongtianxia.huoyuan.bean.WDHYBean;
 import com.huotongtianxia.huoyuan.bean.WDHYQXBean;
 import com.huotongtianxia.huoyuan.bean.WDHYSCBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.login.DLActivity;
+import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,8 +26,11 @@ public class WDHYPresreter implements WDHYContract.Presreter{
     private int status1;
     private String id;
     private String order_num;
-
-    public WDHYPresreter(WDHYContract.View view,int status1,String id,String order_num){
+    private DJDView mDJDView;
+    Context context;
+    public WDHYPresreter(WDHYContract.View view, int status1, String id, String order_num, DJDView djdView, Context context){
+        this.context=context;
+        this.mDJDView=djdView;
         this.view = view;
         this.mode = new WDHYMode();
         this.status1 = status1;
@@ -36,6 +42,7 @@ public class WDHYPresreter implements WDHYContract.Presreter{
     public void getData() {
         String factory_id = DLActivity.id;
         int status =status1;
+        mDJDView.showProgressBa();
         mode.loadWDHY(new Callback<WDHYBean>() {
             @Override
             public void onResponse(Call<WDHYBean> call, Response<WDHYBean> response) {
@@ -48,12 +55,16 @@ public class WDHYPresreter implements WDHYContract.Presreter{
                             view.onResponse(body);
                         }
                     });
+                    mDJDView.hideProgressBa();
+                    //                    加载成功后吐司一个登录成功的提示
+                    ToastUtil.showShortToast(context,"数据加载成功");
                 }
             }
 
             @Override
             public void onFailure(Call<WDHYBean> call, Throwable t) {
-
+                mDJDView.hideProgressBa();
+                ToastUtil.showShortToast(context,"数据加载失败！");
             }
         },factory_id,status);
     }
@@ -62,6 +73,7 @@ public class WDHYPresreter implements WDHYContract.Presreter{
     public void getData1() {
         String factory_id = DLActivity.id;
         int status =0;
+        mDJDView.showProgressBa();
         mode.loadWDHYB(new Callback<WDHYBBean>() {
             @Override
             public void onResponse(Call<WDHYBBean> call, Response<WDHYBBean> response) {
@@ -74,16 +86,20 @@ public class WDHYPresreter implements WDHYContract.Presreter{
                             view.onResponse1(body);
                         }
                     });
+                    mDJDView.hideProgressBa();
+                    //                    登录成功后吐司一个登录成功的提示
+                    ToastUtil.showShortToast(context,"数据加载成功");
                 }
             }
 
             @Override
             public void onFailure(Call<WDHYBBean> call, Throwable t) {
-
+                mDJDView.hideProgressBa();
+                ToastUtil.showShortToast(context,"数据加载失败！");
             }
         },factory_id,status);
     }
-
+//运输中的网络请求
     @Override
     public void getData2() {
         mode.loadWDHYQX(new Callback<WDHYQXBean>() {
@@ -98,6 +114,7 @@ public class WDHYPresreter implements WDHYContract.Presreter{
                             view.onResponse2(body);
                         }
                     });
+
                 }
             }
 

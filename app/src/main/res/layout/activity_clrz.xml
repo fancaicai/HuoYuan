@@ -14,11 +14,11 @@
         >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/titleheight"
+            android:layout_height="@dimen/dp_48"
             android:background="#ffffff"
             >
             <TextView
-                android:id="@+id/sfrz_text01"
+                android:id="@+id/back_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -26,7 +26,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/marginlefa"
                 android:textSize="@dimen/backtxtsize"
-                android:textColor="@color/hei"
+                android:textColor="@color/back_tv_selector_show"
                 />
             <TextView
                 android:layout_width="wrap_content"

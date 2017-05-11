@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
@@ -32,24 +33,28 @@ public class WDZHActivity extends AppCompatActivity implements WDZHContract.View
     TextView wdzhText6;
     @Bind(R.id.wdzh_text7)
     TextView wdzhText7;
-    private TextView wdzhtext01;
-    private ImageView wdzhimg01;
+    @Bind(R.id.back_iv)
+    ImageView backIv;
+    @Bind(R.id.back_tv)
+    TextView backTv;
+    @Bind(R.id.textView4)
+    TextView textView4;
+    @Bind(R.id.activity_wdzh)
+    LinearLayout activityWdzh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_wdzh);
         ButterKnife.bind(this);
-        wdzhtext01 = (TextView) findViewById(R.id.wdzh_text01);
-        wdzhimg01 = (ImageView) findViewById(R.id.wdzh_img01);
         initView();
 
         WDZHPresreter presreter = new WDZHPresreter(this);
@@ -58,13 +63,13 @@ public class WDZHActivity extends AppCompatActivity implements WDZHContract.View
     }
 
     public void initView() {
-        wdzhtext01.setOnClickListener(new View.OnClickListener() {
+        backTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 WDZHActivity.this.finish();
             }
         });
-        wdzhimg01.setOnClickListener(new View.OnClickListener() {
+        backIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 WDZHActivity.this.finish();

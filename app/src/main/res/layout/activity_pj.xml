@@ -7,27 +7,36 @@
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.ddxq.PJActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titleheight">
+        android:layout_height="@dimen/dp_48">
+        <TextView
+            android:id="@+id/back_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/backtxtsize"
+            android:text="返回"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back"
+            android:text="我的评价"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_alignBaseline="@+id/back_tv"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/hei"
-            android:textSize="@dimen/backtxtsize"
-            android:layout_marginLeft="@dimen/marginlefa"/>
-        <TextView
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:text="司机评价"
-        android:textColor="@color/hei"
-        android:textSize="@dimen/backtxtsize"
-        android:gravity="center_horizontal"
-        android:paddingTop="25dp"
+            android:textSize="@dimen/titlesize"
         />
-    </LinearLayout>
-
+    </RelativeLayout>
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="1px"
+    android:background="@color/hei"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -36,6 +45,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         >
         <ImageView

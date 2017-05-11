@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,10 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -40,8 +40,9 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 //车辆认证的Activity
-public class CLRZActivity extends AppCompatActivity implements CLRZContract.View{
+public class CLRZActivity extends AppCompatActivity implements CLRZContract.View {
     @Bind(R.id.clrz_img1)
     ImageView clrzImg1;
     @Bind(R.id.clrz_img2)
@@ -69,6 +70,10 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
     public static final int REQUEST_CODE_PICTURE4 = 41;
     public static final int REQUEST_CODE_CAMERA4 = 42;
     public static final int dd = 44;
+    @Bind(R.id.back_tv)
+    TextView backTv;
+    @Bind(R.id.activity_clrz)
+    ScrollView activityClrz;
     private String picturePath;
     private String picturePath2;
     private String picturePath3;
@@ -78,37 +83,37 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
     private Uri imageUri3;
     private Uri imageUri4;
     private LoadingDialog loadingDialog;
-    private File w1,w2,w3,w4;
-    private String truck_type, truck_length, truck_cp, namee, tell, cph, cz ,cit,provinc2,cit2,id;
+    private File w1, w2, w3, w4;
+    private String truck_type, truck_length, truck_cp, namee, tell, cph, cz, cit, provinc2, cit2, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_clrz);
         ButterKnife.bind(this);
         loadingDialog = new LoadingDialog(this);
         Bundle bundle = this.getIntent().getExtras();
-        id = bundle.getString("id");
+//        id = bundle.getString("id");
     }
 
-    @OnClick({R.id.clrz_img1, R.id.clrz_img2, R.id.clrz_img3, R.id.clrz_img4, R.id.button})
+    @OnClick({R.id.clrz_img1, R.id.clrz_img2, R.id.clrz_img3, R.id.clrz_img4, R.id.button,R.id.back_tv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.clrz_img1:
-                if (AndPermission.hasPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE)){
+                if (AndPermission.hasPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
-                }else {
+                } else {
                     AndPermission.with(this)
                             .requestCode(101)
-                            .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE)
+                            .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
                             .send();
                 }
                 final SelectPicturePopup spp = new SelectPicturePopup(CLRZActivity.this);
@@ -130,9 +135,9 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             startActivityForResult(intent, REQUEST_CODE_PICTURE);
                         } else if (flag == 0) {
                             spp.dismiss();
-                            File out = new File(Environment.getExternalStorageDirectory(),"otu.jpg");
+                            File out = new File(Environment.getExternalStorageDirectory(), "otu.jpg");
                             try {
-                                if (out.exists()){
+                                if (out.exists()) {
                                     out.delete();
                                 }
                                 out.createNewFile();
@@ -141,8 +146,8 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             }
                             imageUri = Uri.fromFile(out);
                             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
-                            startActivityForResult(intent,REQUEST_CODE_CAMERA);//启动相机程序
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                            startActivityForResult(intent, REQUEST_CODE_CAMERA);//启动相机程序
                         }
                     }
                 });
@@ -167,9 +172,9 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             startActivityForResult(intent, REQUEST_CODE_PICTURE2);
                         } else if (flag == 0) {
                             spp2.dismiss();
-                            File out = new File(Environment.getExternalStorageDirectory(),"otu2.jpg");
+                            File out = new File(Environment.getExternalStorageDirectory(), "otu2.jpg");
                             try {
-                                if (out.exists()){
+                                if (out.exists()) {
                                     out.delete();
                                 }
                                 out.createNewFile();
@@ -178,8 +183,8 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             }
                             imageUri2 = Uri.fromFile(out);
                             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri2);
-                            startActivityForResult(intent,REQUEST_CODE_CAMERA2);//启动相机程序
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri2);
+                            startActivityForResult(intent, REQUEST_CODE_CAMERA2);//启动相机程序
                         }
                     }
                 });
@@ -204,9 +209,9 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             startActivityForResult(intent, REQUEST_CODE_PICTURE3);
                         } else if (flag == 0) {
                             spp3.dismiss();
-                            File out = new File(Environment.getExternalStorageDirectory(),"otu3.jpg");
+                            File out = new File(Environment.getExternalStorageDirectory(), "otu3.jpg");
                             try {
-                                if (out.exists()){
+                                if (out.exists()) {
                                     out.delete();
                                 }
                                 out.createNewFile();
@@ -215,8 +220,8 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             }
                             imageUri3 = Uri.fromFile(out);
                             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri3);
-                            startActivityForResult(intent,REQUEST_CODE_CAMERA3);//启动相机程序
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri3);
+                            startActivityForResult(intent, REQUEST_CODE_CAMERA3);//启动相机程序
                         }
                     }
                 });
@@ -241,9 +246,9 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             startActivityForResult(intent, REQUEST_CODE_PICTURE4);
                         } else if (flag == 0) {
                             spp4.dismiss();
-                            File out = new File(Environment.getExternalStorageDirectory(),"otu4.jpg");
+                            File out = new File(Environment.getExternalStorageDirectory(), "otu4.jpg");
                             try {
-                                if (out.exists()){
+                                if (out.exists()) {
                                     out.delete();
                                 }
                                 out.createNewFile();
@@ -252,14 +257,17 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             }
                             imageUri4 = Uri.fromFile(out);
                             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri4);
-                            startActivityForResult(intent,REQUEST_CODE_CAMERA4);//启动相机程序
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri4);
+                            startActivityForResult(intent, REQUEST_CODE_CAMERA4);//启动相机程序
                         }
                     }
                 });
                 break;
             case R.id.button:
                 login();
+                break;
+            case R.id.back_tv:
+                finish();
                 break;
         }
     }
@@ -272,7 +280,7 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
             w4 = new File(picturePath4);
             w1 = new File(picturePath);
         }
-        CLRZPresreter presreter = new CLRZPresreter(this, w1, w2, w3, w4, truck_type, truck_length, truck_cp, namee, tell, cph, cz, cit,provinc2,cit2,id);
+        CLRZPresreter presreter = new CLRZPresreter(this, w1, w2, w3, w4, truck_type, truck_length, truck_cp, namee, tell, cph, cz, cit, provinc2, cit2, id);
         presreter.getData();
     }
 
@@ -281,16 +289,16 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
             Toast.makeText(CLRZActivity.this, "请上传身份证正面",
                     Toast.LENGTH_SHORT).show();
             return false;
-        }else if (picturePath2 == null) {
+        } else if (picturePath2 == null) {
             Toast.makeText(CLRZActivity.this, "请上传身份证反面",
                     Toast.LENGTH_SHORT).show();
             return false;
-        }else if (picturePath3 == null) {
+        } else if (picturePath3 == null) {
             Toast.makeText(CLRZActivity.this, "请上传驾驶证正面",
                     Toast.LENGTH_SHORT).show();
             return false;
-        }else if (picturePath4 == null) {
-            Toast.makeText(CLRZActivity.this,"请上传驾驶证反面",
+        } else if (picturePath4 == null) {
+            Toast.makeText(CLRZActivity.this, "请上传驾驶证反面",
                     Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -300,18 +308,18 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_CODE_CAMERA:
-                if (resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Intent intent = new Intent("com.android.camera.action.CROP");
-                    intent.setDataAndType(imageUri , "image/*");
-                    intent.putExtra("scale",true);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
-                    startActivityForResult(intent,aa);//启动裁剪程序
+                    intent.setDataAndType(imageUri, "image/*");
+                    intent.putExtra("scale", true);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                    startActivityForResult(intent, aa);//启动裁剪程序
                 }
                 break;
             case aa:
-                if (resultCode  == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                         clrzImg1.setImageBitmap(bitmap);
@@ -325,26 +333,26 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                 break;
         }
         if (requestCode == REQUEST_CODE_PICTURE) {
-                if (data != null) {
-                    Uri selectedImage = data.getData();
-                    if (selectedImage != null) {
-                        sendPicByUri(selectedImage);
-                    }
+            if (data != null) {
+                Uri selectedImage = data.getData();
+                if (selectedImage != null) {
+                    sendPicByUri(selectedImage);
                 }
             }
+        }
 
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_CODE_CAMERA2:
-                if (resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Intent intent = new Intent("com.android.camera.action.CROP");
-                    intent.setDataAndType(imageUri2 , "image/*");
-                    intent.putExtra("scale",true);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri2);
-                    startActivityForResult(intent,bb);//启动裁剪程序
+                    intent.setDataAndType(imageUri2, "image/*");
+                    intent.putExtra("scale", true);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri2);
+                    startActivityForResult(intent, bb);//启动裁剪程序
                 }
                 break;
             case bb:
-                if (resultCode  == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri2));
                         clrzImg2.setImageBitmap(bitmap);
@@ -358,26 +366,26 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                 break;
         }
         if (requestCode == REQUEST_CODE_PICTURE3) {
-                if (data != null) {
-                    Uri selectedImage3 = data.getData();
-                    if (selectedImage3 != null) {
-                        sendPicByUri3(selectedImage3);
-                    }
+            if (data != null) {
+                Uri selectedImage3 = data.getData();
+                if (selectedImage3 != null) {
+                    sendPicByUri3(selectedImage3);
                 }
             }
+        }
 
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_CODE_CAMERA3:
-                if (resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Intent intent = new Intent("com.android.camera.action.CROP");
-                    intent.setDataAndType(imageUri3 , "image/*");
-                    intent.putExtra("scale",true);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri3);
-                    startActivityForResult(intent,cc);//启动裁剪程序
+                    intent.setDataAndType(imageUri3, "image/*");
+                    intent.putExtra("scale", true);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri3);
+                    startActivityForResult(intent, cc);//启动裁剪程序
                 }
                 break;
             case cc:
-                if (resultCode  == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri3));
                         clrzImg3.setImageBitmap(bitmap);
@@ -389,14 +397,15 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                 break;
             default:
                 break;
-        } if (requestCode == REQUEST_CODE_PICTURE2) {
-                if (data != null) {
-                    Uri selectedImage2 = data.getData();
-                    if (selectedImage2 != null) {
-                        sendPicByUri2(selectedImage2);
-                    }
+        }
+        if (requestCode == REQUEST_CODE_PICTURE2) {
+            if (data != null) {
+                Uri selectedImage2 = data.getData();
+                if (selectedImage2 != null) {
+                    sendPicByUri2(selectedImage2);
                 }
             }
+        }
 
         switch (requestCode) {
             case REQUEST_CODE_CAMERA4:
@@ -422,14 +431,14 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
             default:
                 break;
         }
-            if (requestCode == REQUEST_CODE_PICTURE4) {
-                if (data != null) {
-                    Uri selectedImage4 = data.getData();
-                    if (selectedImage4 != null) {
-                        sendPicByUri4(selectedImage4);
-                    }
+        if (requestCode == REQUEST_CODE_PICTURE4) {
+            if (data != null) {
+                Uri selectedImage4 = data.getData();
+                if (selectedImage4 != null) {
+                    sendPicByUri4(selectedImage4);
                 }
             }
+        }
 
 
     }
@@ -578,7 +587,7 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
     @Override
     public void onResponse(CLRZBean clrzBean) {
         int count = clrzBean.getCode();
-        if (count == 100){
+        if (count == 100) {
             if (loadingDialog.isShowing()) {
                 loadingDialog.dismiss();
             }
@@ -586,22 +595,22 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
             Intent intent = new Intent(this, ZXCCActivity.class);
             CLRZActivity.this.finish();
             startActivity(intent);
-        }else if (count == 200){
+        } else if (count == 200) {
             if (loadingDialog.isShowing()) {
                 loadingDialog.dismiss();
             }
             Toast.makeText(this, "上传失败", Toast.LENGTH_SHORT).show();
-        }else if(count == 201){
+        } else if (count == 201) {
             if (loadingDialog.isShowing()) {
                 loadingDialog.dismiss();
             }
             Toast.makeText(this, "司机已存在", Toast.LENGTH_SHORT).show();
-        }else if (count == 101){
+        } else if (count == 101) {
             if (loadingDialog.isShowing()) {
                 loadingDialog.dismiss();
             }
             Toast.makeText(this, "用户已存在", Toast.LENGTH_SHORT).show();
-        }else if (count == 102){
+        } else if (count == 102) {
             if (loadingDialog.isShowing()) {
                 loadingDialog.dismiss();
             }
@@ -623,13 +632,14 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         AndPermission.onRequestPermissionsResult(requestCode, permissions, grantResults, listener);
     }
+
     private PermissionListener listener = new PermissionListener() {
         @Override
         public void onSucceed(int requestCode, List<String> grantedPermissions) {
             // 权限申请成功回调。
-            if(requestCode == 100) {
+            if (requestCode == 100) {
                 // TODO 相应代码。
-            } else if(requestCode == 101) {
+            } else if (requestCode == 101) {
                 // TODO 相应代码。
             }
         }

@@ -1,87 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLActivity">
-    <RelativeLayout
+    <RelativeLayout android:id="@+id/shdz_rl"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="#ffffff"
+        android:layout_height="@dimen/dp_48"
+        android:background="@color/ffffff"
         >
-        <ImageView
-            android:id="@+id/khzl_img"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/grzximgfh"
-            />
         <TextView
-            android:id="@+id/khzl_text"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="返回"
-            android:layout_toRightOf="@+id/khzl_img"
-            android:layout_marginTop="18dp"
-            android:textSize="18dp"
-            android:textColor="#222222"
-            />
-        <TextView
+            android:id="@+id/back_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="常用地址"
-            android:textColor="#222222"
-            android:textSize="20dp"
+            android:gravity="center"
+            android:textSize="@dimen/backtxtsize"
+            android:text="返 回"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
+            />
+        <TextView android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收货地址"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_alignBaseline="@+id/back_tv"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:textColor="@color/hei"
+            android:textSize="@dimen/titlesize"
             />
         <TextView
-            android:id="@+id/khzl_text01"
+            android:id="@+id/add_tv"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@+id/back_tv"
             android:text="添加"
-            android:textSize="18dp"
-            android:textColor="#ffffff"
+            android:textSize="@dimen/titlesize"
+            android:textColor="@color/back_tv_selector_show"
             android:layout_marginTop="25dp"
             />
     </RelativeLayout>
-    <View
+     <View android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#999999"
-        />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+        android:layout_height="1px"
+        android:layout_below="@+id/shdz_rl"
+        android:background="@color/hei"/>
             <com.huotongtianxia.huoyuan.widget.MyListView
                 android:id="@+id/khzl_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:divider="#999999"
+                android:layout_below="@+id/view"
                 android:dividerHeight="1dp"
                 >
             </com.huotongtianxia.huoyuan.widget.MyListView>
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:text="添加常用地址"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/shape"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+            <ProgressBar android:id="@+id/shdz_pbr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
                 />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+
+</RelativeLayout>

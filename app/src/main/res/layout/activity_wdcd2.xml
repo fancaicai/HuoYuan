@@ -1,55 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDActivity">
-    <RelativeLayout
+    android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/edcd_rl"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ffffff"
+        android:layout_height="@dimen/dp_48"
+        android:background="@color/ffffff"
         >
-        <ImageView
-            android:id="@+id/wdcd_img01"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/grzximgfh"
-            />
         <TextView
             android:id="@+id/wdcd_text01"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="@dimen/backtxtsize"
             android:text="返回"
-            android:layout_toRightOf="@+id/wdcd_img01"
-            android:textSize="18dp"
-            android:layout_marginTop="18dp"
-            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
             />
-        <LinearLayout
-            android:layout_width="120dp"
-            android:layout_height="30dp"
+        <LinearLayout android:id="@+id/allandlocation_tv"
+            android:layout_width="130dp"
+            android:layout_height="@dimen/dp_30"
             android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dp"
             >
+
             <TextView
                 android:id="@+id/wdcd2_bendi"
                 android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:background="@drawable/shapee7"
                 android:text="全部"
                 android:textColor="#ffffff"
                 android:textSize="15dp"
                 android:gravity="center"
                 />
+
             <TextView
                 android:id="@+id/wdcd2_quanbu"
                 android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:text="本地"
                 android:textColor="#222222"
                 android:textSize="15dp"
@@ -58,41 +51,29 @@
                 />
         </LinearLayout>
     </RelativeLayout>
-    <View
+    <View android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="#999999"
+        android:layout_below="@+id/edcd_rl"
+        android:background="@color/hei"
         />
     <FrameLayout
         android:id="@+id/wdcd2_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        >
     </FrameLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#999999"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#999999"
-        android:layout_marginTop="10dp"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@null"
-        android:text="查看更多"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#999999"
-        android:layout_marginBottom="30dp"
-        />
+
+    <ProgressBar android:id="@+id/cl_prb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
     <!--<ListView-->
-        <!--android:id="@+id/wdcd_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"></ListView>-->
-</LinearLayout>
+    <!--android:id="@+id/wdcd_list"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"></ListView>-->
+
+
+</RelativeLayout>

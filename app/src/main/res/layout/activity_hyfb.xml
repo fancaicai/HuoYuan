@@ -7,35 +7,37 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titleheight"
+        android:layout_height="@dimen/dp_48"
         android:background="@color/ffffff"
         >
         <TextView
+            android:id="@+id/back_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发 货"
-            android:layout_alignBaseline="@+id/hyfb_txt"
-            android:textColor="#222222"
-            android:textSize="@dimen/titlesize"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            />
-        <TextView
-            android:id="@+id/hyfb_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="29dp"
-            android:layout_marginLeft="@dimen/marginlefa"
-            android:text="@string/back"
+            android:gravity="center"
             android:textSize="@dimen/backtxtsize"
+            android:text="返 回"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
+            />
+        <TextView android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的车队"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_alignBaseline="@+id/back_tv"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/hei"
+            android:textSize="@dimen/titlesize"
             />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/hui"
+        android:layout_height="1px"
+        android:background="@color/hei"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -112,8 +114,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/fahuo"
+                android:layout_height="1px"
+                android:background="@color/hui"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,9 +135,9 @@
             </LinearLayout>
         </LinearLayout>
         <View
-            android:layout_width="1dp"
+            android:layout_width="1px"
             android:layout_height="match_parent"
-            android:background="@color/fahuo"
+            android:background="@color/hui"
             />
         <LinearLayout
             android:id="@+id/hyfb_fhdz_lin"
@@ -201,8 +203,8 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/fahuo"
+                android:layout_height="1px"
+                android:background="@color/hui"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -222,9 +224,9 @@
             </LinearLayout>
         </LinearLayout>
         <View
-            android:layout_width="1dp"
+            android:layout_width="1px"
             android:layout_height="match_parent"
-            android:background="@color/fahuo"
+            android:background="@color/hui"
             />
         <LinearLayout
             android:id="@+id/hyfb_shdz_lin"
@@ -252,7 +254,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#ebebeb"/>
+        android:background="@color/fahuo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="135dp"
@@ -304,8 +306,8 @@
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/fahuo"/>
+            android:layout_height="1px"
+            android:background="@color/hui"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -319,13 +321,14 @@
                 android:gravity="center"
                 />
             <Spinner
+                android:id="@+id/spinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:textColor="#ffffff"
                 android:background="@mipmap/spinner"
-                android:id="@+id/spinner" />
+                />
             <TextView
                 android:layout_marginLeft="30dp"
                 android:layout_width="0dp"
@@ -336,6 +339,7 @@
                 android:gravity="center"
                 />
             <Spinner
+                android:id="@+id/spinner2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="25dp"
@@ -343,12 +347,12 @@
                 android:layout_marginRight="15dp"
                 android:layout_gravity="center"
                 android:background="@mipmap/spinner"
-                android:id="@+id/spinner2" />
+                 />
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/fahuo"/>
+            android:layout_height="1px"
+            android:background="@color/hui"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"

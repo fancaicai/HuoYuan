@@ -28,6 +28,7 @@ import com.huotongtianxia.huoyuan.bean.HYFBSHBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.wdhy.WDHYActivity;
+import com.huotongtianxia.huoyuan.util.ToastUtil;
 import com.huotongtianxia.huoyuan.widget.LoadingDialog;
 
 import java.text.SimpleDateFormat;
@@ -65,8 +66,8 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     LinearLayout hyfbShdzLin;
     @Bind(R.id.hyfb_btn)
     Button hyfbBtn;
-    @Bind(R.id.hyfb_txt)
-    TextView hyfbText;
+    @Bind(R.id.back_tv)
+    TextView backTv;
     private String name,we,send,truck_type,truck_length,provinc,cit,rmb;
     private LoadingDialog loadingDialog;
     private int fhrid, shrid;
@@ -75,17 +76,18 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        设置隐藏状态栏，并改变状态栏的颜色
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_hyfb);
         ButterKnife.bind(this);
-        loadingDialog = new LoadingDialog(this);
+        loadingDialog = new LoadingDialog(getApplicationContext());
         //下拉列表
         initView();
         //点击事件
@@ -94,14 +96,14 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
         pwTime = new TimePopupWindow(this, TimePopupWindow.Type.YEAR_MONTH_DAY);
         //时间选择后回调
         pwTime.setOnTimeSelectListener(new TimePopupWindow.OnTimeSelectListener() {
-
+//时间选择完成后，将选择的时间设置到相应的控件上
             @Override
             public void onTimeSelect(Date date) {
                 send = getTime(date);
                 hyfbShijian1.setText(getTime(date));
             }
         });
-        //弹出时间选择器
+        //点击选择装货时间，弹出时间选择器
         hyfbShijian1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -131,6 +133,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
                 startActivity(intent);
             }
         });
+//        点击收货常用地址跳转到收货常用地址
         hyfbShdzLin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,7 +141,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
                 startActivity(intent);
             }
         });
-        hyfbText.setOnClickListener(new View.OnClickListener() {
+        backTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

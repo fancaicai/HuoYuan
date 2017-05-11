@@ -6,56 +6,70 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.wdhy.WDHYActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="#50bbfc"
+        android:layout_height="@dimen/dp_48"
+        android:background="@color/ffffff"
         >
-        <ImageView
-            android:id="@+id/wdhy_img01"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/grzximgfh"
+        <ImageView android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:src="@drawable/backivpress"
             />
         <TextView
             android:id="@+id/wdhy_text01"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="返回"
-            android:layout_toRightOf="@+id/wdhy_img01"
-            android:textSize="20dp"
-            android:textColor="#ffffff"
-            android:layout_marginTop="27dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="返 回"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/backtxtsize"
+            android:layout_toRightOf="@+id/iv"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
             />
-        <TextView
+
+        <TextView android:id="@+id/hygl_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="货源管理"
-            android:textColor="#ffffff"
+            android:layout_marginTop="@dimen/dp_24"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:textSize="20dp"
+            android:layout_alignBaseline="@+id/wdhy_text01"
+            android:textColor="@color/hei"
+            android:textSize="@dimen/titlesize"
             />
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/shenhui"/>
     <android.support.design.widget.TabLayout
         android:id="@+id/wdhy_tab"
-        app:tabIndicatorColor="@color/home"
+        app:tabIndicatorColor="@color/zi"
         app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/home"
+        app:tabSelectedTextColor="@color/zi"
         app:tabTextColor="#555555"
         app:tabMode="fixed"
         android:layout_width="match_parent"
         android:layout_height="40dp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#999999"
-        />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/wdhy_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#999999"
         />
 </LinearLayout>

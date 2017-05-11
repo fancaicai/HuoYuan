@@ -6,27 +6,31 @@
     android:layout_height="match_parent"
     android:background="@color/fahuo"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.ddxq.DDXQActivity">
-    <RelativeLayout
-        android:id="@+id/ddxq_meiyong_lin1"
+    <RelativeLayout android:id="@+id/ddxq_meiyong_lin1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titleheight"
-        android:background="@color/ffffff">
+        android:layout_height="@dimen/dp_48"
+        android:background="@color/ffffff"
+        >
         <TextView
-            android:id="@+id/ddxq_text01"
+            android:id="@+id/back_tv"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginLeft="@dimen/marginlefa"
-            android:text="返回"
             android:textSize="@dimen/backtxtsize"
-            android:textColor="@color/hei"
+            android:text="返回"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
             />
-        <TextView
+        <TextView android:id="@+id/hygl_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="订单详情"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_alignBaseline="@+id/back_tv"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/hei"
-            android:layout_centerInParent="true"
             android:textSize="@dimen/titlesize"
             />
     </RelativeLayout>
@@ -269,5 +273,10 @@ android:gravity="center"
         android:background="@mipmap/ddxqimg1"
         android:layout_marginRight="9dp"
         android:id="@+id/imageView" />
+    <ProgressBar android:id="@+id/ddxq_prb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>

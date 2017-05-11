@@ -11,6 +11,7 @@ import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.WDHYBBean;
 import com.huotongtianxia.huoyuan.bean.WDHYBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class WDHYBAdapter extends BaseAdapter {
     private Context context;
-    private List<WDHYBBean.DataBean> list = null;
+    private List<WDHYBBean.DataBean> list = new ArrayList<WDHYBBean.DataBean>();
     private LayoutInflater inflater;
 
     public WDHYBAdapter(Context context, List<WDHYBBean.DataBean> list) {

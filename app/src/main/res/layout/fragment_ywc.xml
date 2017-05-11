@@ -7,6 +7,14 @@
     <ListView
         android:id="@+id/ysz_ywc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:dividerHeight="1px"
+        android:divider="@color/hui"></ListView>
+    <ProgressBar android:id="@+id/loading_preb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
 
 </FrameLayout>

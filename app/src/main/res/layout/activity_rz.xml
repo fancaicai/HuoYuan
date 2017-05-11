@@ -8,7 +8,7 @@
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.clrz.RZActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titleheight"
+        android:layout_height="@dimen/dp_48"
         android:background="#ffffff"
         >
         <TextView

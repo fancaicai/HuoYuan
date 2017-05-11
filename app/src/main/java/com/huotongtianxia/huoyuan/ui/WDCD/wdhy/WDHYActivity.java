@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.wdhy;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,42 +27,52 @@ public class WDHYActivity extends AppCompatActivity {
     TabLayout wdhyTab;
     @Bind(R.id.wdhy_pager)
     ViewPager wdhyPager;
+    @Bind(R.id.iv)
+    ImageView iv;
+    @Bind(R.id.wdhy_text01)
+    TextView wdhyText01;
+    @Bind(R.id.hygl_tv)
+    TextView hyglTv;
     private String[] arrTabTitle = null;
     private List<Fragment> fragmentlist = new ArrayList<>();
     private HYXXPagerAdapter adapter;
     private TextView wdhytext01;
     private ImageView wdhyimg01;
+    private Intent intent;
+    private Bundle num1;
+    private int requestCode;
+    private boolean sended = false;
+    private String INTENTNAME = "intentName";
+    private String string;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_wdhy);
         ButterKnife.bind(this);
-        wdhytext01 = (TextView) findViewById(R.id.wdhy_text01);
-        wdhyimg01 = (ImageView) findViewById(R.id.wdhy_img01);
         initView();
         initDate();
     }
 
-    public void initView(){
-        wdhytext01.setOnClickListener(new View.OnClickListener() {
+    public void initView() {
+        wdhyText01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WDHYActivity.this.finish();
+                finish();
             }
         });
-        wdhyimg01.setOnClickListener(new View.OnClickListener() {
+        iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WDHYActivity.this.finish();
+                finish();
             }
         });
     }
@@ -75,13 +86,15 @@ public class WDHYActivity extends AppCompatActivity {
         fragmentlist.add(yszFragment);
         fragmentlist.add(ywcFragment);
         wdhyTab.setTabMode(wdhyTab.MODE_FIXED);
-        wdhyTab.addTab(wdhyTab.newTab().setTag(arrTabTitle[0]));
-        wdhyTab.addTab(wdhyTab.newTab().setTag(arrTabTitle[1]));
-        wdhyTab.addTab(wdhyTab.newTab().setTag(arrTabTitle[2]));
         adapter = new HYXXPagerAdapter(getSupportFragmentManager(), fragmentlist, arrTabTitle);
         wdhyPager.setAdapter(adapter);
+        string = getIntent().getExtras().getString(INTENTNAME);
+        if (string.equals("1")) {
+            wdhyPager.setCurrentItem(1, true);
+        }
         wdhyTab.setupWithViewPager(wdhyPager);
     }
+
 
     //黄油刀解绑
     @Override

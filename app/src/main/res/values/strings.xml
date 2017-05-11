@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">车源宝</string>
-
+   <string name="shouhuoaddre">收货地址</string>
     <string name="startLocation">开始定位</string>
     <string name="stopLocation">停止定位</string>
      <string name="back">返回</string>
+    <string name="loading">数据加载中...</string>
     <string name="permission_cancel">取消</string>
     <string name="permission_setting">去设置</string>
     <string name="permission_title_permission_failed">权限申请失败</string>
@@ -22,7 +23,7 @@
     <string name="q2">工厂地址为空，请重新输入！</string>
     <string name="q3">主营产品为空，请重新输入！</string>
     <string name="q4">常用车型为空，请重新输入！</string>
-    <string name="q5">负责人为空，请重新输入！</string>
+    <string name="q5">收货人姓名为空，请重新输入！</string>
     <string name="q6">联系电话为空，请重新输入！</string>
     <string name="q7">单位电话为空，请重新输入！</string>
     <string name="q8">您的网址为空，请重新输入！</string>

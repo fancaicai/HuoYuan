@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_gyszl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLActivity">
-    <RelativeLayout
+    <RelativeLayout android:id="@+id/title_rl"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="@dimen/dp_48"
         android:background="#ffffff"
         >
         <TextView
-            android:id="@+id/grszl_text01"
+            android:id="@+id/back_tv"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="返回"
-            android:layout_marginLeft="@dimen/marginlefa"
-            android:layout_marginTop="18dp"
             android:textSize="@dimen/backtxtsize"
-            android:textColor="#222222"
+            android:text="返回"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"
+            android:layout_marginTop="@dimen/dp_24"
             />
-        <TextView
+        <TextView android:id="@+id/title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="发货地址"
-            android:textColor="#222222"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_alignBaseline="@+id/back_tv"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:textColor="@color/hei"
             android:textSize="@dimen/titlesize"
             />
         <TextView
@@ -37,18 +38,26 @@
             android:layout_height="match_parent"
             android:text="增加"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="25dp"
             android:textSize="@dimen/backtxtsize"
-            android:layout_alignBaseline="@+id/grszl_text01"
-            android:textColor="#222222"
+            android:layout_alignBaseline="@+id/title_tv"
+            android:textColor="@color/back_tv_selector_show"
             />
+
     </RelativeLayout>
-    <View
+    <View android:id="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/shenhui"/>
+        android:layout_height="1px"
+        android:layout_below="@+id/title_rl"
+        android:background="@color/hei"/>
     <ListView
         android:id="@+id/gyszl_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line"></ListView>
+    <ProgressBar android:id="@+id/fhdz_pro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+       />
+</RelativeLayout>

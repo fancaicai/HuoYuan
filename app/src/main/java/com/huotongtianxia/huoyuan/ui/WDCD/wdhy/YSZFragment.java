@@ -12,15 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.huotongtianxia.huoyuan.R;
+import com.huotongtianxia.huoyuan.bean.DDXQBean;
+import com.huotongtianxia.huoyuan.bean.QRSHBean;
 import com.huotongtianxia.huoyuan.bean.WDHYBBean;
 import com.huotongtianxia.huoyuan.bean.WDHYBean;
 import com.huotongtianxia.huoyuan.bean.WDHYQXBean;
 import com.huotongtianxia.huoyuan.bean.WDHYSCBean;
-import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDActivity;
+import com.huotongtianxia.huoyuan.ui.WDCD.ddgz.DdgzActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.ddxq.DDXQActivity;
-import com.huotongtianxia.huoyuan.ui.WDCD.grzl.GRZLActivity;
+import com.huotongtianxia.huoyuan.ui.WDCD.ddxq.DDXQContract;
+import com.huotongtianxia.huoyuan.ui.WDCD.ddxq.DDXQPresreter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,24 +35,28 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class YSZFragment extends Fragment implements WDHYContract.View {
+public class YSZFragment extends Fragment implements WDHYContract.View, DJDView {
     @Bind(R.id.ysz_list)
     ListView yszList;
+    @Bind(R.id.loading_preb)
+    ProgressBar loadingPreb;
     private Context context;
     private View view;
     private int status1 = 1;
     private List<WDHYBean.DataBean> list = new ArrayList<>();
-    private WDHYAdapter adapter;
+    public static WDHYAdapter adapter;
     private String num;
     private String id;
     private String order_num;
     private Activity activity;
-
+    private  Bundle bundle;
+    private String ORDER_NUM="order_num";
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getContext();
         activity = getActivity();
+        bundle=new Bundle();
         adapter = new WDHYAdapter(context, list, status1);
     }
 
@@ -56,22 +64,23 @@ public class YSZFragment extends Fragment implements WDHYContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_ysz, container, false);
-        list.clear();
-        WDHYPresreter presreter = new WDHYPresreter(this, status1,id,order_num);
-        presreter.getData();
         ButterKnife.bind(this, view);
+        list.clear();
+        WDHYPresreter presreter = new WDHYPresreter(this, status1, id, order_num, this, context);
+        presreter.getData();
         yszList.setAdapter(adapter);
+
         yszList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(context, DDXQActivity.class);
                 num = list.get(i).getOrder_num();
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("num",num);
+                bundle1.putString("num", num);
                 intent.putExtras(bundle1);
                 activity.finish();
                 startActivity(intent);
-
+                activity.finish();
             }
         });
         return view;
@@ -79,7 +88,10 @@ public class YSZFragment extends Fragment implements WDHYContract.View {
 
     @Override
     public void onResponse(WDHYBean wdhyBean) {
-    adapter.reload(wdhyBean.getData());
+        adapter.reload(wdhyBean.getData());
+//        if (adapter.getCount()==1) {
+//            DdgzActivity.open(context,order_num);
+//        }
     }
 
     @Override
@@ -97,6 +109,8 @@ public class YSZFragment extends Fragment implements WDHYContract.View {
 
     }
 
+
+
     @Override
     public void onFailure(String s) {
 
@@ -106,5 +120,15 @@ public class YSZFragment extends Fragment implements WDHYContract.View {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void showProgressBa() {
+        loadingPreb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBa() {
+        loadingPreb.setVisibility(View.GONE);
     }
 }

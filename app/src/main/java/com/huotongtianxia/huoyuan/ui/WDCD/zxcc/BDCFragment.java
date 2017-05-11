@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.ZXCCBBean;
@@ -22,9 +23,11 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BDCFragment extends Fragment implements ZXCCBContract.View {
+public class BDCFragment extends Fragment implements ZXCCBContract.View, ZXCCView {
     @Bind(R.id.bdc_list)
     MyListView bdcList;
+    @Bind(R.id.bdc_preb)
+    ProgressBar bdcPreb;
     private View view;
     private Context context;
     private List<ZXCCBBean.DataBean> list = new ArrayList<>();
@@ -41,9 +44,9 @@ public class BDCFragment extends Fragment implements ZXCCBContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_bdc, container, false);
-        ZXCCBPresreter presreter = new ZXCCBPresreter(this);
-        presreter.getData();
         ButterKnife.bind(this, view);
+        ZXCCBPresreter presreter = new ZXCCBPresreter(this, this, context);
+        presreter.getData();
         bdcList.setAdapter(adapter);
         return view;
 
@@ -63,5 +66,15 @@ public class BDCFragment extends Fragment implements ZXCCBContract.View {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void showProgressBar() {
+        bdcPreb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBa() {
+        bdcPreb.setVisibility(View.GONE);
     }
 }

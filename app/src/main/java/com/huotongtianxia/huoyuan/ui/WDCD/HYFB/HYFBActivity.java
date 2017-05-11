@@ -1,34 +1,34 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.HYFB;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bigkoo.pickerview.TimePopupWindow;
 import com.huotongtianxia.huoyuan.R;
-import com.huotongtianxia.huoyuan.bean.GSZLBean;
 import com.huotongtianxia.huoyuan.bean.HYFB2Bean;
 import com.huotongtianxia.huoyuan.bean.HYFBBean;
 import com.huotongtianxia.huoyuan.bean.HYFBSHBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.wdhy.WDHYActivity;
-import com.huotongtianxia.huoyuan.util.ToastUtil;
 import com.huotongtianxia.huoyuan.widget.LoadingDialog;
 
 import java.text.SimpleDateFormat;
@@ -37,6 +37,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 //货源发布
 public class HYFBActivity extends AppCompatActivity implements HYFBContract.View {
 
@@ -68,10 +69,217 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     Button hyfbBtn;
     @Bind(R.id.back_tv)
     TextView backTv;
-    private String name,we,send,truck_type,truck_length,provinc,cit,rmb;
+    private String name, we, send, truck_type, truck_length, provinc, cit, rmb;
     private LoadingDialog loadingDialog;
     private int fhrid, shrid;
     TimePopupWindow pwTime;
+
+
+    @OnClick(R.id.hyfb_et1)
+    void hyfb() {
+
+        final PopupWindow popupWindow = new PopupWindow(this);
+        popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+        popupWindow.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setAnimationStyle(R.style.AnimBottom);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.goodsname_layout, null);
+        popupWindow.setContentView(view);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
+//        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//         popupWindow.setBackgroundDrawable(new ColorDrawable(0x50000000));
+//        final WindowManager.LayoutParams wlBackground = getWindow().getAttributes();
+//        wlBackground.alpha = 0.5f;      // 0.0 完全不透明,1.0完全透明
+//        getWindow().setAttributes(wlBackground);
+//        popupWindow.setTouchable(true);
+//        popupWindow.setFocusable(false);
+//        popupWindow.setOutsideTouchable(false);
+        popupWindow.showAtLocation(hyfbEt1, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        ViewHolder viewHolder=new ViewHolder(view);
+        viewHolder.phTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("普货");
+            }
+        });
+        viewHolder.zhTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("重货");
+            }
+        });       viewHolder.paohTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("泡货");
+            }
+        });       viewHolder.sbTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("设备");
+            }
+        });       viewHolder.pjTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("配件");
+            }
+        });
+        viewHolder.bhTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("百货");
+            }
+        });
+        viewHolder.jcTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("建材");
+            }
+        });
+        viewHolder.spTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("食品");
+            }
+        });
+        viewHolder.ylTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("饮料");
+            }
+        });
+        viewHolder.hgTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("化工");
+            }
+        });
+        viewHolder.sgTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("水果");
+            }
+        });
+        viewHolder.scTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("蔬菜");
+            }
+        });
+        viewHolder.mcTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("木材");
+            }
+        });
+        viewHolder.mtTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("煤炭");
+            }
+        });
+        viewHolder.shicaiTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("石材");
+            }
+        });
+        viewHolder.jjTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("家具");
+            }
+        });
+        viewHolder.smTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("树苗");
+            }
+        });
+        viewHolder.hfTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("化肥");
+            }
+        });
+        viewHolder.lsTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("粮食");
+            }
+        });
+        viewHolder.gcTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("钢材");
+            }
+        });
+        viewHolder.pijTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("啤酒");
+            }
+        });
+        viewHolder.nnTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("牛奶");
+            }
+        });
+        viewHolder.kqsTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("矿泉水");
+            }
+        });
+        viewHolder.thTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("炭黑");
+            }
+        });
+        viewHolder.qtTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                hyfbEt1.setText("其他");
+            }
+        });
+        viewHolder.btncal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +304,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
         pwTime = new TimePopupWindow(this, TimePopupWindow.Type.YEAR_MONTH_DAY);
         //时间选择后回调
         pwTime.setOnTimeSelectListener(new TimePopupWindow.OnTimeSelectListener() {
-//时间选择完成后，将选择的时间设置到相应的控件上
+            //时间选择完成后，将选择的时间设置到相应的控件上
             @Override
             public void onTimeSelect(Date date) {
                 send = getTime(date);
@@ -123,7 +331,8 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     public void onClick() {
         login();
     }
-//发货页面的点击事件
+
+    //发货页面的点击事件
     public void initView1() {
 //        点击发货常用地址，跳转到了发货常用地址页面
         hyfbFhdzLin.setOnClickListener(new View.OnClickListener() {
@@ -227,7 +436,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
             name = hyfbEt1.getText().toString().trim();    //获取当前输入的用户名和密码信息
             we = hyfbEt2.getText().toString().trim();
             rmb = hyfbEt3.getText().toString().trim();
-            HYFBPresreter presreter = new HYFBPresreter(this,fhrid,shrid,name,we,send,truck_length,truck_type,cit,provinc,rmb);
+            HYFBPresreter presreter = new HYFBPresreter(this, fhrid, shrid, name, we, send, truck_length, truck_type, cit, provinc, rmb);
             presreter.getData();
         }
     }
@@ -250,7 +459,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
             Toast.makeText(this, getString(R.string.hyfb_we),
                     Toast.LENGTH_SHORT).show();
             return false;
-        }  else if (send == null) {
+        } else if (send == null) {
             Toast.makeText(this, "请选择发货时间", Toast.LENGTH_SHORT).show();
             return false;
         } else if (truck_type.toString().trim().equals("车型")) {
@@ -291,4 +500,68 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
 
     }
 
+
+
+    static class ViewHolder {
+        @Bind(R.id.ph_tv)
+        TextView phTv;
+        @Bind(R.id.zh_tv)
+        TextView zhTv;
+        @Bind(R.id.paoh_tv)
+        TextView paohTv;
+        @Bind(R.id.sb_tv)
+        TextView sbTv;
+        @Bind(R.id.pj_tv)
+        TextView pjTv;
+        @Bind(R.id.tableRow1)
+        TableRow tableRow1;
+        @Bind(R.id.bh_tv)
+        TextView bhTv;
+        @Bind(R.id.jc_tv)
+        TextView jcTv;
+        @Bind(R.id.sp_tv)
+        TextView spTv;
+        @Bind(R.id.yl_tv)
+        TextView ylTv;
+        @Bind(R.id.hg_tv)
+        TextView hgTv;
+        @Bind(R.id.tableRow2)
+        TableRow tableRow2;
+        @Bind(R.id.sg_tv)
+        TextView sgTv;
+        @Bind(R.id.sc_tv)
+        TextView scTv;
+        @Bind(R.id.mc_tv)
+        TextView mcTv;
+        @Bind(R.id.mt_tv)
+        TextView mtTv;
+        @Bind(R.id.shicai_tv)
+        TextView shicaiTv;
+        @Bind(R.id.jj_tv)
+        TextView jjTv;
+        @Bind(R.id.sm_tv)
+        TextView smTv;
+        @Bind(R.id.hf_tv)
+        TextView hfTv;
+        @Bind(R.id.ls_tv)
+        TextView lsTv;
+        @Bind(R.id.gc_tv)
+        TextView gcTv;
+        @Bind(R.id.pij_tv)
+        TextView pijTv;
+        @Bind(R.id.nn_tv)
+        TextView nnTv;
+        @Bind(R.id.kqs_tv)
+        TextView kqsTv;
+        @Bind(R.id.th_tv)
+        TextView thTv;
+        @Bind(R.id.qt_tv)
+        TextView qtTv;
+        @Bind(R.id.btncal)
+        TextView btncal;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
 }

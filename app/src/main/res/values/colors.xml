@@ -22,5 +22,9 @@
     <color name="nobacktvpresscolor">#333333</color>
     <color name="half_transparent_black">#BB000000</color>
     <color name="line_and_outline_grey">#d9d9d9</color>
-    <color name="touming">#30000000</color>
+    <color name="touming">#80ffffff</color>
+    <color name="goodsname">#F2F0F1</color>
+    <color name="blue">#52A2E1</color>
+
+
 </resources>

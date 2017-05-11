@@ -2,233 +2,312 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TableLayout
+    android:layout_height="match_parent"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/ffffff">
+    <TextView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="货物类型："
+        android:textColor="@color/hei"
+        android:layout_marginTop="6dp"
+        android:textSize="@dimen/backtxtsize"
+        android:layout_marginLeft="@dimen/marginlefa"/>
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:padding="10dp"
+        android:padding="6dp"
         >
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/ph_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="普货"
+                android:textColor="@color/hei"
                 android:gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:textSize="@dimen/backtxtsize"
+                android:background="@drawable/goodname_layoutshape2"
                 />
             <TextView
                 android:id="@+id/zh_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="重货"
-                android:gravity="center"/>
+                android:textColor="@color/hei"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:textSize="@dimen/backtxtsize"
+                android:background="@drawable/goodname_layoutshape2"/>
             <TextView
                 android:id="@+id/paoh_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="泡货"
-                android:gravity="center"/>
-            <Button
+                android:textColor="@color/hei"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:textSize="@dimen/backtxtsize"
+                android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
                 android:id="@+id/sb_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="设备"
-                android:gravity="center"/>
+                android:textColor="@color/hei"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:textSize="@dimen/backtxtsize"
+                android:background="@drawable/goodname_layoutshape2"/>
             <TextView
                 android:id="@+id/pj_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设备"
-                android:gravity="center"/>
-        </TableRow>
+                android:text="配件"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:textSize="@dimen/backtxtsize"
+                android:background="@drawable/goodname_layoutshape2"/>
 
+        </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
             <TextView
                 android:id="@+id/bh_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="百货 "
-                android:padding="10dp"
+                android:text="百货"
+                android:textColor="@color/hei"
                 android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"
                 />
             <TextView
-                android:id="@+id/tvmfd"
+                android:id="@+id/jc_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="90dp"
-                android:text=""
-                />
+                android:text="建材"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
             <TextView
-                android:id="@+id/tvmf"
+                android:id="@+id/sp_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="食品"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/yl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="饮料"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/hg_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="化工"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+        </TableRow>
 
-                android:text="卖方" />
+        <TableRow
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/sg_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水果"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"
+                />
+            <TextView
+                android:id="@+id/sc_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="蔬菜"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/mc_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="木材"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/mt_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="煤炭"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/shicai_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="石材"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
 
         </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/tvqs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="契税 "
-                />
-
-            <EditText
-                android:id="@+id/etqs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:width="80dp"
-                />
+        <TableRow
+            android:layout_marginBottom="10dp">
 
             <TextView
-                android:id="@+id/tvyes"
+                android:id="@+id/jj_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="营业帨" />
-
-            <EditText
-                android:id="@+id/etyes"
+                android:text="家具"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"
+                />
+            <TextView
+                android:id="@+id/sm_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="60dp" />
-
+                android:text="树苗"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/hf_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="化肥"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/ls_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="粮食"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
+            <TextView
+                android:id="@+id/gc_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="钢材"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape2"/>
         </TableRow>
-
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/tvmjyyhs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="印花税"
-                />
-
-            <EditText
-                android:id="@+id/etmjyyhs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="90dp"
-                />
+        <TableRow
+            android:layout_marginBottom="10dp">
 
             <TextView
-                android:id="@+id/tvmijyyhs"
+                android:id="@+id/pij_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="印花税" />
-
-            <EditText
-                android:id="@+id/etmijyyhs"
+                android:text="啤酒"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape1"
+                />
+            <TextView
+                android:id="@+id/nn_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="60dp" />
+                android:text="牛奶"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape1"/>
+            <TextView
+                android:id="@+id/kqs_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="矿泉水"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape1"/>
+            <TextView
+                android:id="@+id/th_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="炭黑"
+                android:textColor="@color/hei"
+                android:gravity="center"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape1"/>
+            <TextView
+                android:id="@+id/qt_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他"
+                android:gravity="center"
+                android:textColor="@color/blue"
+                 android:layout_weight="1"                 android:paddingTop="5dp"                 android:paddingBottom="5dp"                 android:layout_marginLeft="6dp"                 android:layout_marginRight="6dp"                 android:textSize="@dimen/backtxtsize"                 android:background="@drawable/goodname_layoutshape"/>
         </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/tvmjyfws"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="交易服务税"
-                />
-
-            <EditText
-                android:id="@+id/etmjyfws"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="80dp" />
-
-            <TextView
-                android:id="@+id/tvmijyfws"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="交易服务税" />
-
-            <EditText
-                android:id="@+id/etmijyfws"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="60dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/tvmcqdjf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="产权登记费"
-                />
-
-            <EditText
-                android:id="@+id/etmcqdjf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="80dp" />
-
-            <TextView
-                android:id="@+id/tvmicqdjf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="个人所得税" />
-
-            <EditText
-                android:id="@+id/etmicqdjf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="60dp" />
-        </TableRow>
-        <TableRow>
-
-            <TextView
-                android:id="@+id/tvtotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="合计"
-                />
-
-            <EditText
-                android:id="@+id/ettotalprice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="95dp" />
-
-            <TextView
-                android:id="@+id/tvmtotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="合计" />
-
-            <EditText
-                android:id="@+id/etmtotalprice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="70dp" />
-        </TableRow>
-
-        <TableRow ><Button
-            android:id="@+id/btncal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="计算" /></TableRow>
     </TableLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/fahuo"
+        />
+    <TextView
+        android:id="@+id/btncal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textSize="@dimen/backtxtsize"
+        android:gravity="center"
+        android:text="取消"/>
+    </LinearLayout>
 </LinearLayout>

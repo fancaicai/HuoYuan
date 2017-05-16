@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_wz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WZActivity">
+
         <RelativeLayout
+            android:id="@+id/wd_rel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_48"
             android:background="@color/ffffff"
@@ -18,6 +20,8 @@
                 android:gravity="center"
                 android:textSize="@dimen/backtxtsize"
                 android:text="返 回"
+                android:drawableLeft="@drawable/back_state_focused"
+                android:drawablePadding="@dimen/dp_10"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/marginlefa"
                 android:textColor="@color/back_tv_selector_show"
@@ -35,26 +39,74 @@
                 />
         </RelativeLayout>
     <View
+        android:id="@+id/wd_view"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/hei"/>
-        <TextView
+        android:background="@color/hei"
+        android:layout_below="@id/wd_rel"/>
+        <!--<TextView
             android:id="@+id/wz_text1"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="详细地址"
             android:gravity="center"
-            />
-        <com.amap.api.maps2d.MapView
-            android:id="@+id/wz_mapview"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"/>
+            android:layout_below="@id/wd_view"
+            />-->
+
+
+
+
+    <TextView
+        android:id="@+id/wd_txt_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="短信定位，更精确  >"
+        android:textColor="@color/ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:textSize="@dimen/titlesize"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:gravity="center"
+        android:background="@color/zi"/>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/wz_mapview"
+        android:layout_below="@id/wd_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/wd_txt_location"
+        android:layout_marginBottom="5dp"/>
 
     <ListView
         android:id="@+id/wz_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="260dp"
+        android:layout_above="@+id/wd_txt_location"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginBottom="5dp"
+        android:background="@color/ffffff"
+        android:divider="@null">
+
     </ListView>
+
+    <TextView
+        android:id="@+id/wz_txt_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="手机定位信息"
+        android:textColor="@color/ffffff"
+        android:textSize="@dimen/titlesize"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_above="@id/wz_list"
+        android:gravity="center"
+        android:background="@color/zi"/>
     <!--<TextView-->
             <!--android:id="@+id/wz_text2"-->
             <!--android:layout_width="match_parent"-->
@@ -83,4 +135,4 @@
             <!--android:text="详细地址"-->
             <!--android:gravity="center"-->
             <!--/>-->
-</LinearLayout>
+</RelativeLayout>

@@ -1,26 +1,27 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.os.Build;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.location.CoordinateConverter;
 import com.amap.api.location.DPoint;
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.CameraUpdateFactory;
-import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.BitmapDescriptorFactory;
-import com.amap.api.maps2d.model.Marker;
-import com.amap.api.maps2d.model.MarkerOptions;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
+import com.amap.api.maps.MapView;
+import com.amap.api.maps.UiSettings;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.geocoder.GeocodeResult;
@@ -38,14 +39,14 @@ import java.util.concurrent.ExecutorService;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class WZActivity extends AppCompatActivity implements WZContract.View
-        , GeocodeSearch.OnGeocodeSearchListener,  AMap.OnMarkerClickListener {
+        , GeocodeSearch.OnGeocodeSearchListener, AMap.OnMarkerClickListener {
 
 
-    @Bind(R.id.wz_text1)
-    TextView wzText1;
+    //    @Bind(R.id.wz_text1)
+//    TextView wzText1;
     @Bind(R.id.wz_mapview)
     MapView wzMapview;
     DPoint examplePoint = null;
@@ -54,7 +55,9 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
     @Bind(R.id.back_tv)
     TextView backTv;
     @Bind(R.id.activity_wz)
-    LinearLayout activityWz;
+    RelativeLayout activityWz;
+    @Bind(R.id.wz_txt_location)
+    TextView wzTxtLocation;
     private WZAdapter adapter;
     private GeocodeSearch geocoderSearch;
     private DPoint destPoint;
@@ -104,6 +107,15 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
     }
 
 
+    /**
+     * 自定义字体
+     *
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     /**
      * 初始化AMap对象
@@ -115,10 +127,26 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
                     .icon(BitmapDescriptorFactory
                             .defaultMarker(BitmapDescriptorFactory.HUE_RED)));
             aMap.setOnMarkerClickListener(this);
+
         }
+
+        UiSettings uiSettings = aMap.getUiSettings();
+        //uiSettings.setZoomPosition(AMapOptions.ZOOM_POSITION_RIGHT_CENTER);
+        uiSettings.setZoomControlsEnabled(false);
         geocoderSearch = new GeocodeSearch(this);
         geocoderSearch.setOnGeocodeSearchListener(this);
         progDialog = new ProgressDialog(this);
+
+        //设置中心点
+        //屏幕宽
+//        Display My_Display=getWindow().getWindowManager().getDefaultDisplay();
+//        int Max_X=My_Display.getWidth();
+        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        int width = outMetrics.widthPixels;
+        int height=wzTxtLocation.getTop();
+        aMap.setPointToCenter(width/2, height/2);
     }
 
     /**
@@ -200,10 +228,12 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
         if (rCode == AMapException.CODE_AMAP_SUCCESS) {
             if (result != null && result.getRegeocodeAddress() != null
                     && result.getRegeocodeAddress().getFormatAddress() != null) {
-                wzText1.setText(item1 + result.getRegeocodeAddress().getCity());
+                //wzText1.setText(item1 + result.getRegeocodeAddress().getCity());
                 aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                         AMapUtil.convertToLatLng(latLonPoint), 15));
                 regeoMarker.setPosition(AMapUtil.convertToLatLng(latLonPoint));
+
+
                 dz = list2.get(b) + "\n" + result.getRegeocodeAddress().getFormatAddress();
                 b++;
                 list1.add(dz);

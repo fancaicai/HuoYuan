@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/two_viewpager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <View
+        android:id="@+id/two_viewpager_view"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/two_viewpager_txt0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titlesize"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_toLeftOf="@id/two_viewpager_view"
+        android:textStyle="bold"
+        android:textColor="@color/zi"
+        android:text="pager0"/>
+
+
+    <TextView
+        android:id="@+id/two_viewpager_txt1"
+        android:layout_toRightOf="@id/two_viewpager_txt0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titlesize"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="@dimen/titlesize"
+        android:textStyle="bold"
+        android:textColor="@color/home1"
+        android:text="pager1"/>
+
+    <View
+        android:id="@+id/two_viewpager_txt0_selected"
+        android:layout_height="2dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/two_viewpager_txt0"
+        android:layout_alignLeft="@id/two_viewpager_txt0"
+        android:layout_alignRight="@id/two_viewpager_txt0"
+        android:background="@color/zi"
+        />
+    <View
+        android:id="@+id/two_viewpager_txt1_selected"
+        android:layout_height="2dp"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/two_viewpager_txt1"
+        android:layout_alignLeft="@id/two_viewpager_txt1"
+        android:layout_alignRight="@id/two_viewpager_txt1"
+        android:background="@color/zi"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/hei"
+        android:layout_below="@id/two_viewpager_txt0_selected"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/two_viewpager_pager"
+        android:layout_below="@id/two_viewpager_txt0_selected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+</RelativeLayout>
+
+
+
+

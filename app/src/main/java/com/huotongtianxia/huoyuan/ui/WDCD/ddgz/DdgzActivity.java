@@ -3,70 +3,47 @@ package com.huotongtianxia.huoyuan.ui.WDCD.ddgz;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.Typeface;
-import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.Interpolator;
-import android.widget.Toast;
-
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.location.CoordinateConverter;
-import com.amap.api.location.DPoint;
 import com.amap.api.maps2d.AMap;
-
 import com.amap.api.maps2d.AMapOptions;
 import com.amap.api.maps2d.AMapUtils;
 import com.amap.api.maps2d.CameraUpdate;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.Projection;
-import com.amap.api.maps2d.model.BitmapDescriptor;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.LatLngBounds;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
-
-import com.amap.api.maps2d.model.Text;
-import com.amap.api.maps2d.model.TextOptions;
-import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
-import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.DDXQBean;
 import com.huotongtianxia.huoyuan.bean.SJLIDWBean;
-import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WZActivity;
-import com.huotongtianxia.huoyuan.util.LogUtils;
 import com.huotongtianxia.huoyuan.util.ToastUtil;
 
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 //订单跟踪页面
 public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClickListener, GeocodeSearch.OnGeocodeSearchListener,DdgzView, AMap.OnMapLoadedListener, AMap.OnMarkerDragListener, AMap.OnInfoWindowClickListener, AMap.InfoWindowAdapter {
     private Marker mCurrentMarker;
@@ -130,6 +107,15 @@ public class DdgzActivity extends AppCompatActivity implements AMap.OnMarkerClic
         //初始化定位
         initlocation();
 
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     /**

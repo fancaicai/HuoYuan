@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/hei</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
     </style>
 
     <style name="myschedule_current_month_tv">
@@ -39,5 +40,17 @@
         <item name="android:gravity">center</item>
         <item name="android:maxLines">2</item>
         <item name="textAllCaps">@bool/abc_config_actionMenuItemAllCaps</item>
+    </style>
+
+    <style name="TabLayoutTextZXCC" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/nobacktvpresscolor</item>
+        <!--<item name="android:layout_marginBottom">1dp</item>-->
+        <!--<item name="android:layout_marginTop">5dp</item>-->
+        <!--<item name="android:layout_gravity">bottom</item>-->
+    </style>
+    <!--字体-->
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
+        <item name="fontPath">fonts/msyh.ttf</item>
     </style>
 </resources>

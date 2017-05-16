@@ -16,6 +16,7 @@
     <color name="shenhui">#999</color>
     <color name="fahuo">#ebebeb</color>
     <color name="zi">#8B79E0</color>
+    <color name="zi_50">#998B79E0</color>
     <color name="hui1">#f1f1f1</color>
     <color name="press_zi">#B9ACF6</color>
     <color name="backtvpresscolor">#999999</color>
@@ -25,6 +26,8 @@
     <color name="touming">#80ffffff</color>
     <color name="goodsname">#F2F0F1</color>
     <color name="blue">#52A2E1</color>
+    <color name="blue1">#24A1FD</color>
+    <color name="blue2">#515AD1</color>
 
 
 </resources>

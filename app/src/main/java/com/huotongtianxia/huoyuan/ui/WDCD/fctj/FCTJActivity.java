@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.fctj;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FCTJActivity extends AppCompatActivity implements FCTJContract.View {
     @Bind(R.id.fctj_list)
@@ -76,6 +78,16 @@ public class FCTJActivity extends AppCompatActivity implements FCTJContract.View
             }
         });
         setOnlistener();
+    }
+
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void initView() {

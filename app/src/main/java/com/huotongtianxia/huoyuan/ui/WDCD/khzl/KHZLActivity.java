@@ -2,14 +2,12 @@ package com.huotongtianxia.huoyuan.ui.WDCD.khzl;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -18,18 +16,18 @@ import com.huotongtianxia.huoyuan.bean.FHRBean;
 import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLView;
-import com.huotongtianxia.huoyuan.widget.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 //客户资料
 public class KHZLActivity extends AppCompatActivity implements KHZLContract.View, GYSZLView {
     @Bind(R.id.khzl_listview)
-    MyListView khzlListview;
+    ListView khzlListview;
     @Bind(R.id.back_tv)
     TextView backTv;
     @Bind(R.id.add_tv)
@@ -75,6 +73,15 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
         });
 
 
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void initView() {

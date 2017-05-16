@@ -8,11 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.ZXCCBBean;
-import com.huotongtianxia.huoyuan.widget.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  */
 public class BDCFragment extends Fragment implements ZXCCBContract.View, ZXCCView {
     @Bind(R.id.bdc_list)
-    MyListView bdcList;
+    ListView bdcList;
     @Bind(R.id.bdc_preb)
     ProgressBar bdcPreb;
     private View view;

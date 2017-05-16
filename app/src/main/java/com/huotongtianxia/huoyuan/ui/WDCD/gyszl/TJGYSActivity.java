@@ -1,12 +1,11 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.gyszl;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
@@ -14,12 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +28,7 @@ import com.huotongtianxia.huoyuan.widget.ChangeAddressPopwindow;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 //常用地址页面
 public class TJGYSActivity extends AppCompatActivity implements TJGYSContract.View {
@@ -114,6 +110,14 @@ public class TJGYSActivity extends AppCompatActivity implements TJGYSContract.Vi
         ButterKnife.bind(this);
     }
 
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 //    @OnClick({R.id.tjgrs_img01, R.id.tjgrs_text01, R.id.jtgys_btn})
 //    public void onClick(View view) {
 //        switch (view.getId()) {
@@ -228,7 +232,6 @@ public class TJGYSActivity extends AppCompatActivity implements TJGYSContract.Vi
                             + contactId, null, null);
             if (phone.moveToFirst()) {
                 for (; !phone.isAfterLast(); phone.moveToNext()) {
-
                     int index = phone
                             .getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
                     int typeindex = phone

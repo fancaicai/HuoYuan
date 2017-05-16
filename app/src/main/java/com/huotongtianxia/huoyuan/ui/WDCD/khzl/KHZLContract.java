@@ -4,7 +4,6 @@ import com.huotongtianxia.huoyuan.base.IBaseMode;
 import com.huotongtianxia.huoyuan.base.IBasePresenter;
 import com.huotongtianxia.huoyuan.base.IBaseView;
 import com.huotongtianxia.huoyuan.bean.FHRBean;
-import com.huotongtianxia.huoyuan.bean.KHZLBean;
 import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 
@@ -15,6 +14,7 @@ import retrofit2.Callback;
  */
 
 public class KHZLContract {
+
     public interface View extends IBaseView {
         void onResponse(FHRBean khzlBean);
         void onResponse1(SHRBean khzlBean);

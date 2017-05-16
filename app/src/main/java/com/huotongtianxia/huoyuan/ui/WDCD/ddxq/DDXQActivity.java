@@ -2,14 +2,11 @@ package com.huotongtianxia.huoyuan.ui.WDCD.ddxq;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,6 +20,7 @@ import com.huotongtianxia.huoyuan.ui.WDCD.ddgz.DdgzActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DDXQActivity extends AppCompatActivity implements DDXQContract.View, DDXQView {
 
@@ -76,6 +74,15 @@ public class DDXQActivity extends AppCompatActivity implements DDXQContract.View
         DDXQPresreter presreter = new DDXQPresreter(this, num,this,context);
         presreter.getData();
         ButterKnife.bind(this);
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @OnClick({R.id.ddxq_hwwzbtn, R.id.ddxq_button, R.id.back_tv})

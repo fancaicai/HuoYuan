@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.login;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.huotongtianxia.huoyuan.R;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ZHMMActivity extends AppCompatActivity {
     
@@ -27,5 +30,14 @@ public class ZHMMActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_zhmm);
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

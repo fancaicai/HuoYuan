@@ -8,11 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.ZXCCWBean;
-import com.huotongtianxia.huoyuan.widget.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,10 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class HCCFragment extends Fragment implements ZXCCWContract.View ,ZXCCView {
     @Bind(R.id.HCC_list)
-    MyListView HCCList;
+    ListView HCCList;
     @Bind(R.id.hcc_preb)
     ProgressBar hccPreb;
     private View view;

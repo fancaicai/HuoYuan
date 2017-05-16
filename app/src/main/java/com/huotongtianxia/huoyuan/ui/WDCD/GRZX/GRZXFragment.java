@@ -21,7 +21,6 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.GRZXBean;
-import com.huotongtianxia.huoyuan.ui.WDCD.clrz.CLRZActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.fctj.FCTJActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.gszl.GSZLActivity;
 import com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLActivity;
@@ -316,7 +315,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 grzxText55.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText66.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText77.setTextColor(activity.getResources().getColor(R.color.home1));
-                intent = new Intent(activity, CLRZActivity.class);
+                intent = new Intent(activity, ServiceInfoActivity.class);
                 startActivity(intent);
                 break;
  //            点击服务专项的文字，跳转到车辆认证界面
@@ -333,7 +332,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 grzxText55.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText66.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText77.setTextColor(activity.getResources().getColor(R.color.home1));
-                intent = new Intent(activity, CLRZActivity.class);
+                intent = new Intent(activity, ServiceInfoActivity.class);
                 startActivity(intent);
                 break;
 //            点击服务专项的父布局，跳转到车辆认证界面
@@ -350,7 +349,7 @@ public class GRZXFragment extends Fragment implements GRZXContract.View {
                 grzxText55.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText66.setTextColor(activity.getResources().getColor(R.color.home1));
                 grzxText77.setTextColor(activity.getResources().getColor(R.color.home1));
-                intent = new Intent(activity, CLRZActivity.class);
+                intent = new Intent(activity, ServiceInfoActivity.class);
                 startActivity(intent);
                 break;
 

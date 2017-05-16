@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.grzl;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.huotongtianxia.huoyuan.bean.GRZLBean;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class GRZLActivity extends AppCompatActivity implements GRZLContract.View {
 
@@ -75,6 +77,15 @@ public class GRZLActivity extends AppCompatActivity implements GRZLContract.View
                 call(sjdh);
             }
         });
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private void call(String phone) {

@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,9 @@ import android.util.Log;
 
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.config.UrlConfig;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 //版本检测类
 public class GenActivity extends AppCompatActivity {
     private static final String TAG = "ActivityDemo";
@@ -22,6 +26,17 @@ public class GenActivity extends AppCompatActivity {
         intent.setData(content_url);
         startActivity(intent);
     }
+
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

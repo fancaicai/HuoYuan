@@ -1,6 +1,7 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.clrz;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -40,6 +41,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 //车辆认证的Activity
 public class CLRZActivity extends AppCompatActivity implements CLRZContract.View {
@@ -70,8 +72,8 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
     public static final int REQUEST_CODE_PICTURE4 = 41;
     public static final int REQUEST_CODE_CAMERA4 = 42;
     public static final int dd = 44;
-    @Bind(R.id.back_tv)
-    TextView backTv;
+    @Bind(R.id.clrz_back_tv)
+    TextView clrzBackTv;
     @Bind(R.id.activity_clrz)
     ScrollView activityClrz;
     private String picturePath;
@@ -104,7 +106,7 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
 //        id = bundle.getString("id");
     }
 
-    @OnClick({R.id.clrz_img1, R.id.clrz_img2, R.id.clrz_img3, R.id.clrz_img4, R.id.button,R.id.back_tv})
+    @OnClick({R.id.clrz_img1, R.id.clrz_img2, R.id.clrz_img3, R.id.clrz_img4, R.id.button,R.id.clrz_back_tv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.clrz_img1:
@@ -266,7 +268,7 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
             case R.id.button:
                 login();
                 break;
-            case R.id.back_tv:
+            case R.id.clrz_back_tv:
                 finish();
                 break;
         }
@@ -303,6 +305,15 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
             return false;
         }
         return true;
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

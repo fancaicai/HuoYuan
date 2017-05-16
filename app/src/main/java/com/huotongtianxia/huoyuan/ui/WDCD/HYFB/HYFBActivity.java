@@ -37,6 +37,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 //货源发布
 public class HYFBActivity extends AppCompatActivity implements HYFBContract.View {
@@ -69,6 +70,10 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     Button hyfbBtn;
     @Bind(R.id.back_tv)
     TextView backTv;
+    @Bind(R.id.sendgoods_lin)
+    LinearLayout sendgoodsLin;
+    @Bind(R.id.endgood_lin)
+    LinearLayout endgoodLin;
     private String name, we, send, truck_type, truck_length, provinc, cit, rmb;
     private LoadingDialog loadingDialog;
     private int fhrid, shrid;
@@ -100,7 +105,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
 //        popupWindow.setFocusable(false);
 //        popupWindow.setOutsideTouchable(false);
         popupWindow.showAtLocation(hyfbEt1, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-        ViewHolder viewHolder=new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.phTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,19 +119,22 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
                 popupWindow.dismiss();
                 hyfbEt1.setText("重货");
             }
-        });       viewHolder.paohTv.setOnClickListener(new View.OnClickListener() {
+        });
+        viewHolder.paohTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
                 hyfbEt1.setText("泡货");
             }
-        });       viewHolder.sbTv.setOnClickListener(new View.OnClickListener() {
+        });
+        viewHolder.sbTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
                 hyfbEt1.setText("设备");
             }
-        });       viewHolder.pjTv.setOnClickListener(new View.OnClickListener() {
+        });
+        viewHolder.pjTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
@@ -270,7 +278,30 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
-                hyfbEt1.setText("其他");
+                final PopupWindow popupWindow = new PopupWindow(HYFBActivity.this);
+                popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+                popupWindow.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+                popupWindow.setTouchable(true);
+                popupWindow.setFocusable(true);
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setAnimationStyle(R.style.AnimBottom);
+                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view1 = inflater.inflate(R.layout.goodsname_other_layout, null);
+                TextView enter = (TextView) view1.findViewById(R.id.enter_tv);
+                final EditText inputtype = (EditText) view1.findViewById(R.id.inputtype_tv);
+                enter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popupWindow.dismiss();
+                        hyfbEt1.setText(inputtype.getText());
+
+                    }
+                });
+                popupWindow.setContentView(view1);
+//                隐藏键盘
+//                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                popupWindow.showAtLocation(hyfbEt1, Gravity.CENTER, 0, 0);
             }
         });
         viewHolder.btncal.setOnClickListener(new View.OnClickListener() {
@@ -321,6 +352,15 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
         });
     }
 
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -335,7 +375,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     //发货页面的点击事件
     public void initView1() {
 //        点击发货常用地址，跳转到了发货常用地址页面
-        hyfbFhdzLin.setOnClickListener(new View.OnClickListener() {
+        sendgoodsLin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HYFBActivity.this, GYSZLActivity.class);
@@ -343,7 +383,7 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
             }
         });
 //        点击收货常用地址跳转到收货常用地址
-        hyfbShdzLin.setOnClickListener(new View.OnClickListener() {
+        endgoodLin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HYFBActivity.this, KHZLActivity.class);
@@ -499,7 +539,6 @@ public class HYFBActivity extends AppCompatActivity implements HYFBContract.View
     public void onFailure(String s) {
 
     }
-
 
 
     static class ViewHolder {

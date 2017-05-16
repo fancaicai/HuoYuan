@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+    <ImageView
+        android:id="@+id/item_wz_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/wd_location"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="@dimen/dp_20_1"
+        android:layout_marginLeft="@dimen/dp_20_1"/>
     <TextView
-        android:id="@+id/item_wz_text2"
+        android:id="@+id/item_wz_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="详细地址"
-        android:layout_marginTop="10dp"
+        tools:text="1小时前"
+        android:textSize="@dimen/dp_10"
+        android:layout_alignBottom="@id/item_wz_img"
+        android:layout_toRightOf="@+id/item_wz_img"
         />
-</LinearLayout>
+    <TextView
+        android:id="@+id/item_wz_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="太原市小店区"
+        android:textColor="@color/zi"
+        android:background="@drawable/wd_address"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/dp_10"
+        android:layout_below="@id/item_wz_img"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_20_1"/>
+</RelativeLayout>

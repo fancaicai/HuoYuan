@@ -17,6 +17,8 @@
             android:gravity="center"
             android:textSize="@dimen/backtxtsize"
             android:text="返 回"
+            android:drawableLeft="@drawable/back_state_focused"
+            android:drawablePadding="@dimen/dp_10"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/marginlefa"
             android:textColor="@color/back_tv_selector_show"
@@ -77,6 +79,7 @@
         android:layout_height="10dp"
         android:background="@color/fahuo"/>
     <LinearLayout
+        android:id="@+id/sendgoods_lin"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
@@ -167,6 +170,7 @@
         android:layout_height="10dp"
         android:background="@color/fahuo"/>
     <LinearLayout
+        android:id="@+id/endgood_lin"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"

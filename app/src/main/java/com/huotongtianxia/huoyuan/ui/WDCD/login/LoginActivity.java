@@ -1,6 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.login;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,6 +23,7 @@ import com.huotongtianxia.huoyuan.ui.WDCD.gen.GenPresreter;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LoginActivity extends AppCompatActivity implements GenContract.View{
 
@@ -62,6 +63,15 @@ public class LoginActivity extends AppCompatActivity implements GenContract.View
                 startActivity(intent);
                 break;
         }
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

@@ -165,6 +165,10 @@ public interface InterRetrofit {
     Call<FHRBean> loadFHRBean(@Field("factory_id") String factory_id);
 
     @FormUrlEncoded
+    @POST("api/GoodsPublish/facList")
+    Call<SHRBean> loadFHRBean1(@Field("factory_id") String factory_id);
+
+    @FormUrlEncoded
     @POST("api/GoodsPublish/customerList")
     Call<SHRBean> loadSHRBean(@Field("factory_id") String factory_id);
 

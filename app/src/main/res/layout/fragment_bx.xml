@@ -287,6 +287,7 @@
                     android:hint="承保火灾、爆炸、车辆碰撞倾覆事故、装卸搬运及暴雨等自然灾害锁造成的货物损失."
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:textSize="15dp"
                     android:background="@null"
                     />
@@ -544,26 +545,27 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:textSize="15dp"
                     />
-                <TextView
-                    android:id="@+id/bx_zk_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/bx_meiy_text1"
-                    android:text="展开"
-                    android:layout_marginRight="50dp"
-                    />
-                <ImageView
-                    android:id="@+id/bx_zk_img"
-                    android:layout_width="20dp"
-                    android:layout_height="15dp"
-                    android:src="@mipmap/bxxla_1"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/bx_meiy_text1"
-                    android:layout_marginRight="30dp"
-                    />
+                <!--<TextView-->
+                    <!--android:id="@+id/bx_zk_text"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_below="@+id/bx_meiy_text1"-->
+                    <!--android:text="展开"-->
+                    <!--android:layout_marginRight="50dp"-->
+                    <!--/>-->
+                <!--<ImageView-->
+                    <!--android:id="@+id/bx_zk_img"-->
+                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:src="@mipmap/bxxla_1"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_below="@+id/bx_meiy_text1"-->
+                    <!--android:layout_marginRight="30dp"-->
+                    <!--/>-->
                 <TextView
                     android:id="@+id/bx_meiy_text2"
                     android:layout_width="wrap_content"
@@ -573,6 +575,7 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:textSize="15dp"
+                    android:visibility="gone"
                     android:layout_below="@+id/bx_meiy_text1"
                     />
                 <TextView
@@ -580,21 +583,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@+id/bx_meiy_text1"
-                    android:text="收起"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_below="@+id/bx_meiy_text2"
+                    android:text="展开"
+                    android:drawableRight="@drawable/extend"
+                    android:drawablePadding="5dp"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_30"
                     />
-                <ImageView
-                    android:id="@+id/bx_sq_img"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@mipmap/ic_launcher"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@+id/bx_meiy_text1"
-                    android:layout_marginRight="30dp"
-                    />
+                <!--<ImageView-->
+                    <!--android:id="@+id/bx_sq_img"-->
+                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:background="@mipmap/ic_launcher"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_below="@+id/bx_meiy_text1"-->
+                    <!--android:layout_marginRight="30dp"-->
+                    <!--/>-->
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"

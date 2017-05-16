@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_gszl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.huotongtianxia.huoyuan.MainActivity">
+    <ImageView
+        android:id="@+id/service_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/service_bg"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ffffff"
+        android:textSize="@dimen/titlesize"
+        android:text="专职客服"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ffffff"
+        android:textSize="@dimen/dp_20_1"
+        android:text="货通天下"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginBottom="-20dp"
+        android:layout_alignBottom="@id/service_img"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20"
+        android:background="@color/zi_50"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/service_img"
+        android:layout_marginTop="40dp"
+        android:paddingTop="@dimen/dp_20_1"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20_1"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/service_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/service_img"
+                android:textSize="18dp"
+                android:textColor="@color/blue2"
+                android:layout_marginBottom="@dimen/dp_20_1"
+                android:layout_marginTop="@dimen/dp_20_1"
+                android:text="专职客服"/>
+            <!--<TextView
+                android:id="@+id/service_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/service_img"
+                android:textSize="18dp"
+                android:textColor="@color/blue2"
+                android:layout_marginBottom="@dimen/dp_20_1"
+                android:text="专职客服"/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titlesize"
+        android:text="您目前使用的为我公司山西货通天下网络科技有限公司为您专业打造的车辆调度系统，车源宝。您是我们很重要的合作伙伴，我们会更具您在发货过程中所产生的一系列问题进行针对性解决方案。我们会为您设计专属的发货头像（企业logo）、有专业的摄像师为您常发的货物进行拍照上传（让司机更了解您的货物）、为企业进行地图地理位置嵌入（让司机更能准确的找到装货地址）、厂家要求（避免司机车辆到位车辆不符合厂家要求）等一系列问题。
+我们将安排专职客服人员为您24小时不间断的服务，真正的做到您的调车贴身管家。如果您对目前的专职客服人员不太满意，您可以致电我们的客服电话0351-7825617，要求更换客服人员。"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/blue2"
+                android:layout_marginTop="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
+                android:text="服务模式"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titlesize"
+                android:text="我们对您的服务是永久免费的。我们都在服务的过程中希望得到您前期的一点配合：
+1、	希望您尽快的给我们您需要的车辆需求信息，第一时间在我们的平台上发布，我们给您即时调车；
+2、	希望您将您的要求提供给我们，比如，贵方需要入场车辆携带保温被、绳索、篷布等，避免车辆到场产生不必要的麻烦；
+3、	希望您提供准确的收货地址，避免车辆装货之后导致的目标地址不同而与承运人产生纠纷，比如江西省南昌市与江西省南昌市南昌县，您可以在收货人管理里面进行添加，方便快速准确发货；
+4、	希望您可以提供您的常用物流流向和常用的调车价格，方便我们按照您的要求给您安排合适的车源，避免在调车过程中给您造成没必要的打扰；
+5、	如果您的车源已经安排妥当，麻烦您及时下线，避免在在安排好车辆之后给您继续造成没必要的打扰。"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/blue2"
+                android:layout_marginTop="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
+                android:text="合作模式"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titlesize"
+                android:text="您的专职客服人员会在海量的车源里面按照您的要求找到最合适的车辆，并让车辆到达贵司厂区门口，在获得您的同意之后，您可以在车辆到达厂区之前，随时查看车辆的位置，避免车辆定而不发的情况。"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/blue2"
+            android:layout_marginTop="@dimen/dp_20_1"
+            android:layout_marginBottom="@dimen/dp_20_1"
+            android:text="放空赔付"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titlesize"
+            android:layout_marginBottom="@dimen/dp_20_1"
+            android:text="如果在您的要求下，车辆到达贵公司厂区门口，贵司放弃使用该车辆，则贵公司要对我们的司机进行一定的经济补偿。"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
+

@@ -2,8 +2,8 @@ package com.huotongtianxia.huoyuan.ui.WDCD.bx;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,20 +27,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.huotongtianxia.huoyuan.R.id.bx_sq_text;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class BXFragment extends Fragment implements BXContract.View {
-    @Bind(R.id.bx_zk_text)
-    TextView bxZkText;
-    @Bind(R.id.bx_zk_img)
-    ImageView bxZkImg;
+//    @Bind(R.id.bx_zk_text)
+//    TextView bxZkText;
+//    @Bind(R.id.bx_zk_img)
+//    ImageView bxZkImg;
     @Bind(R.id.bx_meiy_text2)
     TextView bxMeiyText2;
-    @Bind(R.id.bx_sq_text)
+    @Bind(bx_sq_text)
     TextView bxSqText;
-    @Bind(R.id.bx_sq_img)
-    ImageView bxSqImg;
+//    @Bind(R.id.bx_sq_img)
+//    ImageView bxSqImg;
     @Bind(R.id.bx_edt1)
     EditText bxEdt1;
     @Bind(R.id.bx_edt2)
@@ -78,6 +79,25 @@ public class BXFragment extends Fragment implements BXContract.View {
             goods_name, goods_pack, goods_value, yun_start, yun_end, create_time;
     private LoadingDialog loadingDialog;
     TimePopupWindow pwTime;
+
+    //展开、收起
+    @OnClick(bx_sq_text)
+    void shoufan(){
+        if("展开".equals(bxSqText.getText())){
+            bxMeiyText2.setVisibility(View.VISIBLE);
+            Drawable rightDrawable = getResources().getDrawable(R.drawable.shouqi);
+            rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
+            bxSqText.setCompoundDrawables(null, null, rightDrawable, null);
+            bxSqText.setText("收起");
+        }else{
+            bxMeiyText2.setVisibility(View.GONE);
+            Drawable rightDrawable = getResources().getDrawable(R.drawable.extend);
+            rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
+            bxSqText.setCompoundDrawables(null, null, rightDrawable, null);
+            bxSqText.setText("展开");
+        }
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -173,39 +193,39 @@ public class BXFragment extends Fragment implements BXContract.View {
         return format.format(date);
     }
 
-    @OnClick({R.id.bx_zk_text, R.id.bx_zk_img, R.id.bx_sq_text, R.id.bx_sq_img})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bx_zk_text:
-                bxZkText.setVisibility(View.GONE);
-                bxSqImg.setVisibility(View.GONE);
-                bxMeiyText2.setVisibility(View.INVISIBLE);
-                bxZkText.setVisibility(View.INVISIBLE);
-                bxZkImg.setVisibility(View.INVISIBLE);
-                break;
-            case R.id.bx_zk_img:
-                bxZkText.setVisibility(View.GONE);
-                bxSqImg.setVisibility(View.GONE);
-                bxMeiyText2.setVisibility(View.INVISIBLE);
-                bxZkText.setVisibility(View.INVISIBLE);
-                bxZkImg.setVisibility(View.INVISIBLE);
-                break;
-            case R.id.bx_sq_text:
-                bxZkText.setVisibility(View.INVISIBLE);
-                bxSqImg.setVisibility(View.INVISIBLE);
-                bxMeiyText2.setVisibility(View.GONE);
-                bxZkText.setVisibility(View.GONE);
-                bxZkImg.setVisibility(View.GONE);
-                break;
-            case R.id.bx_sq_img:
-                bxZkText.setVisibility(View.INVISIBLE);
-                bxSqImg.setVisibility(View.INVISIBLE);
-                bxMeiyText2.setVisibility(View.GONE);
-                bxZkText.setVisibility(View.GONE);
-                bxZkImg.setVisibility(View.GONE);
-                break;
-        }
-    }
+//    @OnClick({R.id.bx_zk_text, R.id.bx_zk_img, R.id.bx_sq_text, R.id.bx_sq_img})
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.bx_zk_text:
+//                bxZkText.setVisibility(View.GONE);
+//                bxSqImg.setVisibility(View.GONE);
+//                bxMeiyText2.setVisibility(View.INVISIBLE);
+//                bxZkText.setVisibility(View.INVISIBLE);
+//                bxZkImg.setVisibility(View.INVISIBLE);
+//                break;
+//            case R.id.bx_zk_img:
+//                bxZkText.setVisibility(View.GONE);
+//                bxSqImg.setVisibility(View.GONE);
+//                bxMeiyText2.setVisibility(View.INVISIBLE);
+//                bxZkText.setVisibility(View.INVISIBLE);
+//                bxZkImg.setVisibility(View.INVISIBLE);
+//                break;
+//            case R.id.bx_sq_text:
+//                bxZkText.setVisibility(View.INVISIBLE);
+//                bxSqImg.setVisibility(View.INVISIBLE);
+//                bxMeiyText2.setVisibility(View.GONE);
+//                bxZkText.setVisibility(View.GONE);
+//                bxZkImg.setVisibility(View.GONE);
+//                break;
+//            case R.id.bx_sq_img:
+//                bxZkText.setVisibility(View.INVISIBLE);
+//                bxSqImg.setVisibility(View.INVISIBLE);
+//                bxMeiyText2.setVisibility(View.GONE);
+//                bxZkText.setVisibility(View.GONE);
+//                bxZkImg.setVisibility(View.GONE);
+//                break;
+//        }
+//    }
 
     public void login() {                                              //登录按钮监听事件
         if (isUserNameAndPwdValid()) {
@@ -290,4 +310,6 @@ public class BXFragment extends Fragment implements BXContract.View {
     public void onFailure(String s) {
 
     }
+
+
 }

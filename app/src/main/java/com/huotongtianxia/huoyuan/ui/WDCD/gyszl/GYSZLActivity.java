@@ -2,13 +2,10 @@ package com.huotongtianxia.huoyuan.ui.WDCD.gyszl;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,6 +24,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 //供应商资料也就是我们现在的发货地址页面
 public class GYSZLActivity extends AppCompatActivity implements KHZLContract.View, GYSZLView {
@@ -75,6 +73,15 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
                 GYSZLActivity.this.finish();
             }
         });
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     /**

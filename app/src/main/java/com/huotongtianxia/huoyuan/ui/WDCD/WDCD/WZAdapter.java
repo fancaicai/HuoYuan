@@ -1,7 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ public class WZAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<String> list1 = null;
 
-    public WZAdapter(Context context,List<String> list1) {
+    public WZAdapter(Context context, List<String> list1) {
         this.context = context;
         this.list1 = list1;
         this.inflater = LayoutInflater.from(context);
@@ -55,13 +54,17 @@ public class WZAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.itemWzText2.setText(list1.get(i));
+        String [] str=list1.get(i).split("\n");
+        holder.itemWzTime.setText(str[0]);
+        holder.itemWzAddress.setText(str[1]);
         return view;
     }
 
     static class ViewHolder {
-        @Bind(R.id.item_wz_text2)
-        TextView itemWzText2;
+        @Bind(R.id.item_wz_time)
+        TextView itemWzTime;
+        @Bind(R.id.item_wz_address)
+        TextView itemWzAddress;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

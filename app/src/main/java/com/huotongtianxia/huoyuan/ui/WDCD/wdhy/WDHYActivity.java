@@ -1,8 +1,7 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.wdhy;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,14 +19,13 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class WDHYActivity extends AppCompatActivity {
     @Bind(R.id.wdhy_tab)
     TabLayout wdhyTab;
     @Bind(R.id.wdhy_pager)
     ViewPager wdhyPager;
-    @Bind(R.id.iv)
-    ImageView iv;
     @Bind(R.id.wdhy_text01)
     TextView wdhyText01;
     @Bind(R.id.hygl_tv)
@@ -58,23 +55,22 @@ public class WDHYActivity extends AppCompatActivity {
 //        }
         setContentView(R.layout.activity_wdhy);
         ButterKnife.bind(this);
-        initView();
         initDate();
-    }
-
-    public void initView() {
         wdhyText01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private void initDate() {

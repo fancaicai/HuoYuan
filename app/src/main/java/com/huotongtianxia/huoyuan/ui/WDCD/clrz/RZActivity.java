@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.clrz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +24,12 @@ import java.io.File;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 //认证页面
 public class RZActivity extends AppCompatActivity implements CLRZContract.View {
-    @Bind(R.id.sfrz_text01)
-    TextView sfrzText01;
+    @Bind(R.id.rz_back_tv)
+    TextView rzBacktv;
     @Bind(R.id.clrz_edit)
     EditText clrzEdit;
     @Bind(R.id.clrz_edit2)
@@ -68,7 +70,7 @@ public class RZActivity extends AppCompatActivity implements CLRZContract.View {
     }
 
     public void initView() {
-        sfrzText01.setOnClickListener(new View.OnClickListener() {
+        rzBacktv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RZActivity.this.finish();
@@ -490,5 +492,14 @@ public class RZActivity extends AppCompatActivity implements CLRZContract.View {
         public void onNothingSelected(AdapterView<?> parent) {
 
         }
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

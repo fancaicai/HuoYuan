@@ -5,11 +5,11 @@
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.zxcc.BDCFragment">
 
-    <com.huotongtianxia.huoyuan.widget.MyListView
+    <ListView
         android:id="@+id/bdc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.huotongtianxia.huoyuan.widget.MyListView>
+    </ListView>
     <ProgressBar android:id="@+id/bdc_preb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

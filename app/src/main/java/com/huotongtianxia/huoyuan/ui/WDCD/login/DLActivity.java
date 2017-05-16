@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,6 +30,7 @@ import com.huotongtianxia.huoyuan.util.LogUtils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DLActivity extends AppCompatActivity implements DLContract.View ,GenContract.View,LoginView{
    @Bind(R.id.linearlayout_above)
@@ -101,6 +101,16 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
             finish();
         }
     }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     @OnClick({R.id.login_btn, R.id.login_tv2})
     public void onClick(View view) {
         switch (view.getId()) {

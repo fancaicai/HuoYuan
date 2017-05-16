@@ -12,6 +12,7 @@ import retrofit2.Callback;
  */
 
 public class TJKHZLContract {
+
     public interface View extends IBaseView {
         void onResponse(TJKHZLBean tjkhzlBean);
         void onFailure(String  s);

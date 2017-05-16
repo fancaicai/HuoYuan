@@ -19,6 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="返 回"
+            android:drawableLeft="@drawable/back_state_focused"
+            android:drawablePadding="@dimen/dp_10"
             android:gravity="center"
             android:layout_centerVertical="true"
             android:textColor="@color/back_tv_selector_show"

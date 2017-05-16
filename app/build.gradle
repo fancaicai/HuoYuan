@@ -95,5 +95,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 //    高德地图定位的依赖
     compile 'com.amap.api:location:latest.integration'
+    //自定义字体
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
 
 }

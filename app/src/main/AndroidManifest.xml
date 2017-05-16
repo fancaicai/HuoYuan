@@ -88,6 +88,7 @@
         <activity android:name=".ui.WDCD.clrz.RZActivity" />
         <activity android:name=".ui.WDCD.GenActivity" />
         <activity android:name=".ui.WDCD.ddgz.DdgzActivity" />
+        <activity android:name=".ui.WDCD.GRZX.ServiceInfoActivity"/>
         <!-- 定位的服务 -->
         <service android:name="com.amap.api.location.APSService"></service>
 

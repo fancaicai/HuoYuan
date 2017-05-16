@@ -1,7 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.khzl;
 
 import com.huotongtianxia.huoyuan.bean.FHRBean;
-import com.huotongtianxia.huoyuan.bean.KHZLBean;
 import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 import com.huotongtianxia.huoyuan.http.HttpUtils;

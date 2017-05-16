@@ -28,8 +28,6 @@ import com.huotongtianxia.huoyuan.bean.SSCLBean;
 import com.huotongtianxia.huoyuan.bean.TJCLBean;
 import com.huotongtianxia.huoyuan.bean.TJGYSBean;
 import com.huotongtianxia.huoyuan.bean.TJKHZLBean;
-import com.huotongtianxia.huoyuan.bean.WDCD1Bean;
-import com.huotongtianxia.huoyuan.bean.WDCD2Bean;
 import com.huotongtianxia.huoyuan.bean.WDCDBean;
 import com.huotongtianxia.huoyuan.bean.WDCDSCBean;
 import com.huotongtianxia.huoyuan.bean.WDCDSCSJBean;
@@ -304,6 +302,17 @@ public class HttpUtils {
         Retrofit retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(UrlConfig.HOME).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
         InterRetrofit retrofitInter = retrofit.create(InterRetrofit.class);
         Call<FHRBean> leftBeanCall = retrofitInter.loadFHRBean(factory_id);
+
+        leftBeanCall.enqueue(callback);
+    }
+
+    public void loadFHRBean1(Callback<SHRBean> callback, String factory_id){
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
+        Retrofit retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(UrlConfig.HOME).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
+        InterRetrofit retrofitInter = retrofit.create(InterRetrofit.class);
+        Call<SHRBean> leftBeanCall = retrofitInter.loadFHRBean1(factory_id);
 
         leftBeanCall.enqueue(callback);
     }

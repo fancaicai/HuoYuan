@@ -2,8 +2,6 @@ package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,7 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -29,6 +26,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class WDCDActivity extends AppCompatActivity implements WDCDContract.View, WDCDView {
     @Bind(R.id.wdcd2_bendi)
@@ -110,6 +108,15 @@ public class WDCDActivity extends AppCompatActivity implements WDCDContract.View
 //                return true;
 //            }
 //        });
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private void InitView() {

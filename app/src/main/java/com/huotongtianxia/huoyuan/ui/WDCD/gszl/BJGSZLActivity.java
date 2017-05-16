@@ -1,14 +1,11 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.gszl;
 
-import android.graphics.Color;
-import android.os.Build;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +16,8 @@ import com.huotongtianxia.huoyuan.bean.GSZLBean;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 //编辑公司资料
 public class BJGSZLActivity extends AppCompatActivity implements BJGSZLContract.View {
 
@@ -63,6 +62,15 @@ public class BJGSZLActivity extends AppCompatActivity implements BJGSZLContract.
         }else if (count == 6){
             titletv.setText("联系电话");
         }
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @OnClick({ R.id.back_tv, R.id.save_tv})

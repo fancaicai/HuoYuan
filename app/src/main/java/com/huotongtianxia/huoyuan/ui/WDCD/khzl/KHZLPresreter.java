@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Handler;
 
 import com.huotongtianxia.huoyuan.bean.FHRBean;
-import com.huotongtianxia.huoyuan.bean.KHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLView;
 import com.huotongtianxia.huoyuan.ui.WDCD.login.DLActivity;
@@ -58,6 +57,33 @@ public class KHZLPresreter implements KHZLContract.Presreter{
                 ToastUtil.showShortToast(context,"数据获取失败！");
             }
         },factory_id);
+
+
+//        mode.loadFHR1(new Callback<SHRBean>() {
+//            @Override
+//            public void onResponse(Call<SHRBean> call, Response<SHRBean> response) {
+//
+//                if (response.isSuccessful()){
+//                    final SHRBean body = response.body();
+//                    Handler handler = new Handler();
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            view.onResponse1(body);
+//                        }
+//                    });
+//                    gyszlView.hideProgressBa();
+//                    ToastUtil.showShortToast(context,"数据获取成功！");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<SHRBean> call, Throwable t) {
+//
+//                gyszlView.hideProgressBa();
+//                ToastUtil.showShortToast(context,"数据获取失败！");
+//            }
+//        },factory_id);
     }
 
     @Override

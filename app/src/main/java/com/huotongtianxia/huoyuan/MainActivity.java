@@ -39,6 +39,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements AMapLocationListener {
     @Bind(R.id.main_framelayout)
@@ -311,6 +312,15 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                         + amapLocation.getErrorInfo());
             }
         }
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

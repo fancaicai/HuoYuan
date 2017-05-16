@@ -1,5 +1,6 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.ddxq;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +18,7 @@ import com.huotongtianxia.huoyuan.ui.WDCD.wdhy.WDHYActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PJActivity extends AppCompatActivity implements PJContract.View {
 
@@ -51,6 +52,15 @@ public class PJActivity extends AppCompatActivity implements PJContract.View {
         ButterKnife.bind(this);
         Bundle bundle = this.getIntent().getExtras();
         num = bundle.getString("num");
+    }
+
+    /**
+     * 自定义字体
+     * @param newBase
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @OnClick({R.id.back_tv,R.id.pj_hao, R.id.pj_cha, R.id.pj_tj})

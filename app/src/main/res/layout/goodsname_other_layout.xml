@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/ffffff"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_20"
+        >
 
-</LinearLayout>
+<TextView android:id="@+id/goodstype_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="请输入货物类型："
+    android:textColor="@color/hei"
+    android:textSize="18dp"
+    android:layout_marginLeft="@dimen/dp_20"
+    android:layout_marginTop="@dimen/dp_20"/>
+
+    <TextView android:id="@+id/enter_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确定"
+        android:layout_below="@id/goodstype_tv"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_20"
+        android:gravity="center"
+        android:textColor="@color/ffffff"
+        android:layout_marginTop="@dimen/marginlefa"
+        android:background="@color/blue1"
+        android:padding="13dp"/>
+<EditText android:id="@+id/inputtype_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@id/enter_tv"
+    android:layout_alignBaseline="@+id/enter_tv"
+    android:layout_marginRight="@dimen/marginlefa"
+    android:hint="其他"
+    android:textSize="18dp"
+    android:padding="@dimen/marginlefa"
+    android:background="@drawable/goodname_layoutshape2"
+    android:layout_alignLeft="@+id/goodstype_tv"
+    android:layout_alignBottom="@+id/goodstype_tv"
+    android:layout_alignTop="@+id/goodstype_tv"/>
+    </RelativeLayout>
+</RelativeLayout>

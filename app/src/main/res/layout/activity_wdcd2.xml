@@ -15,6 +15,8 @@
             android:gravity="center"
             android:textSize="@dimen/backtxtsize"
             android:text="返回"
+            android:drawableLeft="@drawable/back_state_focused"
+            android:drawablePadding="@dimen/dp_10"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/marginlefa"
             android:textColor="@color/back_tv_selector_show"

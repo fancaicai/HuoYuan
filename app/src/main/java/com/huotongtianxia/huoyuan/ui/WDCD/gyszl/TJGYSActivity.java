@@ -82,7 +82,7 @@ public class TJGYSActivity extends AppCompatActivity implements TJGYSContract.Vi
     void address() {
         ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(this);
         mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
-        mChangeAddressPopwindow.showAtLocation(tjgysTxtAddress, Gravity.BOTTOM, 0, 0);
+        mChangeAddressPopwindow.showAtLocation(tjgysTxtAddress, Gravity.CENTER, 0, 0);
         mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
             @Override
             public void onClick(String province, String city, String area) {

@@ -15,6 +15,7 @@ import com.huotongtianxia.huoyuan.bean.GenBean;
 import com.huotongtianxia.huoyuan.bean.HYFB2Bean;
 import com.huotongtianxia.huoyuan.bean.HYFBBean;
 import com.huotongtianxia.huoyuan.bean.HYFBSHBean;
+import com.huotongtianxia.huoyuan.bean.HuoYuanPhoto;
 import com.huotongtianxia.huoyuan.bean.KHZLBean;
 import com.huotongtianxia.huoyuan.bean.PJBean;
 import com.huotongtianxia.huoyuan.bean.QRSHBean;
@@ -38,6 +39,7 @@ import com.huotongtianxia.huoyuan.bean.WZBean;
 import com.huotongtianxia.huoyuan.bean.ZXCCBBean;
 import com.huotongtianxia.huoyuan.bean.ZXCCWBean;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -220,4 +222,19 @@ public interface InterRetrofit {
     @FormUrlEncoded
     @POST("api/MyGoods/trace ")
     Call<SJLIDWBean> getSJLSDW(@Field("order_num") String sjtel);
+//    搜索的网络请求接口
+    @FormUrlEncoded
+    @POST("api/GoodsPublish/searchCus")
+    Call<SHRBean> getSearchData(@Field("factory_id") String factroyId, @Field("province") String province, @Field("city") String city, @Field("area") String area);
+
+    // 门头照片和货源照片的上传
+    @Multipart
+    @POST("api/GoodsPublish/updateFactory")
+    Call<HuoYuanPhoto> upload(@Part MultipartBody.Part part);
+
+    // 用户头像的更新
+//    @POST("/Handler/UserHandler.ashx?action=update")
+//    Call<UpdateResult> update(@Body Update update);
+
+
 }

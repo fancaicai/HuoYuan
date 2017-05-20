@@ -1,9 +1,12 @@
 <resources>
+    <string name="camera">相机</string>
+    <string name="cancel">取消</string>
+    <string name="add_from_gallery">通过相册添加</string>
     <string name="app_name">车源宝</string>
-   <string name="shouhuoaddre">收货地址</string>
+    <string name="shouhuoaddre">收货地址</string>
     <string name="startLocation">开始定位</string>
     <string name="stopLocation">停止定位</string>
-     <string name="back">返回</string>
+    <string name="back">返回</string>
     <string name="loading">数据加载中...</string>
     <string name="permission_cancel">取消</string>
     <string name="permission_setting">去设置</string>

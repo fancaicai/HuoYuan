@@ -3,8 +3,9 @@ package com.huotongtianxia.huoyuan.ui.WDCD.zxcc;
 import android.content.Context;
 import android.os.Handler;
 
+import com.huotongtianxia.huoyuan.MyApplication;
 import com.huotongtianxia.huoyuan.bean.ZXCCWBean;
-import com.huotongtianxia.huoyuan.config.UrlConfig;
+import com.huotongtianxia.huoyuan.util.LogUtils;
 import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 import retrofit2.Call;
@@ -29,7 +30,8 @@ public class ZXCCWPresreter implements ZXCCWContract.Presreter{
 
     @Override
     public void getData() {
-        String locality = UrlConfig.city;
+        String locality = MyApplication.city;
+        //LogUtils.i("回程车定位0", ""+MyApplication.city);
         zxccView.showProgressBar();
         mode.loadZXCCW(new Callback<ZXCCWBean>() {
             @Override
@@ -51,8 +53,10 @@ public class ZXCCWPresreter implements ZXCCWContract.Presreter{
             @Override
             public void onFailure(Call<ZXCCWBean> call, Throwable t) {
                 zxccView.hideProgressBa();
+                LogUtils.i("回程车",t.toString());
                 ToastUtil.showShortToast(context,"数据加载失败");
             }
         },locality);
+        //LogUtils.i("回程车定位",locality);
     }
 }

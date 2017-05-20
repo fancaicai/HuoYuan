@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
-import com.huotongtianxia.huoyuan.bean.KHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 
 import java.util.List;
@@ -30,6 +29,8 @@ public class KHZLAdapter extends BaseAdapter {
         this.list = list;
         this.inflater = LayoutInflater.from(context);
     }
+
+
 
     @Override
     public int getCount() {
@@ -72,7 +73,9 @@ public class KHZLAdapter extends BaseAdapter {
         return view;
     }
 
-
+    public final void clear() {
+        list.clear();
+    }
 
     public void reload(List _list) {
 

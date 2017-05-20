@@ -24,7 +24,6 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.huotongtianxia.huoyuan.config.UrlConfig;
 import com.huotongtianxia.huoyuan.ui.WDCD.GRZX.GRZXFragment;
 import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.MainFragment;
 import com.huotongtianxia.huoyuan.ui.WDCD.WDCD.WDCDFragment;
@@ -285,7 +284,9 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
 
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
+//        LogUtils.i("Main定位信息",amapLocation.getCity());
         if (amapLocation != null) {
+
             if (amapLocation.getErrorCode() == 0) {
                 //定位成功回调信息，设置相关消息
                 amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
@@ -304,7 +305,8 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 amapLocation.getStreetNum();//街道门牌号信息
                 amapLocation.getCityCode();//城市编码
                 amapLocation.getAdCode();//地区编码
-                UrlConfig.city = amapLocation.getCity();
+                MyApplication.city = amapLocation.getCity();
+//                LogUtils.i("Main定位信息1",amapLocation.getCity()+";"+MyApplication.city);
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AmapError","location Error, ErrCode:"

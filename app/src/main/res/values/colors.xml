@@ -7,7 +7,7 @@
     <color name="home2">#F7E900</color>
     <color name="home1">#555555</color>
     <color name="hei">#222</color>
-
+    <color name="zxcc">#F1F1F1</color>
     <color name="dark">#803cbcb7</color>
     <color name="light">#800de6e8</color>
     <color name="ffffff">#ffffff</color>
@@ -21,6 +21,7 @@
     <color name="press_zi">#B9ACF6</color>
     <color name="backtvpresscolor">#999999</color>
     <color name="nobacktvpresscolor">#333333</color>
+    <color name="font_title">#333333</color>
     <color name="half_transparent_black">#BB000000</color>
     <color name="line_and_outline_grey">#d9d9d9</color>
     <color name="touming">#80ffffff</color>
@@ -28,6 +29,11 @@
     <color name="blue">#52A2E1</color>
     <color name="blue1">#24A1FD</color>
     <color name="blue2">#515AD1</color>
+    <color name="blue3">#3F81F2</color>
+    <color name="bx">#FF6D00</color>
+    <color name="bx_shape">#FF7640</color>
+    <color name="white">#ffffff</color>
+
 
 
 </resources>

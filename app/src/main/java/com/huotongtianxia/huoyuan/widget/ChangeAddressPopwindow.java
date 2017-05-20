@@ -103,19 +103,19 @@ public class ChangeAddressPopwindow extends PopupWindow implements View.OnClickL
 
 		initProvinces();
 		provinceAdapter = new AddressTextAdapter(context, arrProvinces, getProvinceItem(strProvince), maxsize, minsize);
-		wvProvince.setVisibleItems(5);
+		wvProvince.setVisibleItems(10);
 		wvProvince.setViewAdapter(provinceAdapter);
 		wvProvince.setCurrentItem(getProvinceItem(strProvince));
 
 		initCitys(mCitisDatasMap.get(strProvince));
 		cityAdapter = new AddressTextAdapter(context, arrCitys, getCityItem(strCity), maxsize, minsize);
-		wvCitys.setVisibleItems(5);
+		wvCitys.setVisibleItems(10);
 		wvCitys.setViewAdapter(cityAdapter);
 		wvCitys.setCurrentItem(getCityItem(strCity));
 
 		initAreas(mAreaDatasMap.get(strCity));
 		areaAdapter = new AddressTextAdapter(context, arrAreas, getAreaItem(strArea), maxsize, minsize);
-		wvArea.setVisibleItems(5);
+		wvArea.setVisibleItems(10);
 		wvArea.setViewAdapter(areaAdapter);
 		wvArea.setCurrentItem(getAreaItem(strArea));
 
@@ -272,9 +272,9 @@ public class ChangeAddressPopwindow extends PopupWindow implements View.OnClickL
 			TextView textvew = (TextView) arrayList.get(i);
 			currentText = textvew.getText().toString();
 			if (curriteItemText.equals(currentText)) {
-				textvew.setTextSize(14);
+				textvew.setTextSize(18);
 			} else {
-				textvew.setTextSize(12);
+				textvew.setTextSize(16);
 			}
 		}
 	}

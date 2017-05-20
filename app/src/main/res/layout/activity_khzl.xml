@@ -50,12 +50,44 @@
         android:layout_height="1px"
         android:layout_below="@+id/shdz_rl"
         android:background="@color/hei"/>
+
+    <RelativeLayout
+        android:id="@+id/khzl_fhdz_line"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/hui1"
+        android:layout_below="@id/view">
+        <TextView android:id="@+id/khzl_chooseaddress_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="根据地区选择车源"
+            android:textSize="@dimen/backtxtsize"
+            android:layout_centerVertical="true"
+            android:textColor="@color/hei"
+            android:layout_marginLeft="@dimen/dp_10"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择省、市、区（县）   "
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/backtxtsize"
+            android:textColor="@color/hei"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            />
+        <View android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/hei"/>
+    </RelativeLayout>
             <ListView
                 android:id="@+id/khzl_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:divider="#999999"
-                android:layout_below="@+id/view"
+                android:layout_below="@id/khzl_fhdz_line"
                 android:dividerHeight="1dp"
                 >
             </ListView>

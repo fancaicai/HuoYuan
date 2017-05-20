@@ -3,11 +3,11 @@ package com.huotongtianxia.huoyuan.ui.WDCD.zxcc;
 import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
@@ -15,7 +15,10 @@ import com.yanzhenjie.permission.AndPermission;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+import static com.huotongtianxia.huoyuan.MainActivity.manager;
 
 public class ZXCCActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SETTING = 300;
@@ -37,10 +40,16 @@ public class ZXCCActivity extends AppCompatActivity {
 //    View zxccView2;
     @Bind(R.id.back_tv)
     TextView backTv;
-    @Bind(R.id.zxcc_tab_layout)
-    TabLayout zxccTabLayout;
-    @Bind(R.id.zxcc_viewPager)
-    ViewPager zxccViewPager;
+    @Bind(R.id.zxcc_bd)
+    TextView zxccBd;
+    @Bind(R.id.zxcc_hc)
+    TextView zxccHc;
+    @Bind(R.id.main_framelayout)
+    FrameLayout mainFramelayout;
+//    @Bind(R.id.zxcc_tab_layout)
+//    TabLayout zxccTabLayout;
+//    @Bind(R.id.zxcc_viewPager)
+//    ViewPager zxccViewPager;
 //    @Bind(R.id.main_linear)
 //    LinearLayout mainLinear;
 //    @Bind(R.id.main_framelayout)
@@ -52,7 +61,31 @@ public class ZXCCActivity extends AppCompatActivity {
 //    private BDCFragment bdcFragment;
 //    private FragmentManager manager;
 //    private HCCFragment hccFragment;
+    private int color;
+    private int colorSelected;
+    private Fragment content;
 
+    //返回
+    @OnClick(R.id.back_tv)
+    void back(){
+        finish();
+    }
+
+    //本地车
+    @OnClick(R.id.zxcc_bd)
+    void bd(){
+        zxccBd.setTextColor(colorSelected);
+        zxccHc.setTextColor(color);
+        switchFragment(0);
+    }
+
+    //回程车
+    @OnClick(R.id.zxcc_hc)
+    void hc(){
+        zxccBd.setTextColor(color);
+        zxccHc.setTextColor(colorSelected);
+        switchFragment(1);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +114,7 @@ public class ZXCCActivity extends AppCompatActivity {
 
     /**
      * 自定义字体
+     *
      * @param newBase
      */
     @Override
@@ -89,16 +123,19 @@ public class ZXCCActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        backTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        zxccTabLayout.setupWithViewPager(zxccViewPager);
-        ZXCCPageAdapter zxccPageAdapter=new ZXCCPageAdapter(getSupportFragmentManager());
-        zxccViewPager.setAdapter(zxccPageAdapter);
+//        backTv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+        color=getResources().getColor(R.color.home1);
+        colorSelected=getResources().getColor(R.color.zi);
+        manager = getSupportFragmentManager();
+        switchFragment(0);
+//        zxccTabLayout.setupWithViewPager(zxccViewPager);
+//        ZXCCPageAdapter zxccPageAdapter=new ZXCCPageAdapter(getSupportFragmentManager());
+//        zxccViewPager.setAdapter(zxccPageAdapter);
 //        backIv.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -149,32 +186,23 @@ public class ZXCCActivity extends AppCompatActivity {
 //    }
 //
 //    //切换碎片的方法,根据索引对碎片进行切换
-//    private void Switchfragment(int index) {
-//        //创建碎片管理器
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        AddTransaction(transaction);
-//        //根据id对碎片进行切换 ,如果碎片开始为空 进行创建
-//        switch (index) {
-//            case 0:
-//                if (bdcFragment == null) {
-//                    bdcFragment = new BDCFragment();
-//                    transaction.add(R.id.main_framelayout, bdcFragment);
-//                } else {
-//                    transaction.show(bdcFragment);
-//                }
-//                break;
-//            case 1:
-//                if (hccFragment == null) {
-//                    hccFragment = new HCCFragment();
-//                    transaction.add(R.id.main_framelayout, hccFragment);
-//                } else {
-//                    transaction.show(hccFragment);
-//                }
-//                break;
-//
-//        }
-//        transaction.commit();
-//    }
+    private void switchFragment(int index) {
+        //创建碎片管理器
+        FragmentTransaction transaction = manager.beginTransaction();
+        //AddTransaction(transaction);
+        //根据id对碎片进行切换 ,如果碎片开始为空 进行创建
+        switch (index) {
+            case 0:
+                content= new BDCFragment();
+                break;
+            case 1:
+                content = new HCCFragment();
+                break;
+
+        }
+        transaction.replace(R.id.main_framelayout,content);
+        transaction.commit();
+    }
 //
 //    private void AddTransaction(FragmentTransaction transaction) {
 //        if (bdcFragment != null) {

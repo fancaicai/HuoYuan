@@ -1,6 +1,8 @@
 package com.huotongtianxia.huoyuan.bean;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -65,6 +67,44 @@ public class ZXCCBBean {
          * length : 13.5米
          * photo : http://www.cnhttx.com
          * create_time : 17248天前
+         * "preference_way":[
+         {
+         "id":33,
+         "driver_info_id":64,
+         "start_province":"台湾",
+         "start_city":"台北",
+         "end_province":"河北省",
+         "end_city":"秦皇岛",
+         "way_type":""
+         },
+         {
+         "id":40,
+         "driver_info_id":64,
+         "start_province":"山西省",
+         "start_city":"太原",
+         "end_province":"上海",
+         "end_city":"上海",
+         "way_type":""
+         },
+         {
+         "id":41,
+         "driver_info_id":64,
+         "start_province":"山西省",
+         "start_city":"太原",
+         "end_province":"浙江省",
+         "end_city":"杭州",
+         "way_type":""
+         },
+         {
+         "id":42,
+         "driver_info_id":64,
+         "start_province":"山西省",
+         "start_city":"太原",
+         "end_province":"浙江省",
+         "end_city":"台州",
+         "way_type":""
+         }
+         ]
          */
 
         private String id;
@@ -77,6 +117,7 @@ public class ZXCCBBean {
         private String length;
         private String photo;
         private String create_time;
+        private List<PreferenceWayBean> preference_way;
 
         public String getId() {
             return id;
@@ -156,6 +197,91 @@ public class ZXCCBBean {
 
         public void setCreate_time(String create_time) {
             this.create_time = create_time;
+        }
+
+        public List<PreferenceWayBean> getPreference_way() {
+            return preference_way;
+        }
+
+        public void setPreference_way(List<PreferenceWayBean> preference_way) {
+            this.preference_way = preference_way;
+        }
+
+        public static class PreferenceWayBean {
+            /**
+             * id : 33
+             * driver_info_id : 64
+             * start_province : 台湾
+             * start_city : 台北
+             * end_province : 河北省
+             * end_city : 秦皇岛
+             * way_type :
+             */
+
+            @SerializedName("id")
+            private int idX;
+            private int driver_info_id;
+            private String start_province;
+            private String start_city;
+            private String end_province;
+            private String end_city;
+            private String way_type;
+
+            public int getIdX() {
+                return idX;
+            }
+
+            public void setIdX(int idX) {
+                this.idX = idX;
+            }
+
+            public int getDriver_info_id() {
+                return driver_info_id;
+            }
+
+            public void setDriver_info_id(int driver_info_id) {
+                this.driver_info_id = driver_info_id;
+            }
+
+            public String getStart_province() {
+                return start_province;
+            }
+
+            public void setStart_province(String start_province) {
+                this.start_province = start_province;
+            }
+
+            public String getStart_city() {
+                return start_city;
+            }
+
+            public void setStart_city(String start_city) {
+                this.start_city = start_city;
+            }
+
+            public String getEnd_province() {
+                return end_province;
+            }
+
+            public void setEnd_province(String end_province) {
+                this.end_province = end_province;
+            }
+
+            public String getEnd_city() {
+                return end_city;
+            }
+
+            public void setEnd_city(String end_city) {
+                this.end_city = end_city;
+            }
+
+            public String getWay_type() {
+                return way_type;
+            }
+
+            public void setWay_type(String way_type) {
+                this.way_type = way_type;
+            }
         }
     }
 }

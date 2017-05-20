@@ -18,6 +18,7 @@ import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLContract;
 import com.huotongtianxia.huoyuan.ui.WDCD.khzl.KHZLPresreter;
+import com.huotongtianxia.huoyuan.ui.WDCD.login.DLActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
     TextView backTv;
     @Bind(R.id.fhdz_pro)
     ProgressBar fhdzPro;
+    private DLActivity dlActivity;
     private List<FHRBean.DataBean> list = new ArrayList<>();
     private GYSListApadter apadter;
     private TextView gyszltext01;
@@ -43,6 +45,7 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
     public static int fhrid;
     public static String cityF, addressF;
     private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +62,10 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
 //        点击事件的监听
         initView();
         context = getApplicationContext();
-        KHZLPresreter presreter = new KHZLPresreter(this,this,context);
+        dlActivity=new DLActivity();
+        String factoryId = dlActivity.getFactoryId();
+//        Log.e("+++++++++++++++++++",factoryId);
+        KHZLPresreter presreter = new KHZLPresreter(this, this, context);
         presreter.getData();
         apadter = new GYSListApadter(this, list);
         gyszlList.setAdapter(apadter);
@@ -77,6 +83,7 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
 
     /**
      * 自定义字体
+     *
      * @param newBase
      */
     @Override
@@ -134,15 +141,21 @@ public class GYSZLActivity extends AppCompatActivity implements KHZLContract.Vie
 
     @Override
     public void showProgressBa() {
-        if (fhdzPro!=null) {
+        if (fhdzPro != null) {
             fhdzPro.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void hideProgressBa() {
-        if (fhdzPro!=null) {
+        if (fhdzPro != null) {
             fhdzPro.setVisibility(View.GONE);
         }
+    }
+
+
+    @Override
+    public void setSearchData(List<SHRBean.DataBean> list) {
+
     }
 }

@@ -2,15 +2,11 @@ package com.huotongtianxia.huoyuan.ui.WDCD.WDCD;
 
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 
-import com.huotongtianxia.huoyuan.bean.WDCD1Bean;
-import com.huotongtianxia.huoyuan.bean.WDCD2Bean;
+import com.huotongtianxia.huoyuan.MyApplication;
 import com.huotongtianxia.huoyuan.bean.WDCDBean;
 import com.huotongtianxia.huoyuan.bean.WDCDSCSJBean;
-import com.huotongtianxia.huoyuan.config.UrlConfig;
 import com.huotongtianxia.huoyuan.ui.WDCD.login.DLActivity;
-import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -66,7 +62,7 @@ public class WDCDPresreter implements WDCDContract.Presreter{
     @Override
     public void getData1() {
         String factory_id = DLActivity.id;
-        String locality = UrlConfig.city;
+        String locality = MyApplication.city;
         wdcdView.showProgressBa();
         mode.loadWDCD1(new Callback<WDCDBean>() {
             @Override

@@ -26,9 +26,11 @@
                     android:layout_height="wrap_content"
                     android:text="山西"
                     android:textSize="15dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/hei"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
+                    android:drawableLeft="@mipmap/start"
+                    android:drawablePadding="2dp"
                     />
                 <TextView
                     android:id="@+id/wdhy_djd_text11"
@@ -36,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:text="太原"
                     android:textSize="15dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/hei"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     />
@@ -53,9 +55,11 @@
                     android:layout_height="wrap_content"
                     android:text="河北"
                     android:textSize="15dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/hei"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp"
+                    android:drawableLeft="@mipmap/stop"
+                    android:drawablePadding="2dp"
                     />
                 <TextView
                     android:id="@+id/wdhy_djd_text22"
@@ -63,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="石家庄"
                     android:textSize="15dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/hei"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     />
@@ -79,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="13.5米"
                     android:textSize="13dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/blue3"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     />
@@ -88,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:textSize="13dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/blue3"
                     android:layout_marginTop="10dp"
                     />
                 <TextView
@@ -97,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text="20吨"
                     android:textSize="13dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/blue3"
                     android:layout_marginTop="10dp"
                     />
                 <TextView
@@ -105,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:textSize="13dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/blue3"
                     android:layout_marginTop="10dp"
                     />
                 <TextView
@@ -114,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:text="板车"
                     android:textSize="13dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/blue3"
                     android:layout_marginTop="10dp"
                     />
             </LinearLayout>
@@ -131,6 +135,8 @@
                     android:layout_marginTop="8dp"
                     android:textSize="13dp"
                     android:textColor="#555555"
+                    android:drawableLeft="@drawable/fhd_hwu"
+                    android:drawablePadding="5dp"
                     />
                 <TextView
                     android:id="@+id/wdhy_djd_text6"
@@ -138,9 +144,10 @@
                     android:layout_height="wrap_content"
                     android:text="钢铁"
                     android:textSize="13dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/hei"
                     android:layout_marginTop="8dp"
                     android:layout_toRightOf="@+id/ysz_text1"
+                    android:paddingLeft="5dp"
                     />
             </RelativeLayout>
         </LinearLayout>

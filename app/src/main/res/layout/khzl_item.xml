@@ -67,30 +67,25 @@
             android:orientation="horizontal"
             android:background="#ffffff"
             >
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="20dp"
-                android:background="@mipmap/edit"
-                android:layout_gravity="center"
-                android:layout_marginLeft="250dp"
-                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"></View>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="编辑"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/edit"
                 android:gravity="center"
                 />
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="20dp"
-                android:background="@mipmap/delete"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="删除"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/delete"
                 android:gravity="center"
                 />
         </LinearLayout>

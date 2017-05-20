@@ -44,18 +44,20 @@
             android:layout_alignBaseline="@+id/title_tv"
             android:textColor="@color/back_tv_selector_show"
             />
-
     </RelativeLayout>
     <View android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_below="@+id/title_rl"
         android:background="@color/hei"/>
+
     <ListView
         android:id="@+id/gyszl_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/line">
+        android:divider="@color/hei"
+        android:dividerHeight="1px"
+        android:layout_below="@id/line">
 
     </ListView>
     <ProgressBar android:id="@+id/fhdz_pro"

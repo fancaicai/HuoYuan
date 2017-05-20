@@ -118,6 +118,7 @@ public class CLRZActivity extends AppCompatActivity implements CLRZContract.View
                             .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
                             .send();
                 }
+//                点击上传省份证证件照片的时候，弹出的窗口
                 final SelectPicturePopup spp = new SelectPicturePopup(CLRZActivity.this);
                 spp.showPopup(clrzLin1);
                 spp.setOnClickFlagDialogListener(new SelectPicturePopup.OnClickFlagDialogListener() {

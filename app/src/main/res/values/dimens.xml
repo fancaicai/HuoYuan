@@ -9,6 +9,7 @@
     <dimen name="jiushidp">100dp</dimen>
     <dimen name="yidp">1dp</dimen>
     <dimen name="tonxunlutxtsize">15dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
     <dimen name="dp_48">48dp</dimen>
     <dimen name="dp_24">24dp</dimen>
     <dimen name="dp_20">25dp</dimen>
@@ -17,4 +18,9 @@
     <dimen name="dp_30">30dp</dimen>
     <dimen name="nothing">0sp</dimen>
     <dimen name="font">18sp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="sp_16">16sp</dimen>
 </resources>

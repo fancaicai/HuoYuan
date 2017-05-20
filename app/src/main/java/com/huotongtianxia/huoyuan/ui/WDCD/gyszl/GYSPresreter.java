@@ -47,4 +47,5 @@ public class GYSPresreter implements GYSContract.Presreter{
             }
         },uid,member_type);
     }
+
 }

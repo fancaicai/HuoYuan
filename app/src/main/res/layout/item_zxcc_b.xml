@@ -2,51 +2,92 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+    <View
+        android:id="@+id/zxcc_b_v"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlesize"
+        android:background="@color/zxcc"/>
+    <TextView
+        android:id="@+id/zxcc_b_text4"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:text="20分钟前"
+        android:textSize="13dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/zxcc_b_v"
+        />
     <com.huotongtianxia.huoyuan.util.MyCircleImageView
         android:id="@+id/zh_img1"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:src="@drawable/homehome2"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/zxcc_b_text4"
         />
 
+    <TextView
+        android:id="@+id/zxcc_b_text8"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:text="李刚"
+        android:textColor="#222222"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/zh_img1"
+        />
     <TextView
         android:id="@+id/zxcc_b_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="太原"
+        tools:text="太原武汉武汉武汉武汉"
         android:textSize="18dp"
-        android:textColor="#222222"
-        android:layout_toRightOf="@+id/zh_img1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:textColor="@color/blue2"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_below="@id/zxcc_b_v"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxEms="4"
         />
-    <View
+    <ImageView
         android:id="@+id/zh_view1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/zxcc_b_text1"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:background="#222222"
+        android:layout_marginTop="@dimen/dp_48"
+        android:background="@drawable/zxcc_jiantou"
+        android:layout_below="@id/zxcc_b_v"
         />
 
     <TextView
         android:id="@+id/zxcc_b_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="武汉"
+        tools:text="武汉武汉武汉武汉武汉"
         android:textSize="18dp"
-        android:textColor="#222222"
+        android:textColor="@color/blue2"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/zh_view1"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_below="@id/zxcc_b_v"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxEms="5"
         />
     <ImageView
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/zxcc_b_v"
+        android:layout_marginTop="10dp"
         android:layout_width="21dp"
         android:layout_height="26dp"
         android:background="@mipmap/qw"
@@ -65,114 +106,108 @@
         <!--android:layout_marginTop="15dp"-->
     <!--/>-->
 
+
+    <View
+        android:id="@+id/zxcc_v1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/home1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/zxcc_b_text8"/>
+
     <TextView
         android:id="@+id/zxcc_b_text9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/zh_img1"
-        android:layout_below="@id/zxcc_b_text1"
+        android:layout_above="@id/zxcc_v1"
         android:gravity="center"
         android:textColor="#222222"
         android:text="可选目的地:"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        />
-    <ImageView
-        android:id="@+id/zxcc_b_ddh"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@mipmap/wdysd"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/dp_20"
-        android:layout_alignBottom="@id/zxcc_b_text9"
-        />
-    <TextView
-        android:id="@+id/zxcc_b_text4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="20分钟前"
-        android:textSize="13dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="@dimen/titlesize"
+        android:layout_marginLeft="@dimen/dp_30"
         />
 
     <TextView
         android:id="@+id/zxcc_b_text11"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/zxcc_b_text9"
-        android:layout_below="@id/zxcc_b_text1"
+        android:layout_alignBottom="@id/zxcc_b_text9"
+        android:layout_toLeftOf="@id/zh_img1"
         android:textColor="#555555"
-        android:text="河南"
+        tools:text="河南河南河南河南河南河南河南河南"
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginTop="10dp"
-        />
-    <TextView
-        android:id="@+id/zxcc_b_text5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="13米"
-        android:textColor="@color/zi"
-        android:layout_toRightOf="@+id/zxcc_b_text10"
-        android:layout_below="@+id/zh_img1"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="13dp"
-        />
-    <TextView
-        android:id="@+id/zxcc_b_text6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="30吨"
-        android:gravity="center"
-        android:layout_below="@+id/zh_img1"
-        android:layout_toRightOf="@id/zxcc_b_text5"
-        android:textSize="13dp"
-        android:textColor="@color/zi"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        />
-    <TextView
-        android:id="@+id/zxcc_b_text7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="高栏"
-        android:textColor="@color/zi"
-        android:gravity="center"
-        android:layout_below="@+id/zh_img1"
-        android:layout_toRightOf="@id/zxcc_b_text6"
-        android:textSize="13dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        />
-    <TextView
-        android:id="@+id/zxcc_b_text8"
-        android:layout_width="65dp"
-        android:layout_height="wrap_content"
-        android:textSize="13dp"
-        android:text="李刚"
-        android:textColor="#222222"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/zh_img1"
+        android:maxLines="1"
+        android:ellipsize="end"
         />
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_below="@+id/zxcc_v1">
 
-    <TextView
-        android:id="@+id/zxcc_b_text10"
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/shape9"
-        android:text="晋A77777"
-        android:textSize="13dp"
-        android:layout_alignTop="@+id/zxcc_b_text5"
-        android:layout_toLeftOf="@+id/zxcc_b_text11"
-        android:layout_toStartOf="@+id/zxcc_b_text11"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"/>
+        <TextView
+            android:id="@+id/zxcc_b_text10"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:textColor="@color/blue2"
+            android:text="晋A77777"
+            android:textSize="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_30"
+            />
+
+
+
+        <TextView
+            android:id="@+id/zxcc_b_text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13米"
+            android:textColor="@color/blue2"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:id="@+id/zxcc_b_text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30吨"
+            android:layout_gravity="center_vertical"
+            android:textSize="15dp"
+            android:textColor="@color/blue2"
+            android:layout_marginLeft="15dp"
+            />
+        <TextView
+            android:id="@+id/zxcc_b_text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="高栏"
+            android:textColor="@color/blue2"
+            android:layout_gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_marginLeft="15dp"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/zxcc_b_ddh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/zxcc_phone"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dp_30"
+            />
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

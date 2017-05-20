@@ -30,7 +30,9 @@ import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.WZBean;
+import com.huotongtianxia.huoyuan.common.view.ProgressbarView;
 import com.huotongtianxia.huoyuan.util.AMapUtil;
+import com.huotongtianxia.huoyuan.util.LogUtils;
 import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 import java.util.ArrayList;
@@ -75,6 +77,7 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
     private List<String> list2 = new ArrayList<>();
     private String dz;
     private int b = 0;
+    ProgressbarView  progressbarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,12 +93,14 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
 //        }
         setContentView(R.layout.activity_wz);
         ButterKnife.bind(this);
+        init();
         Bundle bundle = this.getIntent().getExtras();
         driver_id = bundle.getInt("driver_id");
         WZPresreter presreter = new WZPresreter(this, driver_id);
         presreter.getData();
+        progressbarView.showDialog();
         wzMapview.onCreate(savedInstanceState);// 此方法必须重写
-        init();
+
         adapter = new WZAdapter(WZActivity.this, list1);
         wzList.setAdapter(adapter);
         backTv.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +126,9 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
      * 初始化AMap对象
      */
     private void init() {
+
+        progressbarView=new ProgressbarView(this);
+
         if (aMap == null) {
             aMap = wzMapview.getMap();
             regeoMarker = aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
@@ -135,7 +143,7 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
         uiSettings.setZoomControlsEnabled(false);
         geocoderSearch = new GeocodeSearch(this);
         geocoderSearch.setOnGeocodeSearchListener(this);
-        progDialog = new ProgressDialog(this);
+//        progDialog = new ProgressDialog(this);
 
         //设置中心点
         //屏幕宽
@@ -145,7 +153,8 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
         DisplayMetrics outMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(outMetrics);
         int width = outMetrics.widthPixels;
-        int height=wzTxtLocation.getTop();
+        int height=wzList.getTop();
+        LogUtils.i("重新定位的高度",""+height);
         aMap.setPointToCenter(width/2, height/2);
     }
 
@@ -264,6 +273,8 @@ public class WZActivity extends AppCompatActivity implements WZContract.View
 
     @Override
     public void onResponse(WZBean wzBean) {
+
+        progressbarView.dismissDialog();
         geocoderSearch = new GeocodeSearch(this);
         geocoderSearch.setOnGeocodeSearchListener(this);
         item1 = wzBean.getData().get(0).getUpdate_time();

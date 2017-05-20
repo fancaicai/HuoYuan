@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
@@ -16,6 +18,8 @@ import com.huotongtianxia.huoyuan.bean.FHRBean;
 import com.huotongtianxia.huoyuan.bean.SCKHZLBean;
 import com.huotongtianxia.huoyuan.bean.SHRBean;
 import com.huotongtianxia.huoyuan.ui.WDCD.gyszl.GYSZLView;
+import com.huotongtianxia.huoyuan.ui.WDCD.login.DLActivity;
+import com.huotongtianxia.huoyuan.widget.ChangeAddressPopwindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +38,10 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
     TextView addTv;
     @Bind(R.id.shdz_pbr)
     ProgressBar shdzPbr;
+    @Bind(R.id.khzl_chooseaddress_tv)
+    TextView khzlChooseaddressTv;
+    @Bind(R.id.khzl_fhdz_line)
+    RelativeLayout khzlFhdzLine;
     private List<SHRBean.DataBean> list = new ArrayList<>();
     private KHZLAdapter adapter;
     public static String i1, i2, i3, i4, i5, i6;
@@ -42,6 +50,9 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
     public static int shrid;
     public static String cityS, addressS;
     private Context context;
+    private KHZLPresreter khzlPresreter;
+    private DLActivity dlActivity;
+    private String factoryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +67,12 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
 //        }
         setContentView(R.layout.activity_khzl);
         ButterKnife.bind(this);
+        dlActivity = new DLActivity();
+        factoryId = dlActivity.getFactoryId();
         initView();
         context = getApplicationContext();
-        KHZLPresreter presreter = new KHZLPresreter(this, this, context);
-        presreter.getData1();
+        khzlPresreter = new KHZLPresreter(this, this, context);
+        khzlPresreter.getData1();
         adapter = new KHZLAdapter(this, list);
         khzlListview.setAdapter(adapter);
         khzlListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -68,7 +81,7 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
                 shrid = list.get(i).getId();
                 cityS = list.get(i).getProvince() + list.get(i).getCity() + list.get(i).getArea();
                 addressS = list.get(i).getAddress();
-                KHZLActivity.this.finish();
+                finish();
             }
         });
 
@@ -77,6 +90,7 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
 
     /**
      * 自定义字体
+     *
      * @param newBase
      */
     @Override
@@ -108,7 +122,26 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 lon = 1;
 
-                KHZLActivity.this.finish();
+                finish();
+            }
+        });
+        //        选择省市区的监听
+        khzlFhdzLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(KHZLActivity.this);
+                mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
+                mChangeAddressPopwindow.showAtLocation(khzlFhdzLine, Gravity.CENTER, 0, 0);
+                mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
+                    @Override
+                    public void onClick(String province, String city, String area) {
+                        String yun_end = province + "-" + city + "-" + area;
+                        khzlChooseaddressTv.setText(yun_end);
+                        adapter.clear();
+                        khzlPresreter.getSearchData(factoryId, province, city, area);
+                    }
+
+                });
             }
         });
     }
@@ -135,15 +168,21 @@ public class KHZLActivity extends AppCompatActivity implements KHZLContract.View
 
     @Override
     public void showProgressBa() {
-        if (shdzPbr!=null) {
+        if (shdzPbr != null) {
             shdzPbr.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void hideProgressBa() {
-        if (shdzPbr!=null) {
+        if (shdzPbr != null) {
             shdzPbr.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void setSearchData(List<SHRBean.DataBean> list) {
+        adapter.clear();
+        adapter.reload(list);
     }
 }

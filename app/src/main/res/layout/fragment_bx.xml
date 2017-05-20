@@ -5,28 +5,29 @@
     android:orientation="vertical"
     tools:context="com.huotongtianxia.huoyuan.ui.WDCD.bx.BXFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_48"
-        >
-        <TextView android:id="@+id/baoxian_tv"
-            android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/baoxian_tv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="永诚保险"
-            android:textColor="@color/hei"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp"
-            android:textSize="@dimen/titlesize"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="@dimen/dp_20_1"
+            android:paddingTop="@dimen/dp_20"
+            android:paddingBottom="@dimen/titlesize"
+            android:background="@color/bx"
             />
 
-    </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/hei"/>
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="@color/hei"/>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,25 +35,32 @@
             >
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#8B79DF"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bx"
                 android:text="投保人信息"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp"
+                android:paddingLeft="@dimen/dp_20_1"
                 android:textSize="15dp"
+                android:layout_marginTop="@dimen/titlesize"
+                android:layout_marginBottom="@dimen/titlesize"
+                android:drawableLeft="@drawable/bx1"
+                android:drawablePadding="@dimen/dp_5"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="姓名:"
+                    android:textColor="@color/nobacktvpresscolor"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
                     />
                 <EditText
@@ -66,15 +74,18 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
                 >
 
                 <TextView
@@ -82,8 +93,9 @@
                     android:layout_height="match_parent"
                     android:text="手机号码:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     android:id="@+id/textView3" />
 
                 <EditText
@@ -99,25 +111,32 @@
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#8B79DF"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
                 android:text="被投保人信息"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp"
+                android:paddingLeft="@dimen/dp_20_1"
+                android:textColor="@color/bx"
                 android:textSize="15dp"
+                android:layout_marginTop="@dimen/titlesize"
+                android:layout_marginBottom="@dimen/titlesize"
+                android:drawableLeft="@drawable/bx1"
+                android:drawablePadding="@dimen/dp_5"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="姓名:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     android:textSize="15dp"
                     />
                 <EditText
@@ -131,23 +150,28 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="手机号码:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt4"
@@ -160,24 +184,29 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="车牌号:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt5"
@@ -190,23 +219,27 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="运单号:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt6"
@@ -221,26 +254,34 @@
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#8B79DF"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_20_1"
+                android:textColor="@color/bx"
                 android:text="保险信息"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp"
                 android:textSize="15dp"
+                android:layout_marginTop="@dimen/titlesize"
+                android:layout_marginBottom="@dimen/titlesize"
+                android:drawableLeft="@drawable/bx2"
+                android:drawablePadding="@dimen/dp_5"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="保额:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt7"
@@ -259,14 +300,14 @@
                     android:textSize="15dp"
                     android:gravity="center_vertical"
                     android:text="万元"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="5dp"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -276,9 +317,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="基本款:"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="@dimen/dp_20_1"
                     android:textSize="15dp"
                     android:layout_marginTop="8dp"
+
                     />
                 <EditText
                     android:layout_width="0dp"
@@ -296,32 +338,40 @@
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginRight="20dp"
-                    android:background="@mipmap/bx_1"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/selected_default"
                     />
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#8B79DF"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_20_1"
+                android:textColor="@color/bx"
                 android:text="货物信息"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp"
                 android:textSize="15dp"
+                android:layout_marginTop="@dimen/titlesize"
+                android:layout_marginBottom="@dimen/titlesize"
+                android:drawableLeft="@drawable/bx3"
+                android:drawablePadding="@dimen/dp_5"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="数量:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt8"
@@ -334,23 +384,28 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="名称:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt9"
@@ -363,23 +418,28 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="包装:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt10"
@@ -392,23 +452,27 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="价值:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <EditText
                     android:id="@+id/bx_edt11"
@@ -427,30 +491,38 @@
                     android:textSize="15dp"
                     android:gravity="center_vertical"
                     android:text="万元"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="5dp"
                     />
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#8B79DF"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_20_1"
+                android:textColor="@color/bx"
                 android:text="运输信息"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp"
                 android:textSize="15dp"
+                android:layout_marginTop="@dimen/titlesize"
+                android:layout_marginBottom="@dimen/titlesize"
+                android:drawableLeft="@drawable/bx4"
+                android:drawablePadding="@dimen/dp_5"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="起运地:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     android:textSize="15dp"
                     />
                 <TextView
@@ -464,23 +536,28 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="目的地:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <TextView
                     android:id="@+id/bx_text2"
@@ -493,23 +570,27 @@
                     android:background="@null"
                     />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/hui"
-                />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:background="@color/hui"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="起运日期:"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:textSize="15dp"
+                    android:textColor="@color/nobacktvpresscolor"
                     />
                 <TextView
                     android:id="@+id/bx_text3"
@@ -524,18 +605,24 @@
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#8B79DF"
-                android:textColor="#ffffff"
-                android:text="免赔额信息"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_20_1"
+                android:textColor="@color/bx"
+                android:text="免赔额"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp"
                 android:textSize="15dp"
+                android:layout_marginTop="@dimen/titlesize"
+                android:layout_marginBottom="@dimen/titlesize"
+                android:drawableLeft="@drawable/bx5"
+                android:drawablePadding="@dimen/dp_5"
                 />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:background="@drawable/bx_shape"
+                android:layout_marginLeft="@dimen/dp_20_1"
+                android:layout_marginRight="@dimen/dp_20_1"
+                android:layout_marginBottom="@dimen/dp_20_1"
                 >
                 <TextView
                     android:id="@+id/bx_meiy_text1"
@@ -543,8 +630,8 @@
                     android:layout_height="wrap_content"
                     android:text="投保金额小于或等于人民币50万元时，免赔RMB2,000.00或损失金额的10%，以高者为准；对于火灾或运输工具倾覆事故造成的损失责任，绝对免赔为RMB5000或损失金额的20%，以高者为准。"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:layout_marginTop="@dimen/dp_10"
                     android:textSize="15dp"
                     />
@@ -559,7 +646,7 @@
                     <!--/>-->
                 <!--<ImageView-->
                     <!--android:id="@+id/bx_zk_img"-->
-                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_width="5dp"-->
                     <!--android:layout_height="15dp"-->
                     <!--android:src="@mipmap/bxxla_1"-->
                     <!--android:layout_alignParentRight="true"-->
@@ -572,8 +659,8 @@
                     android:layout_height="wrap_content"
                     android:text="投保金额大于人民币50万元时，免赔RMB5000或损失金额的10%，以高者为准；对于火灾或运输工具倾覆事故造成的损失责任，绝对免赔为RMB10000或损失金额的20%，以高者为准。"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:textSize="15dp"
                     android:visibility="gone"
                     android:layout_below="@+id/bx_meiy_text1"
@@ -593,8 +680,8 @@
                     />
                 <!--<ImageView-->
                     <!--android:id="@+id/bx_sq_img"-->
-                    <!--android:layout_width="20dp"-->
-                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_width="5dp"-->
+                    <!--android:layout_height="5dp"-->
                     <!--android:background="@mipmap/ic_launcher"-->
                     <!--android:layout_alignParentRight="true"-->
                     <!--android:layout_alignParentBottom="true"-->
@@ -606,7 +693,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:orientation="vertical"
-                android:background="#F1F1F1"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -641,12 +727,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:orientation="horizontal"
+                    android:layout_marginLeft="@dimen/titlesize"
                     >
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:background="@mipmap/ic_launcher"
-                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/selected_default"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -669,10 +757,10 @@
                 android:layout_height="wrap_content"
                 android:text="提交"
                 android:textColor="#ffffff"
-                android:background="#8B79DF"
+                android:background="@color/bx"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 />
         </LinearLayout>
     </ScrollView>

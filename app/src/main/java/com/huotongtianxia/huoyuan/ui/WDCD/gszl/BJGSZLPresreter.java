@@ -91,4 +91,6 @@ public class BJGSZLPresreter implements BJGSZLContract.Presreter{
             }
         },factory_id);
     }
+
+
 }

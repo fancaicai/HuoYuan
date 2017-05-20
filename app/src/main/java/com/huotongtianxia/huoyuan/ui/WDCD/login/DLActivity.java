@@ -94,7 +94,6 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
         //如果已经进过一次登录界面，下次直接跳转到主界面
 
         if (!isFirst()) {
-
            intent = new Intent(this, MainActivity.class);
 //            Log.e("厂家id是：",id);
             startActivity(intent);
@@ -121,7 +120,7 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
                 break;
             case R.id.login_tv2:
                 Intent intent1 = new Intent(DLActivity.this, ZHMMActivity.class);
-                DLActivity.this.finish();
+                finish();
                 startActivity(intent1);
                 break;
         }
@@ -152,6 +151,10 @@ public class DLActivity extends AppCompatActivity implements DLContract.View ,Ge
         id=login_sp.getString("id","id");
         LogUtils.i("id***",id);
         return isfirst;
+    }
+    public String getFactoryId(){
+
+        return this.id;
     }
     @Override
     public void onResponse(DLBean dlBean) {

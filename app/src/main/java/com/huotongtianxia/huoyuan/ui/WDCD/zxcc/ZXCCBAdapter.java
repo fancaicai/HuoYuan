@@ -58,7 +58,14 @@ public class ZXCCBAdapter extends BaseAdapter {
         }else {
             holder = (ViewHolder) view.getTag();
         }
-        //holder.zxccWText2.setText(list.get(i));
+        List<ZXCCBBean.DataBean.PreferenceWayBean> preference_way=list.get(i).getPreference_way();
+        if(preference_way.size()==2){
+
+            holder.zxccWText2.setText(preference_way.get(1).getStart_city()+"、"+preference_way.get(1).getEnd_city()+";"+preference_way.get(0).getStart_city()+"、"+preference_way.get(0).getEnd_city());
+
+        }else if(preference_way.size()==1){
+            holder.zxccWText2.setText(preference_way.get(0).getStart_city()+"、"+preference_way.get(0).getEnd_city());
+        }
         holder.zxccWText4.setText(list.get(i).getRegister_place());
         holder.zxccWText8.setText(list.get(i).getName());
         holder.zxccWText5.setText(list.get(i).getLength());

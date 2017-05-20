@@ -1,0 +1,26 @@
+<com.huotongtianxia.huoyuan.common.view.SquareLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+   >
+
+
+    <ImageView
+        android:id="@+id/item_grid_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        />
+    <ImageView
+        android:id="@+id/item_grid_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:padding="5dp"
+        android:src="@drawable/grid_delete"
+        />
+
+</com.huotongtianxia.huoyuan.common.view.SquareLayout>

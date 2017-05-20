@@ -53,4 +53,9 @@
     <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
         <item name="fontPath">fonts/msyh.ttf</item>
     </style>
+
+    <!--无背景状态栏-->
+    <style name="NobackDialog" parent="AlertDialog.AppCompat">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

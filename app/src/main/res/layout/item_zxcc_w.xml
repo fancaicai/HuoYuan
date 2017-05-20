@@ -1,77 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="10dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
     >
+
+    <View
+        android:id="@+id/zxcc_b_v"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlesize"
+        android:background="@color/zxcc"/>
+
+    <com.huotongtianxia.huoyuan.util.MyCircleImageView
+        android:id="@+id/zh_img1"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/homehome2"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_below="@id/zxcc_b_v"
+        />
+
+    <TextView
+        android:id="@+id/zxcc_w_text8"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:text="李刚"
+        android:textColor="#222222"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/zh_img1"
+        />
     <TextView
         android:id="@+id/zxcc_w_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="优势路线:"
-        android:textColor="#222222"
-        android:layout_toRightOf="@+id/zh_img1"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:textColor="@color/blue2"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_below="@id/zxcc_b_v"
         />
     <TextView
         android:id="@+id/zxcc_w_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="武汉、浙江、安徽"
-        android:textColor="@color/nobacktvpresscolor"
+        tools:text="武汉、浙江、安徽武汉、浙江、安徽"
+        android:textColor="@color/blue2"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/zxcc_w_text1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_below="@id/zxcc_b_v"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxEms="10"
         />
+
+    <View
+        android:id="@+id/zxcc_w_v1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/home1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/zxcc_w_text8"/>
 
     <TextView
         android:id="@+id/zxcc_w_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/zh_img1"
-        android:layout_below="@id/zxcc_w_text1"
+        android:layout_above="@id/zxcc_w_v1"
         android:gravity="center"
         android:text="车辆所在地:"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="@dimen/titlesize"
+        android:layout_marginLeft="@dimen/dp_30"
         />
     <TextView
         android:id="@+id/zxcc_w_text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/zxcc_w_text3"
-        android:layout_below="@id/zxcc_w_text2"
-        android:gravity="center"
-        android:layout_marginLeft="5dp"
-        android:text="太原市小店区"
-        android:layout_marginTop="10dp"
-        />
-    <ImageView
-        android:id="@+id/zxcc_w_img1"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@mipmap/wdysd"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/dp_20"
         android:layout_alignBottom="@id/zxcc_w_text3"
+        android:text="太原市小店区"
+        android:layout_marginLeft="5dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxEms="6"
         />
+
 
     <TextView
         android:id="@+id/zxcc_w_text10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/zxcc_w_text3"
-        android:layout_toRightOf="@+id/zxcc_w_text8"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/shape9"
+        android:layout_below="@+id/zxcc_w_v1"
+        android:layout_marginTop="@dimen/titlesize"
+        android:textColor="@color/blue2"
         android:layout_alignLeft="@id/zxcc_w_text3"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
         android:text="晋A77777"
-        android:textSize="13dp"
+        android:textSize="15dp"
         />
 
     <TextView
@@ -80,9 +112,9 @@
         android:layout_height="wrap_content"
         android:text="13米"
         android:layout_toRightOf="@id/zxcc_w_text10"
-        android:layout_below="@id/zxcc_w_text4"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/zi"
+        android:layout_below="@id/zxcc_w_v1"
+        android:layout_marginTop="@dimen/titlesize"
+        android:textColor="@color/blue2"
         android:layout_marginLeft="15dp"
         android:textSize="15dp"
         />
@@ -92,11 +124,11 @@
         android:layout_height="wrap_content"
         android:text="30吨"
         android:gravity="center"
-        android:textColor="@color/zi"
+        android:textColor="@color/blue2"
         android:layout_toRightOf="@id/zxcc_w_text5"
-        android:layout_below="@id/zxcc_w_text4"
+        android:layout_below="@id/zxcc_w_v1"
         android:textSize="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/titlesize"
         android:layout_marginLeft="15dp"
         />
     <TextView
@@ -104,33 +136,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="高栏"
-        android:textColor="@color/zi"
+        android:textColor="@color/blue2"
         android:gravity="center"
         android:layout_toRightOf="@id/zxcc_w_text6"
-        android:layout_below="@id/zxcc_w_text4"
+        android:layout_below="@id/zxcc_w_v1"
         android:textSize="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/titlesize"
         android:layout_marginLeft="15dp"
         />
-    <TextView
-        android:id="@+id/zxcc_w_text8"
+
+    <ImageView
+        android:id="@+id/zxcc_w_img1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="13dp"
-        android:text="李刚"
-        android:textColor="#222222"
-        android:layout_marginLeft="30dp"
-        android:layout_alignBottom="@id/zxcc_w_text10"
+        android:background="@drawable/zxcc_phone"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_30"
+        android:layout_below="@id/zxcc_w_v1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
         />
 
 
-    <com.huotongtianxia.huoyuan.util.MyCircleImageView
-        android:id="@+id/zh_img1"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:src="@drawable/homehome2"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
 
-        />
 </RelativeLayout>

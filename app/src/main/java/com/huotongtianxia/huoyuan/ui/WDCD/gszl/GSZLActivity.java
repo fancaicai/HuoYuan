@@ -1,9 +1,12 @@
 package com.huotongtianxia.huoyuan.ui.WDCD.gszl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -11,13 +14,21 @@ import android.widget.TextView;
 
 import com.huotongtianxia.huoyuan.R;
 import com.huotongtianxia.huoyuan.bean.GSZLBean;
+import com.huotongtianxia.huoyuan.customview.IconSelectWindow;
+import com.huotongtianxia.huoyuan.util.ToastUtil;
+
+import org.hybridsquad.android.library.CropHandler;
+import org.hybridsquad.android.library.CropHelper;
+import org.hybridsquad.android.library.CropParams;
+
+import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class GSZLActivity extends AppCompatActivity implements GSZLContract.View {
+public class GSZLActivity extends AppCompatActivity implements GSZLContract.View,AccountView {
 
     @Bind(R.id.gszl_text1)
     TextView gszlText1;
@@ -42,7 +53,13 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
 
     public static String fac;
     public static String b1, b2, b3, b4, b5, b6, b7, b8;
+    @Bind(R.id.huoyuan_photo)
+    LinearLayout huoyuanPhoto;
+    @Bind(R.id.mentou_photp)
+    LinearLayout mentouPhotp;
     private int count = 0;
+    private IconSelectWindow mSelectWindow;
+    private GSZLPresreter presreter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,31 +74,82 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
 //        }
         setContentView(R.layout.activity_gszl);
         ButterKnife.bind(this);
-        GSZLPresreter presreter = new GSZLPresreter(this);
+        presreter = new GSZLPresreter(this,getApplicationContext());
         presreter.getData();
         initView();
+    }
+//    @OnClick({R.id.huoyuan_photo,R.id.mentou_photp})
+//    public void showPhotoWindow(View view){
+//        switch (view.getId()){
+//            case R.id.huoyuan_photo:
+////                Intent intent=new Intent(GSZLActivity.this,UploadPhotoActivity.class);
+////                startActivity(intent);
+//                if (mSelectWindow==null){
+//                    mSelectWindow = new IconSelectWindow(this,mListener);
+//                }
+//                if (mSelectWindow.isShowing()){
+//                    mSelectWindow.dismiss();
+//                    return;
+//                }
+//                break;
+//            case R.id.mentou_photp:
+//                Intent intent1=new Intent(GSZLActivity.this,UploadPhotoActivity.class);
+//                startActivity(intent1);
+//                if (mSelectWindow==null){
+//                    mSelectWindow = new IconSelectWindow(this,mListener);
+//                }
+//                if (mSelectWindow.isShowing()){
+//                    mSelectWindow.dismiss();
+//                    return;
+//                }
+//                break;
+//
+//        }
+//        mSelectWindow.show();
+//
+//    }
+
+    //添加货源照片
+    @OnClick(R.id.huoyuan_photo)
+    void huoyuanPhoto(){
+
+        Intent intent=new Intent(GSZLActivity.this,PhotosActivity.class);
+        intent.putExtra("numPhoto",6);
+        startActivity(intent);
+    }
+
+
+    //添加门头照片
+    @OnClick(R.id.mentou_photp)
+    void mentouPhoto(){
+
+        Intent intent=new Intent(GSZLActivity.this,PhotosActivity.class);
+        intent.putExtra("numPhoto",1);
+        startActivity(intent);
     }
 
     /**
      * 自定义字体
+     *
      * @param newBase
      */
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-    @Override
-    public void onResume() {
-        super.onResume();
-        GSZLPresreter presreter = new GSZLPresreter(this);
-        presreter.getData();
-    }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        GSZLPresreter presreter = new GSZLPresreter(this,getApplicationContext());
+//        presreter.getData();
+//    }
 
     public void initView() {
         backTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GSZLActivity.this.finish();
+               finish();
             }
         });
     }
@@ -160,5 +228,92 @@ public class GSZLActivity extends AppCompatActivity implements GSZLContract.View
                 startActivity(intent);
                 break;
         }
+    }
+
+    // 跳转的监听
+    private IconSelectWindow.Listener mListener = new IconSelectWindow.Listener() {
+        // 到相册
+        @Override
+        public void toGallery() {
+            Log.e("我是相册","您调用了相册");
+            // 清除缓存
+            CropHelper.clearCachedCropFile(mCropHandler.getCropParams().uri);
+            Intent intent = CropHelper.buildCropFromGalleryIntent(mCropHandler.getCropParams());
+            startActivityForResult(intent, CropHelper.REQUEST_CROP);
+        }
+
+        // 到相机
+        @Override
+        public void toCamera() {
+            Log.e("我是相机","您调用了相机");
+            // 清除之前剪切的图片的缓存
+            CropHelper.clearCachedCropFile(mCropHandler.getCropParams().uri);
+            // 跳转
+            Intent intent = CropHelper.buildCaptureIntent(mCropHandler.getCropParams().uri);
+            startActivityForResult(intent, CropHelper.REQUEST_CAMERA);
+        }
+    };
+
+    // 图片处理
+    private CropHandler mCropHandler = new CropHandler() {
+        // 图片剪切之后：参数Uri代表剪切后的图片
+        @Override
+        public void onPhotoCropped(Uri uri) {
+            // 拿到剪切之后的图片
+            File file = new File(uri.getPath());
+            //进行网络请求将图片上传
+            presreter .uploadPhoto(file);
+
+        }
+
+        @Override
+        public void onCropCancel() {
+            ToastUtil.showShortToast(getContext(),"剪切取消");
+        }
+
+        @Override
+        public void onCropFailed(String message) {
+            ToastUtil.showShortToast(getContext(),message);
+        }
+
+        // 剪切的参数设置：Uri(图片剪切之后保存的路径)
+        @Override
+        public CropParams getCropParams() {
+            // 默认的剪切设置
+            CropParams cropParams = new CropParams();
+            return cropParams;
+        }
+
+        // 上下文
+        @Override
+        public Activity getContext() {
+            return GSZLActivity.this;
+        }
+    };
+
+    // 处理图片剪切的结果
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        CropHelper.handleResult(mCropHandler,requestCode,resultCode,data);
+    }
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showMessage(String msg) {
+
+    }
+
+    @Override
+    public void updatePhoto(String photoUrl) {
+
     }
 }

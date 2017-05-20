@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_photos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.huotongtianxia.huoyuan.ui.WDCD.gszl.PhotosActivity">
+
+    <RelativeLayout
+        android:id="@+id/photos_rel1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        >
+        <TextView
+            android:id="@+id/photos_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="返 回"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/backtxtsize"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/back_state_focused"
+            android:layout_marginLeft="@dimen/marginlefa"
+            android:textColor="@color/back_tv_selector_show"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="照片"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_centerInParent="true"
+            android:layout_alignBaseline="@+id/wdhy_text01"
+            android:textColor="@color/hei"
+            android:textSize="@dimen/titlesize"
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/photos_v"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/home1"
+        android:layout_below="@id/photos_rel1"
+        />
+    <GridView
+        android:id="@+id/photos_grid"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/photos_v"
+        android:numColumns="2">
+    </GridView>
+</RelativeLayout>

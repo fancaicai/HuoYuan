@@ -138,7 +138,7 @@
                 android:id="@+id/wdcd_text7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="订单跟踪"
+                android:text="接单跟踪"
                 android:textSize="18dp"
                 android:textColor="@color/text_color_selector"
                 android:layout_gravity="center"

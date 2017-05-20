@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 
 import com.huotongtianxia.huoyuan.bean.ZXCCBBean;
+import com.huotongtianxia.huoyuan.util.LogUtils;
 import com.huotongtianxia.huoyuan.util.ToastUtil;
 
 import retrofit2.Call;
@@ -50,6 +51,7 @@ public class ZXCCBPresreter implements ZXCCBContract.Presreter{
             @Override
             public void onFailure(Call<ZXCCBBean> call, Throwable t) {
                 bdcView.hideProgressBa();
+                LogUtils.i("本地车",t.toString());
                 ToastUtil.showShortToast(context,"数据加载失败！！！");
             }
         },locality);
